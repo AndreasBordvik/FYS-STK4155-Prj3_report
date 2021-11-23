@@ -1,9 +1,0 @@
-Leaky RELU - Best grid search,Results
-MSE,0.108
-R2,0.8942
-parameters,4629
-neurons at first hidden layer,32
-learning rate,0.1
-lambda,0
-epochs,100
-batch size,300

@@ -1,9 +1,0 @@
-RELU - Best grid search,Results
-MSE,0.1184
-R2,0.8841
-parameters,4629
-neurons at first hidden layer,32
-learning rate,0.1
-lambda,0.000316228
-epochs,100
-batch size,300

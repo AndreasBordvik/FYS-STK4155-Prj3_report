@@ -1,4 +1,4 @@
-# FYS-STK4155 Project 2
+# FYS-STK4155 Project 3
 
 ## Installation:
 
@@ -7,10 +7,10 @@
 Make sure that you are in the directory with the proj2_env.yml
 
 ```bash
-$ conda env create -f environment_proj2.yml
+$ conda env create -f environment_proj3.yml
 ```
 ```bash
-$ conda activate environment_proj2
+$ conda activate environment_proj3
 ```
 
 When done, deactive enviroment with:

@@ -1,9 +1,0 @@
-Sigmoid - Best grid search,Results
-MSE,0.8494
-R2,0.168
-parameters,129
-neurons at first hidden layer,32
-learning rate,0.1
-lambda,0
-epochs,100
-batch size,300

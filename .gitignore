@@ -1,0 +1,7 @@
+# LaTeX files
+auto
+*.aux
+*.log
+*.synctex.gz
+code/__pycache__/**
+.ipynb_checkpoints

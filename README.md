@@ -4,7 +4,7 @@
 
 ### Using conda:
 
-Make sure that you are in the directory with the proj2_env.yml
+Make sure that you are in the directory with the proj3_env.yml
 
 ```bash
 $ conda env create -f environment_proj3.yml

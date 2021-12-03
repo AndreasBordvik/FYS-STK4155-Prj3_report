@@ -15,10 +15,13 @@ from sklearn.preprocessing import RobustScaler, StandardScaler, MinMaxScaler
 import datetime
 import os
 
+<<<<<<< HEAD
+=======
 print(os.listdir())
 
 #dataset_df = pd.read_csv(f"entsoe_dataset_main.csv", index_col=[0])
 dataset_df = pd.read_csv(f"data/input_data/entsoe_dataset_main.csv", index_col=[0])
+>>>>>>> 12425874326e2625dcd885eb48aa3eb56921674d
 # dataset_df = pd.read_csv(f"{INPUT_DATA}entsoe_dataset_main.csv", index_col=[0])
 
 #dataset_df["year"] = dataset_df["dato_id"].year

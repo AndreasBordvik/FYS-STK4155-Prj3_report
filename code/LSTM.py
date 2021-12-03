@@ -14,7 +14,7 @@ import sys
 from sklearn.preprocessing import RobustScaler
 import datetime
 
-dataset_df = pd.read_csv(f"{INPUT_DATA}entsoe_dataset_main.csv", index_col=[0])
+# dataset_df = pd.read_csv(f"{INPUT_DATA}entsoe_dataset_main.csv", index_col=[0])
 
 #dataset_df["year"] = dataset_df["dato_id"].year
 

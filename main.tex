@@ -108,7 +108,7 @@ bookmarksdepth=3   % Uncomment (and tweak) for PDF bookmarks with more levels th
 
 % ------------------- main content ----------------------
 
-\title{Time series forecasting using LSTM\\Project 3 - FYS-STK4155}
+\title{Time series forecasting using LSTMs\\Project 3 - FYS-STK4155}
 \author{David Andreas Bordvik}
 \email{davidabo@mail.uio.no}
 \affiliation{Department of Informatics, University of Oslo}
@@ -121,14 +121,62 @@ bookmarksdepth=3   % Uncomment (and tweak) for PDF bookmarks with more levels th
 \date{\today}
 
 \begin{abstract}
-  This will be our wonderful abstract
+  \begin{description}
+  \item[Background] This part would describe the
+  context needed to understand what the paper
+  is about.
+  \item[Purpose] This part would state the purpose
+  of the present paper.
+  \item[Method] This part describe the methods
+  used in the paper.
+  \item[Results] This part would summarize the
+  results.
+  \item[Conclusions] This part would state the
+  conclusions of the paper.
+  \end{description}
 \end{abstract}
 
 \maketitle
 
 \section{Introduction}
+\todo[inline]{The introduction is an unfinished mess...}
+When studying the Terrain dataset in Project 2, we created code for our own Feed Forward Neural Network which after training could accurately recreate a chunk of terrain (with an MSE of 0.0971). More generally, we studied how time-independent data could be used to fit an arbitrary function with a given error following the Universal Approximation Theorem \cite{Nielsen2015}. However, in Project 3, our data is sequential and time dependant. As such, a fully connected Neural Network where each input feature has individual parameters would have to be retrained for each time-step, which would not be favorable when the data is sequenced in time.
+
+By comparison, a Recurrent Neural Network shares its weights across several time steps \cite{Goodfellow2016}.
 
 \section{Theory and Methods}
+
+\subsection{Sequence processing using Recurrent Neural Networks}
+As our data is sequenced over time, we need a Neural Network that can share its weights across time steps. In a Recurrent Neural Network, this is done by applying the same update rule to the previous output when producing a new output \cite{Goodfellow2016}. Mathematically, we can define this system as
+\begin{equation}
+  \nonumber
+  \bm{s}^{(t)} = f(\bm{s}^{(t-1)},\bm{x}^{(t)};\bm{\theta})
+\end{equation}
+Where $\bm{s}^{(t)}$ is the state of the system, $\bm{x}^{(t)}$ is an external signal which drives the system and $\bm{\theta}$ parametrizes $f$, though we note that this system itself does not contain any output. 
+
+Recurrent Neural Networks support multiple different input and output sequences \cite{Geron2019}. A tuple of inputs or outputs over different time steps is considered a sequence, whereas a input or output from a singular time step is considered a vector. RNNs support different constellations of sequence/vector input and output, such that it is possible to input a sequence and output a sequence where some time steps are ignored. This is a favorable property given our data and task of producing a full day forecast some time steps after the end of our input sequence.
+
+\subsection{Backpropagation through time}
+Though computing the gradient through a Recurrent Neural Network is analogous to how it was computed in a Feed Forward Neural Network, the algorithm has to be applied throughout all the time steps of the Recurrent Neural Network recursively. The recursion starts at the final time step, where at the final time step $\tau$ the gradient of the loss $L$ can be computed as follows, using the notation of \cite{Goodfellow2016}
+\begin{equation}
+  \nabla_{\bm{h}^{(\tau)}}L = \bm{V}^T \nabla_{\bm{o}^{(\tau)}}L
+\end{equation}
+where $\bm{V}$ is the weights between the hidden states and output values $\bm{o}$.
+Going backwards trough time ($t < \tau)$, the gradient of the propagated loss can be computed using the following equation
+\begin{equation}
+  \bm{W}^TJ(\bm{a})(\nabla_{\bm{h}^{(t+1)}}L)+\bm{V}^T(\nabla_{\bm{o}^{(t)}}L)
+\end{equation}
+where $\bm{W}$ is the weights associated with the hidden-to-hidden state connection and $J(\bm{a})$ is the jacobian of the activation function.
+
+Given a long time sequence, a Recurrent Neural Network can be both memory and cpu intensive. Moreover, for long sequences of data, the unrolled RNN will be a considerably deep Neural Network. As we discussed in Project 2, a deep Neural Network is prone to the unstable gradient problem, where the gradient can either completely vanish or explode through the bounds of the datatype used to contain the value. In addition to the RNN being prone to unstable gradients given a long sequence, the memory of the first inputs will deter if the RNN is processing a long sequence \cite{Geron2019}.
+
+\subsection{The unstable gradient problem}
+Our main motivation behind introducing different activation functions such as the ReLU and Leaky ReLU to replace the Sigmoid activation function in Project 2 was to avoid the vanishing gradient which arose from the bounded output from the Sigmoid. However, a non-saturated activation function such as the ReLU family of functions runs the risk of updating the set of weights between two layers in such a way that the computed output is slightly increased. For a Feed Forward Neural Network, given how additional sets of weights are computed during gradient descent, this weight update pattern is not given to reoccur. Though for a Recurrent Neural Network, the same sets of weights are updated at every time step, such that a weight update pattern that ends up in a slight increase of the output would be reapplied until the output explodes \cite{Geron2019}. As such, when implementing a Recurrent Neural Network in the coming Section, we will use a saturating activation function such as the Hyperbolic Tangent $\tanh = \frac{\sinh}{\cosh}$, which conveniently is supplied as the default activation function for RNNs in TensorFlow \cite{tensorflow2015-whitepaper}.
+
+\subsection{The Short-Term memory problem}
+The second problem which arises in the context of training a Recurrent Neural Network is its inevitable memory loss of the earliest states as a result of how some information is lost for each time step \cite{Geron2019}. By following the approach of \cite{Hochreiter1997}, implementing Long Short-Term Memory (LSTM) cells can alleviate the memory loss. The idea behind LSTM cells is to store some information in the long-term, while at the same time forget unnecessary information whilst reading the rest which result in the short term output memory. In this way, for each time step some information is kept, while at the same time some long term memories are dropped if they meet certain requirements after each time step \cite{Geron2019}. Though we will skip the finer details of the inner workings of an LSTM cell, by implementing an LSTM cell we are able to recognize, preserve, utilize and abolish trends in the data as needed.
+
+
 
 \section{Results}
 

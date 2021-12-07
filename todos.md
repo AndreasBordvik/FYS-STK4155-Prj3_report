@@ -6,6 +6,13 @@
 * Implement 1D convolution of data to move further backwards in time
 * Remove trend and seasonality
 
+# Theory
+
+* RNNs -> LSTMs
+* Sliding Window
+* Time Series Data
+* ENTSO data
+
 ## Extra
 
 * NVE dataset

@@ -11,8 +11,7 @@
 * RNNs -> LSTMs
 * Sliding Window
 * Time Series Data
-
-
+* ENTSO data
 
 ## Extra
 

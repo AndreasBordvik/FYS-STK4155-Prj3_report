@@ -5,3 +5,4 @@ auto
 *.synctex.gz
 code/__pycache__/**
 .ipynb_checkpoints
+papers/*

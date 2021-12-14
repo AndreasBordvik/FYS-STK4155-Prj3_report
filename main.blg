@@ -9,45 +9,45 @@ Database file #1: mainNotes.bib
 Database file #2: biblio.bib
 Warning--I didn't find a database entry for "Greff2015"
 Warning--I didn't find a database entry for "Murugan2018"
-You've used 5 entries,
+You've used 6 entries,
             2118 wiz_defined-function locations,
-            535 strings with 5418 characters,
-and the built_in function-call counts, 2513 in all, are:
-= -- 198
-> -- 248
+            542 strings with 5620 characters,
+and the built_in function-call counts, 2861 in all, are:
+= -- 235
+> -- 261
 < -- 0
-+ -- 99
-- -- 94
-* -- 227
-:= -- 463
-add.period$ -- 17
-call.type$ -- 5
-change.case$ -- 59
++ -- 104
+- -- 98
+* -- 254
+:= -- 520
+add.period$ -- 20
+call.type$ -- 6
+change.case$ -- 64
 chr.to.int$ -- 0
-cite$ -- 5
-duplicate$ -- 54
-empty$ -- 118
-format.name$ -- 94
-if$ -- 469
+cite$ -- 6
+duplicate$ -- 65
+empty$ -- 146
+format.name$ -- 98
+if$ -- 540
 int.to.chr$ -- 0
-int.to.str$ -- 5
-missing$ -- 7
-newline$ -- 30
-num.names$ -- 10
-pop$ -- 75
+int.to.str$ -- 6
+missing$ -- 8
+newline$ -- 35
+num.names$ -- 12
+pop$ -- 78
 preamble$ -- 1
-purify$ -- 57
+purify$ -- 61
 quote$ -- 0
-skip$ -- 33
+skip$ -- 41
 stack$ -- 0
-substring$ -- 52
-swap$ -- 5
+substring$ -- 88
+swap$ -- 6
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 14
+type$ -- 18
 warning$ -- 0
-while$ -- 11
-width$ -- 6
-write$ -- 57
+while$ -- 15
+width$ -- 7
+write$ -- 68
 (There were 2 warnings)

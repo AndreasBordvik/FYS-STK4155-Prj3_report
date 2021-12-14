@@ -1,18 +1,18 @@
 # Fdb version 3
-["bibtex main"] 1639492031 "main.aux" "main.bbl" "main" 1639492035
+["bibtex main"] 1639507522 "main.aux" "main.bbl" "main" 1639507525
   "C:/Users/andre/AppData/Local/Programs/MiKTeX/bibtex/bst/bibtex/plain.bst" 1291864736 20613 bd3fbfa9f64872b81ac57a0dd2ed855f ""
-  "biblio.bib" 1639476832 11411 515b348402074487d7267990c6eb5184 ""
-  "main.aux" 1639492034 3728 38ece0ca8156e3b717b4d71acc0afb94 "pdflatex"
-  "mainNotes.bib" 1639492034 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "biblio.bib" 1639505983 18723 90d27f588b4fb395f821666e118007bd ""
+  "main.aux" 1639507524 3810 dd01baa648277625250f1f579307e8c3 "pdflatex"
+  "mainNotes.bib" 1639507524 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
   (generated)
-  "main.blg"
   "main.bbl"
-["makeindex main.idx"] 1639489961 "main.idx" "main.ind" "main" 1639492035
-  "main.idx" 1639492033 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "main.blg"
+["makeindex main.idx"] 1639489961 "main.idx" "main.ind" "main" 1639507525
+  "main.idx" 1639507524 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
   (generated)
-  "main.ilg"
   "main.ind"
-["pdflatex"] 1639492032 "c:/Users/andre/Dropbox/FYS-STK4155_projects/FYS-STK4155 - Project3/FYS-STK4155-Prj3_report/main.tex" "main.pdf" "main" 1639492035
+  "main.ilg"
+["pdflatex"] 1639507522 "c:/Users/andre/Dropbox/FYS-STK4155_projects/FYS-STK4155 - Project3/FYS-STK4155-Prj3_report/main.tex" "main.pdf" "main" 1639507525
   "C:/Users/andre/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1633121266 9715384 ab11fa3a7c67255819b548dcc7cc2452 ""
   "C:/Users/andre/AppData/Local/MiKTeX/pdftex/config/pdftex.map" 1637967114 279811 21458d7cb40c17308453d8eee000b2b5 ""
   "C:/Users/andre/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc" 1254935040 2375 baa924870cfb487815765f9094cf3728 ""
@@ -289,16 +289,16 @@
   "C:/Users/andre/AppData/Local/Programs/MiKTeX/tex/latex/url/url.sty" 1388490452 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "C:/Users/andre/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1623002060 55589 34128738f682d033422ca125f82e5d62 ""
   "C:/Users/andre/AppData/Local/Programs/MiKTeX/tex/latex/xkeyval/xkeyval.sty" 1623002090 4902 efb3d66683a2da2a232f71e3a571a899 ""
-  "c:/Users/andre/Dropbox/FYS-STK4155_projects/FYS-STK4155 - Project3/FYS-STK4155-Prj3_report/main.tex" 1639492028 17092 810161fda93a7025df1b527016699db4 ""
-  "main.aux" 1639492034 3728 38ece0ca8156e3b717b4d71acc0afb94 "pdflatex"
-  "main.bbl" 1639492032 1592 5e01092ff96f9eb51f74de93c419a790 "bibtex main"
+  "c:/Users/andre/Dropbox/FYS-STK4155_projects/FYS-STK4155 - Project3/FYS-STK4155-Prj3_report/main.tex" 1639507515 18218 b7cb0612c58e7732f336329cebbdbcdb ""
+  "main.aux" 1639507524 3810 dd01baa648277625250f1f579307e8c3 "pdflatex"
+  "main.bbl" 1639507522 1860 b02bd98192fbf6ed6f0c0f7176f62a62 "bibtex main"
   "main.ind" 1639489961 0 d41d8cd98f00b204e9800998ecf8427e "makeindex main.idx"
-  "main.out" 1639492034 2531 13a46f64cb243cac5afe397f2ed3bbaf "pdflatex"
-  "main.tex" 1639492028 17092 810161fda93a7025df1b527016699db4 ""
+  "main.out" 1639507524 2531 13a46f64cb243cac5afe397f2ed3bbaf "pdflatex"
+  "main.tex" 1639507515 18218 b7cb0612c58e7732f336329cebbdbcdb ""
   (generated)
-  "main.idx"
-  "mainNotes.bib"
-  "main.aux"
   "main.pdf"
+  "mainNotes.bib"
+  "main.idx"
   "main.out"
+  "main.aux"
   "main.log"

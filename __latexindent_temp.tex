@@ -146,7 +146,7 @@ By comparison, a Recurrent Neural Network shares its weights across several time
 
 \section{Theory and Methods}
 
-\subsection{Time series data}
+\subsection{Time Series}
 \subsubsection{The nature of time series}
 As already mentioned, in contrast to projects 1 and 2, this project deals with data in a sequential matter, called time series. What defines this type of format is that the data points decrease, increase or change in chronological order throughout time\cite{Vishwas2020 }.  A formal definition could be formulated as a mapping from a time-domain to real numbers:
 
@@ -158,9 +158,13 @@ As already mentioned, in contrast to projects 1 and 2, this project deals with d
 where T $\subseteq {\rm I\!R}$ and k $\in \mathds{N}$ \cite{Auffarth2021}
 
 
-In the scope of this project, our time series consist of discrete values that describe how various aspects regarding the energy sector changes over time. 
+In this project's scope, our time series consist of hourly values that describe how various aspects of the energy sector change over time.  This creates data, where each data point represents a time step with ... values for the different features.
 
-Dealing with data on such a format might yield an additional complexity when trying to analyze the raw data at hand. 
+A widely used yet simple approach for analyzing and forecasting time series includes only the variable destined for forecasting.  When analyzing time series on this form, we do not attempt to explain the observed data by the relationship with other possible variables. The only relevant data used for analyzing and forecasting is the past of the variable itself. Data in this format is called a univariate time series, as a contrast to a multivariate time series, which includes several variables connected through a shared period of time. Methods for forecasting the latter will be discussed thoroughly in later sections, but this following section will focus on the Auto Regressive (AR) model for univariate time series, as this works as the most fundamental building block for time series forecasting \cite{Korstanje2021} 
+
+
+\subsubsection{Characteristics of time series}
+
 
 \subsection{Structuring our data}
 The dataset used for this project can be found in GitHub linked in the appendix, in the data folder. The file used is the aptly named MAIN\_DATASET.csv. The file contains 51649 rows and 20 columns containing variables related to power region 2 and 5 in Norway. The dataset has been preprocessed such that it does not contain any NaN values, \todo[inline]{MER OM PREPROC AV DATA}. When feeding data into the RNN, which will be described in greater detail in the coming sections, the data has to be formatted to take the form of the 3D array $\left(\text{Batch Size}, \text{Time Steps}, \text{Dimensionality}\right)$. Specifically, Batch Size refers to the number of samples, Time Steps is the total number of the input width added with the forecast horizon, and finally dimensionality refer to the number of time series used, such that dimensionality $= 1$ would refer to a univariate time series. 

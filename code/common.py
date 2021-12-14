@@ -1,8 +1,8 @@
 import pickle
 import time
 import numpy as np
-import matplotlib.pyplot as plt
 import pandas as pd
+from matplotlib import pyplot as plt
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler, StandardScaler
 from typing import Callable, List, Tuple
@@ -45,7 +45,7 @@ def load_model(path_filename: str) -> Callable:
 
 def seperate_column_to_days(col):
     days = []
-    col = col.to_numpy()
+    #col = col.to_numpy()
     for i in range(0,len(col), 24):
         days.append(col[i:i+24])
     
@@ -56,7 +56,7 @@ def seperate_column_to_days(col):
 
     # The list includes data split into entire days
     # from 2016-01-03 12:00:00+01:00 - 2021-11-24 11:00:00+01:00
-    return days
+    return np.array(days)
 
 
 def last_time_step_mse(Y_true, Y_pred):

@@ -139,28 +139,14 @@ bookmarksdepth=3   % Uncomment (and tweak) for PDF bookmarks with more levels th
 \maketitle
 
 \section{Introduction}
-The Norwegian and European power markets are changing. Several trends and demands in todays society result in increased electricity usage and power consumption. Additionally, a higher integrated fraction of renewable energy production coupled with tighter integration of power transmission infrastructure between countries affects several aspects within the power market, such as; electricity price, electricity production, electricity transmission, and electricity demand. A tighter connection of power infrastructure between countries also connects the power markets between countries to a greater extend, giving room for a growing number of market participants and competition. In the light of a changing and increasingly competitive power market, the need for forecasting the electricity price has become a fundamental process for energy companies. The ability to make qualitative decisions through forecasting the electricity price has never been more relevant. \cite{nowotarski_recent_2018}. Besides the aforementioned, studying the electricity price from a consumer standpoint considering the recent 
-experienced extreme electricity price is the main motivation for this project. In this project, we focus on investigating the electricity price in the context of time-series analysis and forecasting the electricity price for the next day at an hourly resolution (24 hours). 
-\\\\
-There are five power regions in Norway named NO1, NO2, NO3, NO4, and NO5. Each region is a power market of its own, having its electricity price, and the regions can also be referred to as a bidding zone figure \ref{fig:biddin_zones}. The bidding name reflects the trading part, where participants buy and sell electricity. Each bidding zone has a day-ahead auction where electricity is traded for delivery the next day. In the day ahead market (the spot market), Nordpool finds the equilibrium between expected power demand and power production between aggregated quantities among all traders. Nord pool then sets the reference (system) price based on the equilibrium, sales, and purchase orders. The hourly electricity prices are then finalized for the next day, named day-ahead price or spot price. Nord pool closes the day-ahead market at 12:00 each day, and the hourly prices for the next day are published thereafter \cite{nordpool}. Even though the different zones are individual markets, they are still related to each other in many ways. All zones are interconnected via transmission cables, thus enabling power trading across bidding zones. All power markets and systems must be in balance at all times to ensure a stable and reliable power source. Therefore, power transmission is a major player affecting each power market's core, including the price. Another driver affecting the price is the cost of producing electricity. An increasingly integrating power production from renewable sources gives rise to new challenges since some renewable power sources are volatile in nature, e.g., wind power and solar. Having volatile power-producing contributors gives rise to added uncertainties to the electricity price. Therefore, highly accurate forecasting of the electricity price is regarded as very challenging considering the characteristics of the electricity price and the power markets \cite{li_day-ahead_2021, nogales_forecasting_2002,bunn_forecasting_2000}. Due to time constraints, this project only focuses on forecasting the electricity price for the bidding zone named NO2. 
+\todo[inline]{The introduction is an unfinished mess...}
+When studying the Terrain dataset in Project 2, we created code for our own Feed Forward Neural Network which after training could accurately recreate a chunk of terrain (with an MSE of 0.0971). More generally, we studied how time-independent data could be used to fit an arbitrary function with a given error following the Universal Approximation Theorem \cite{Nielsen2015}. However, in Project 3, our data is sequential and time dependant. As such, a fully connected Neural Network where each input feature has individual parameters would have to be retrained for each time-step, which would not be favorable when the data is sequenced in time.
 
-\begin{figure}[t]
-  \centering
-  \includegraphics[width=80mm,scale=1.0]{figures/bidding_zones.png}
-  \caption{Bidding zones - https://www.nordpoolgroup.com/the-power-market/Bidding-areas/}
-  \label{fig:biddin_zones}
-\end{figure}
+By comparison, a Recurrent Neural Network shares its weights across several time steps \cite{Goodfellow2016}.
 
-In the two previous projects, we studied how spatial and time-independent data could be used to fit an arbitrary function with a given error following the Universal Approximation Theorem \cite{Nielsen2015} using a fully connected Neural Network. However, in Project 3, our data is sequential and time dependant. As such, a fully connected Neural Network is not designed to remember and make use of historical content while feeding foreward its current inputs. Therefore, this project will make us of Recurrent Neural Network and state-of-the-art methods for time-series data. A Recurrent Neural Network shares its weights across several time steps, which makes it suitble to use for temporal data \cite{Goodfellow2016}.
+\section{Theory and Methods}
 
-
-\section{Data}
-The data used for this project is collected via tha Entsoe Transparnecy Platform API. \footnote{https://www.entsoe.eu/data/transparency-platform/}. We also look at "fyllingsgrad" over Norwegian dams, which represents potential power generation. The data is publicaly provided via The Norwegian Energy Regulatory Authority (NVE) \cite{noauthor_magasinstatistikk_nodate}. 
-
-
-
-
-\subsection{Time series data}
+\subsection{Time Series}
 \subsubsection{The nature of time series}
 As already mentioned, in contrast to projects 1 and 2, this project deals with data in a sequential matter, called time series. What defines this type of format is that the data points decrease, increase or change in chronological order throughout time\cite{Vishwas2020 }.  A formal definition could be formulated as a mapping from a time-domain to real numbers:
 
@@ -172,15 +158,17 @@ As already mentioned, in contrast to projects 1 and 2, this project deals with d
 where T $\subseteq {\rm I\!R}$ and k $\in \mathds{N}$ \cite{Auffarth2021}
 
 
-In the scope of this project, our time series consist of discrete values that describe how various aspects regarding the energy sector changes over time. 
+In this project's scope, our time series consist of hourly values that describe how various aspects of the energy sector change over time.  This creates data, where each data point represents a time step with ... values for the different features.
 
-Dealing with data on such a format might yield an additional complexity when trying to analyze the raw data at hand. 
+A widely used yet simple approach for analyzing and forecasting time series includes only the variable destined for forecasting.  When analyzing time series on this form, we do not attempt to explain the observed data by the relationship with other possible variables. The only relevant data used for analyzing and forecasting is the past of the variable itself. Data in this format is called a univariate time series, as a contrast to a multivariate time series, which includes several variables connected through a shared period of time. Methods for forecasting the latter will be discussed thoroughly in later sections, but this following section will focus on the Auto Regressive (AR) model for univariate time series, as this works as the most fundamental building block for time series forecasting \cite{Korstanje2021} 
+
+
+\subsubsection{Characteristics of time series}
+
 
 \subsection{Structuring our data}
 The dataset used for this project can be found in GitHub linked in the appendix, in the data folder. The file used is the aptly named MAIN\_DATASET.csv. The file contains 51649 rows and 20 columns containing variables related to power region 2 and 5 in Norway. The dataset has been preprocessed such that it does not contain any NaN values, \todo[inline]{MER OM PREPROC AV DATA}. When feeding data into the RNN, which will be described in greater detail in the coming sections, the data has to be formatted to take the form of the 3D array $\left(\text{Batch Size}, \text{Time Steps}, \text{Dimensionality}\right)$. Specifically, Batch Size refers to the number of samples, Time Steps is the total number of the input width added with the forecast horizon, and finally dimensionality refer to the number of time series used, such that dimensionality $= 1$ would refer to a univariate time series. 
 
-
-\section{Theory and Methods}
 \subsection{Data Windowing}
 We have applied a window based algorithm to structure the data into appropriate sample sizes that fit the constraints imposed by the Recurrent Neural Network. In comparison to the previous projects, our data does not contain a relationship between some input data and some target variable, instead we want to recognize the relationship throughout a sequence of values. Before sectioning the data into windows, we note that our data is evenly spaced, in our case we have an hourly time series. 
 
@@ -189,9 +177,6 @@ Our window algorithm starts off by sectioning the data into 24-hour chunks. This
 Since the chunks containing days are repeated in all data windows within the range of the sliding window, we are able to reuse data points in new isolated sequences as the window strides though the chunks. This allows us to effectively increase the number of samples, as contiguous samples contain overlapping data, though differ with regards to the first day used in the input width and data used as forecast horizon. This data window structure allows us to forecast an arbitrarily amount of time ahead, based on the data from a specified number of days ago.
 
 Finally, during train test split, a single data window sample is split in such a way that the input width defines our X (input signal), and the forecast horizon specifies labels y. If the labels y have a length of 1, the RNN is a sequence to vector model predicting a single time step ahead. However, a label vector y with length greater than 1 would not itself specify whether the Recurrent Neural Network is a vector or sequence outputting model, as that would have to be specified in the model declaration. However, a length greater than 1 would indeed indicate that the model is forecasting several time steps ahead. 
-
-
-
 
 \subsection{Sequence processing using Recurrent Neural Networks}
 As our data is sequenced over time, we need a Neural Network that can share its weights across time steps. In a Recurrent Neural Network, this is done by applying the same update rule to the previous output when producing a new output \cite{Goodfellow2016}. Mathematically, we can define this system as

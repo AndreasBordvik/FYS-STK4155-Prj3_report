@@ -21,6 +21,13 @@ Dette må skiftes på, f.eks ved å starte de tre første dagene fra ENTSO tidss
 Undersøke om forholdet mellom forecast og actual for både load og generation er en interessant feature, 
 Spearman correlation
 
+# Prediction sequence
+Effect of preprocessing
+(1dconv, FeedForward)
+
+Effect of dropout
+
+
 ## Extra
 
 * NVE dataset

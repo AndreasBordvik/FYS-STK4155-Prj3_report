@@ -108,7 +108,7 @@ bookmarksdepth=3   % Uncomment (and tweak) for PDF bookmarks with more levels th
 
 % ------------------- main content ----------------------
 
-\title{Time series forecasting using LSTMs\\Project 3 - FYS-STK4155}
+\title{Time series forecasting using LSTMs \\ Project 3 - FYS-STK4155}
 \author{David Andreas Bordvik}
 \email{davidabo@mail.uio.no}
 \affiliation{Department of Informatics, University of Oslo}
@@ -160,7 +160,7 @@ The data used for this project is collected via tha Entsoe Transparnecy Platform
 
 \subsection{Time series data}
 \subsubsection{The nature of time series}
-As already mentioned, in contrast to projects 1 and 2, this project deals with data in a sequential matter, called time series. What defines this type of format is that the data points decrease, increase or change in chronological order throughout time\cite{Vishwas2020 }.  A formal definition could be formulated as a mapping from a time-domain to real numbers:
+As already mentioned, in contrast to projects 1 and 2, this project deals with data in a sequential matter, called time series. What defines this type of format is that the data points decrease, increase or change in chronological order throughout time\cite{Vishwas2020}.  A formal definition could be formulated as a mapping from a time-domain to real numbers:
 
 
 \begin{equation}
@@ -211,7 +211,8 @@ Going backwards trough time ($t < \tau)$, the gradient of the propagated loss ca
 \begin{equation}
   \bm{W}^TJ(\bm{a})(\nabla_{\bm{h}^{(t+1)}}L)+\bm{V}^T(\nabla_{\bm{o}^{(t)}}L)
 \end{equation}
-where $\bm{W}$ is the weights associated with the hidden-to-hidden state connection and $J(\bm{a})$ is the jacobian of the activation function.
+where $\bm{W}$ is the weights associated with the hidden-to-hidden state connection and $J(\bm{a})$ is the jacobian of the activation function.%
+
 
 Given a long time sequence, a Recurrent Neural Network can be both memory and cpu intensive. Moreover, for long sequences of data, the unrolled RNN will be a considerably deep Neural Network. As we discussed in Project 2, a deep Neural Network is prone to the unstable gradient problem, where the gradient can either completely vanish or explode through the bounds of the datatype used to contain the value. In addition to the RNN being prone to unstable gradients given a long sequence, the memory of the first inputs will deter if the RNN is processing a long sequence \cite{Geron2019}.
 

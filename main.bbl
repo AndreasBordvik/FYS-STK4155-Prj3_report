@@ -60,6 +60,11 @@ Sepp Hochreiter and Jürgen Schmidhuber.
 \newblock Long short-term memory.
 \newblock {\em Neural Computation}, 9(8):1735--1780, 1997.
 
+\bibitem{Korstanje2021}
+Joos Korstanje.
+\newblock {\em Advanced Forecasting with Python}.
+\newblock Apress, 2021.
+
 \bibitem{li_day-ahead_2021}
 Wei Li and Denis~Mike Becker.
 \newblock Day-ahead electricity price prediction applying hybrid models of

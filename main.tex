@@ -44,7 +44,9 @@ amssymb,
     title=\lstname
   }
 \usepackage{dcolumn}% Align table columns on decimal point
-\usepackage[table]{xcolor}
+% \usepackage[table]{xcolor}
+\usepackage[table,xcdraw]{xcolor}
+% \usepackage[table,xcdraw]{xcolor}
 \usepackage{bm,ltablex,microtype}
 \usepackage{longtable}
 \usepackage{siunitx}
@@ -67,6 +69,8 @@ amssymb,
 \usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 \usepackage{tikz}
+
+
 
 % Hyperlinks in PDF:
 \definecolor{linkcolor}{rgb}{0,0,0}
@@ -165,7 +169,28 @@ The dataset has been preprocessed such that it does not contain any NaN values, 
 When feeding data into the RNN, which will be described in greater detail in the coming sections, the data has to be formatted to take the form of the 3D array $\left(\text{Batch Size}, \text{Time Steps}, \text{dimensionality}\right)$. Specifically, Batch Size refers to the number of samples, Time Steps reflect the historical sequence. Finally, dimensionality refers to the number of time series used, such that dimensionality $= 1$ would refer to a univariate time series. Some literature refers to the last dimension as the number of features. 
 
 
-
+\subsection{Sliding window}
+test
+% Please add the following required packages to your document preamble:
+% \usepackage[table,xcdraw]{xcolor}
+% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
+\begin{center}%[t]
+  \begin{tabular}{|c|c|cc|c|c|cc|c|c|cc|c|c|c}
+  \cline{1-2} \cline{5-6} \cline{9-10} \cline{13-14}
+  \textbf{$t$} & \textbf{$p$}                  &                &  & \textbf{$t$}                  & \textbf{$p$}                  &                &  & \textbf{$t$}                  & \textbf{$p$}                  &                &  & \textbf{$t$}                  & \textbf{$p$}                      &                  \\ \cline{1-2} \cline{5-6} \cline{9-10} \cline{13-14}
+  $t_0$        & \cellcolor[HTML]{C0C0C0}$p_0$ &                &  & \cellcolor[HTML]{FFFFFF}$t_0$ & \cellcolor[HTML]{FFFFFF}$p_0$ &                &  & \cellcolor[HTML]{FFFFFF}$t_0$ & \cellcolor[HTML]{FFFFFF}$p_0$ &                &  & \cellcolor[HTML]{FFFFFF}$t_0$ & \cellcolor[HTML]{FFFFFF}$p_0$     &                  \\ \cline{1-2} \cline{5-6} \cline{9-10} \cline{13-14}
+  $t_1$        & \cellcolor[HTML]{C0C0C0}$p_1$ & \textbf{$X_0$} &  & $t_1$                         & \cellcolor[HTML]{C0C0C0}$p_1$ &                &  & \cellcolor[HTML]{FFFFFF}$t_1$ & \cellcolor[HTML]{FFFFFF}$p_1$ &                &  & \cellcolor[HTML]{FFFFFF}$t_0$ & \cellcolor[HTML]{FFFFFF}$p_1$     &                  \\ \cline{1-2} \cline{5-6} \cline{9-10} \cline{13-14}
+  $t_2$        & \cellcolor[HTML]{C0C0C0}$p_2$ &                &  & $t_2$                         & \cellcolor[HTML]{C0C0C0}$p_2$ & \textbf{$X_1$} &  & $t_2$                         & \cellcolor[HTML]{C0C0C0}$p_2$ & \textbf{}      &  & \cellcolor[HTML]{FFFFFF}...   & \cellcolor[HTML]{FFFFFF}...       &                  \\ \cline{1-2} \cline{5-6} \cline{9-10} \cline{13-14}
+  $t_3$        & \cellcolor[HTML]{C0C0C0}$p_3$ &                &  & $t_3$                         & \cellcolor[HTML]{C0C0C0}$p_3$ &                &  & $t_3$                         & \cellcolor[HTML]{C0C0C0}$p_3$ & \textbf{$X_2$} &  & \cellcolor[HTML]{FFFFFF}...   & \cellcolor[HTML]{FFFFFF}...       &                  \\ \cline{1-2} \cline{5-6} \cline{9-10} \cline{13-14}
+  $t_4$        & \cellcolor[HTML]{A2E4F6}$p_4$ & \textbf{$H_0$} &  & $t_4$                         & \cellcolor[HTML]{C0C0C0}$p_4$ &                &  & $t_4$                         & \cellcolor[HTML]{C0C0C0}$p_4$ &                &  & \cellcolor[HTML]{FFFFFF}$n-4$ & \cellcolor[HTML]{FFFFFF}$p_{n-4}$ &                  \\ \cline{1-2} \cline{5-6} \cline{9-10} \cline{13-14}
+  $t_5$        & \cellcolor[HTML]{A2E4F6}$p_5$ &                &  & $t_5$                         & \cellcolor[HTML]{A2E4F6}$p_5$ & \textbf{$H_1$} &  & $t_5$                         & \cellcolor[HTML]{C0C0C0}$p_5$ & \textbf{}      &  & \cellcolor[HTML]{C0C0C0}$n-3$ & \cellcolor[HTML]{C0C0C0}$p_{n-3}$ &                  \\ \cline{1-2} \cline{5-6} \cline{9-10} \cline{13-14}
+  $t_6$        & $p_6$                         &                &  & $t_6$                         & \cellcolor[HTML]{A2E4F6}$p_6$ &                &  & $t_6$                         & \cellcolor[HTML]{A2E4F6}$p_6$ & \textbf{$H_2$} &  & \cellcolor[HTML]{C0C0C0}$n-2$ & \cellcolor[HTML]{C0C0C0}$p_{n-2}$ & \textbf{$X_{n}$} \\ \cline{1-2} \cline{5-6} \cline{9-10} \cline{13-14}
+  $t_7$        & $p_7$                         &                &  & $t_7$                         & $p_7$                         &                &  & $t_7$                         & \cellcolor[HTML]{A2E4F6}$p_7$ &                &  & \cellcolor[HTML]{C0C0C0}$n-1$ & \cellcolor[HTML]{C0C0C0}$p_{n-1}$ &                  \\ \cline{1-2} \cline{5-6} \cline{9-10} \cline{13-14}
+  $\cdots$          & $\cdots$                           &                &  & $\cdots$                           & ...                           &                &  & ...                           & ...                           &                &  & \cellcolor[HTML]{C0C0C0}$n$   & \cellcolor[HTML]{C0C0C0}$p_{n}$   & \textbf{}        \\ \cline{1-2} \cline{5-6} \cline{9-10} \cline{13-14}
+  $\cdots$          & $\cdots$                           &                &  & $\cdots$                           & ...                           &                &  & ...                           & ...                           &                &  & \cellcolor[HTML]{A2E4F6}$n+1$ & \cellcolor[HTML]{A2E4F6}$p_{n+1}$ & \textbf{$H_{n}$} \\ \cline{1-2} \cline{5-6} \cline{9-10} \cline{13-14}
+  $t_n$        & $p_n$                         &                &  & $t_n$                         & $p_n$                         &                &  & $t_n$                         & $p_n$                         &                &  & \cellcolor[HTML]{A2E4F6}$n+2$ & \cellcolor[HTML]{A2E4F6}$p_{n+2}$ &                  \\ \cline{1-2} \cline{5-6} \cline{9-10} \cline{13-14}
+  \end{tabular}
+  \end{center}
 
 
 \subsection{Data Windowing}

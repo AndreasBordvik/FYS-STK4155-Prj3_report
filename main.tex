@@ -174,19 +174,19 @@ Working with time-series data often requires formulating the time-series data in
 
 \begin{center}
   \begin{tabular}{|c|c|cc|c|c|cc|c|c|cc|c|c|c}
-    \cline{1-2} \cline{5-6} \cline{9-10} \cline{13-14}
-    $\mathbf{t}$ & $\mathbf{p}$                  &                &  & $\mathbf{t}$ & $\mathbf{p}$                  &                &  & $\mathbf{t}$ & $\mathbf{p}$                  &                &  & $\mathbf{t}$ & $\mathbf{p}$                      &                \\ \cline{1-2} \cline{5-6} \cline{9-10} \cline{13-14}
-    $0$        & \cellcolor[HTML]{C0C0C0}$p_0$ &                &  & $0$        & $p_0$                         &                &  & $0$        & $p_0$                         &                &  & ${0}$   & $p_{0}$                        &                \\ \cline{1-2} \cline{5-6} \cline{9-10} \cline{13-14}
-    $1$        & \cellcolor[HTML]{C0C0C0}$p_1$ &                &  & $1$        & \cellcolor[HTML]{C0C0C0}$p_1$ &                &  & $1$        & $p_1$                         &                &  & ${1}$    & $p_{1}$                         &                \\ \cline{1-2} \cline{5-6} \cline{9-10} \cline{13-14}
-    $2$        & \cellcolor[HTML]{C0C0C0}$p_2$ &                &  & $2$        & \cellcolor[HTML]{C0C0C0}$p_2$ &                &  & $2$        & \cellcolor[HTML]{C0C0C0}$p_2$ &       &  & $\cdots$    & $\cdots$                         &       \\ \cline{1-2} \cline{5-6} \cline{9-10} \cline{13-14}
-    $3$        & \cellcolor[HTML]{C0C0C0}$p_3$ &                &  & $3$        & \cellcolor[HTML]{C0C0C0}$p_3$ &                &  & $3$        & \cellcolor[HTML]{C0C0C0}$p_3$ &       &  & $\cdots$    & $\cdots$                         &       \\ \cline{1-2} \cline{5-6} \cline{9-10} \cline{13-14}
-    $4$        & \cellcolor[HTML]{EB7D7D}$p_4$ &                &  & $4$        & \cellcolor[HTML]{C0C0C0}$p_4$ &                &  & $4$        & \cellcolor[HTML]{C0C0C0}$p_4$ &                &  & ${n-4}$    & $p_{n-4}$                         &                \\ \cline{1-2} \cline{5-6} \cline{9-10} \cline{13-14}
-    $5$        & \cellcolor[HTML]{EB7D7D}$p_5$ &                &  & $5$        & \cellcolor[HTML]{EB7D7D}$p_5$ &                &  & $5$        & \cellcolor[HTML]{C0C0C0}$p_5$ &       &  & ${n-3}$    & \cellcolor[HTML]{C0C0C0}$p_{n-3}$ &       \\ \cline{1-2} \cline{5-6} \cline{9-10} \cline{13-14}
-    $6$        & $p_6$                         &                &  & $6$        & \cellcolor[HTML]{EB7D7D}$p_6$ &                &  & $6$        & \cellcolor[HTML]{EB7D7D}$p_6$ &       &  & ${n-2}$    & \cellcolor[HTML]{C0C0C0}$p_{n-2}$ &       \\ \cline{1-2} \cline{5-6} \cline{9-10} \cline{13-14}
-    $7$        & $p_7$                         &                &  & $7$        & $p_7$                         &                &  & $7$        & \cellcolor[HTML]{EB7D7D}$p_7$ &                &  & ${n-1}$    & \cellcolor[HTML]{C0C0C0}$p_{n-1}$ &                \\ \cline{1-2} \cline{5-6} \cline{9-10} \cline{13-14}
-    $\cdots$            & $\cdots$                             &                &  & $\cdots$            & $\cdots$                             &                &  & $\cdots$            & $\cdots$                             &                &  & ${n}$    & \cellcolor[HTML]{C0C0C0}$p_{n}$ &       \\ \cline{1-2} \cline{5-6} \cline{9-10} \cline{13-14}
-    $\cdots$            & $\cdots$                             &                &  & $\cdots$            & $\cdots$                             &                &  & $\cdots$            & $\cdots$                             &                &  & ${n+1}$    & \cellcolor[HTML]{EB7D7D}$p_{n+1}$ &  \\ \cline{1-2} \cline{5-6} \cline{9-10} \cline{13-14}
-    $n$        & $p_n$                         &                &  & $n$        & $p_n$                         &                &  & $n$        & $p_n$                         &                &  & $n+2$        & \cellcolor[HTML]{EB7D7D}$p_{n+2}$     &                \\ \cline{1-2} \cline{5-6} \cline{9-10} \cline{13-14}
+  \cline{1-2} \cline{5-6} \cline{9-10} \cline{13-14}
+  \textbf{$t$} & \textbf{$p$}                  &                &  & \textbf{$t$}                  & \textbf{$p$}                  &                &  & \textbf{$t$}                  & \textbf{$p$}                  &                &  & \textbf{$t$}                  & \textbf{$p$}                      &                  \\ \cline{1-2} \cline{5-6} \cline{9-10} \cline{13-14}
+  $t_0$        & \cellcolor[HTML]{C0C0C0}$p_0$ &                &  & \cellcolor[HTML]{FFFFFF}$t_0$ & \cellcolor[HTML]{FFFFFF}$p_0$ &                &  & \cellcolor[HTML]{FFFFFF}$t_0$ & \cellcolor[HTML]{FFFFFF}$p_0$ &                &  & \cellcolor[HTML]{FFFFFF}$t_0$ & \cellcolor[HTML]{FFFFFF}$p_0$     &                  \\ \cline{1-2} \cline{5-6} \cline{9-10} \cline{13-14}
+  $t_1$        & \cellcolor[HTML]{C0C0C0}$p_1$ & \textbf{$X_0$} &  & $t_1$                         & \cellcolor[HTML]{C0C0C0}$p_1$ &                &  & \cellcolor[HTML]{FFFFFF}$t_1$ & \cellcolor[HTML]{FFFFFF}$p_1$ &                &  & \cellcolor[HTML]{FFFFFF}$t_0$ & \cellcolor[HTML]{FFFFFF}$p_1$     &                  \\ \cline{1-2} \cline{5-6} \cline{9-10} \cline{13-14}
+  $t_2$        & \cellcolor[HTML]{C0C0C0}$p_2$ &                &  & $t_2$                         & \cellcolor[HTML]{C0C0C0}$p_2$ & \textbf{$X_1$} &  & $t_2$                         & \cellcolor[HTML]{C0C0C0}$p_2$ & \textbf{}      &  & \cellcolor[HTML]{FFFFFF}...   & \cellcolor[HTML]{FFFFFF}...       &                  \\ \cline{1-2} \cline{5-6} \cline{9-10} \cline{13-14}
+  $t_3$        & \cellcolor[HTML]{C0C0C0}$p_3$ &                &  & $t_3$                         & \cellcolor[HTML]{C0C0C0}$p_3$ &                &  & $t_3$                         & \cellcolor[HTML]{C0C0C0}$p_3$ & \textbf{$X_2$} &  & \cellcolor[HTML]{FFFFFF}...   & \cellcolor[HTML]{FFFFFF}...       &                  \\ \cline{1-2} \cline{5-6} \cline{9-10} \cline{13-14}
+  $t_4$        & \cellcolor[HTML]{A2E4F6}$p_4$ & \textbf{$H_0$} &  & $t_4$                         & \cellcolor[HTML]{C0C0C0}$p_4$ &                &  & $t_4$                         & \cellcolor[HTML]{C0C0C0}$p_4$ &                &  & \cellcolor[HTML]{FFFFFF}$n-4$ & \cellcolor[HTML]{FFFFFF}$p_{n-4}$ &                  \\ \cline{1-2} \cline{5-6} \cline{9-10} \cline{13-14}
+  $t_5$        & \cellcolor[HTML]{A2E4F6}$p_5$ &                &  & $t_5$                         & \cellcolor[HTML]{A2E4F6}$p_5$ & \textbf{$H_1$} &  & $t_5$                         & \cellcolor[HTML]{C0C0C0}$p_5$ & \textbf{}      &  & \cellcolor[HTML]{C0C0C0}$n-3$ & \cellcolor[HTML]{C0C0C0}$p_{n-3}$ &                  \\ \cline{1-2} \cline{5-6} \cline{9-10} \cline{13-14}
+  $t_6$        & $p_6$                         &                &  & $t_6$                         & \cellcolor[HTML]{A2E4F6}$p_6$ &                &  & $t_6$                         & \cellcolor[HTML]{A2E4F6}$p_6$ & \textbf{$H_2$} &  & \cellcolor[HTML]{C0C0C0}$n-2$ & \cellcolor[HTML]{C0C0C0}$p_{n-2}$ & \textbf{$X_{n}$} \\ \cline{1-2} \cline{5-6} \cline{9-10} \cline{13-14}
+  $t_7$        & $p_7$                         &                &  & $t_7$                         & $p_7$                         &                &  & $t_7$                         & \cellcolor[HTML]{A2E4F6}$p_7$ &                &  & \cellcolor[HTML]{C0C0C0}$n-1$ & \cellcolor[HTML]{C0C0C0}$p_{n-1}$ &                  \\ \cline{1-2} \cline{5-6} \cline{9-10} \cline{13-14}
+  $\cdots$          & $\cdots$                           &                &  & $\cdots$                           & ...                           &                &  & ...                           & ...                           &                &  & \cellcolor[HTML]{C0C0C0}$n$   & \cellcolor[HTML]{C0C0C0}$p_{n}$   & \textbf{}        \\ \cline{1-2} \cline{5-6} \cline{9-10} \cline{13-14}
+  $\cdots$          & $\cdots$                           &                &  & $\cdots$                           & ...                           &                &  & ...                           & ...                           &                &  & \cellcolor[HTML]{A2E4F6}$n+1$ & \cellcolor[HTML]{A2E4F6}$p_{n+1}$ & \textbf{$H_{n}$} \\ \cline{1-2} \cline{5-6} \cline{9-10} \cline{13-14}
+  $t_n$        & $p_n$                         &                &  & $t_n$                         & $p_n$                         &                &  & $t_n$                         & $p_n$                         &                &  & \cellcolor[HTML]{A2E4F6}$n+2$ & \cellcolor[HTML]{A2E4F6}$p_{n+2}$ &                  \\ \cline{1-2} \cline{5-6} \cline{9-10} \cline{13-14}
   \end{tabular}
   \begin{table}[!h]
     \caption{Visualization of the sliding window process}
@@ -195,6 +195,8 @@ Working with time-series data often requires formulating the time-series data in
 \end{center}
 
 
+\subsection{Data Windowing}
+We have applied a window based algorithm to structure the data into appropriate sample sizes that fit the constraints imposed by the Recurrent Neural Network. In comparison to the previous projects, our data does not contain a relationship between some input data and some target variable, instead we want to recognize the relationship throughout a sequence of values. Before sectioning the data into windows, we note that our data is evenly spaced, in our case we have an hourly time series. 
 
 For our windowed dataset, the window algorithm starts off by sectioning the data into 24-hour chunks. This allows some flexibility when specifying the input width in terms of a varying number of days. Secondly, a window of length input width and forecast horizon containing 24-hours large cells with a final cell the size of the forecast horizon strides through the chunks with a stride of $1$ day (in other words it moves one chunk at a time). This generates a consecutive sample from our data, which is then restructured together with the other generated consecutive samples to match the required 3D array format imposed by the Recurrent Neural Network.
 
@@ -227,11 +229,13 @@ A trend is the general direction in which something is changing \cite{Auffarth20
 
 Another component which can be highly descriptive for visualizing the time series is the seasonal component. This component is the .....
 
-\subsubsection{Stationarity and Hypotesity test}
-With These 
+After the removal of these components, we are left with the residuals. This is the irregular variation, not explained by the above components \cite{Vishwas2020}.
 
-\subsubsection{Autocorrelation}
 \subsection{Auto regressive method}
+\subsubsection{Stationarity and Hypotesity test}
+\subsubsection{Autocorrelation}
+
+
 
 
 \section{Recurrent Neural Networks theory and Methods}

@@ -20,6 +20,16 @@ Mart\'{\i}n Abadi, Ashish Agarwal, Paul Barham, Eugene Brevdo, Zhifeng Chen,
   2015.
 \newblock Software available from tensorflow.org.
 
+\bibitem{Auffarth2021}
+Ben Auffarth.
+\newblock {\em Machine Learning for Time-Series with Python}.
+\newblock Packt Publishing, 2021.
+
+\bibitem{Vishwas2020}
+ASHISH~PATEL B~V~Vishwas.
+\newblock {\em Hands-on Time Series Analysis with Python}.
+\newblock Apress, 2020.
+
 \bibitem{bunn_forecasting_2000}
 D.W. Bunn.
 \newblock Forecasting loads and prices in competitive power markets.

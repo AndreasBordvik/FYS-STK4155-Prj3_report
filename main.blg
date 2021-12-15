@@ -9,47 +9,49 @@ Database file #1: mainNotes.bib
 Warning--entry type for "Note1" isn't style-file defined
 --line 1 of file mainNotes.bib
 Database file #2: biblio.bib
+Warning--string name "october" is undefined
+--line 33 of file biblio.bib
 Warning--to sort, need author or key in nordpool
 Warning--to sort, need author or key in noauthor_magasinstatistikk_nodate
-You've used 14 entries,
+You've used 16 entries,
             2118 wiz_defined-function locations,
-            583 strings with 6749 characters,
-and the built_in function-call counts, 4967 in all, are:
-= -- 436
-> -- 342
+            594 strings with 6943 characters,
+and the built_in function-call counts, 5397 in all, are:
+= -- 474
+> -- 356
 < -- 0
-+ -- 138
-- -- 124
-* -- 401
-:= -- 850
-add.period$ -- 40
-call.type$ -- 14
-change.case$ -- 101
++ -- 144
+- -- 128
+* -- 417
+:= -- 926
+add.period$ -- 46
+call.type$ -- 16
+change.case$ -- 107
 chr.to.int$ -- 0
-cite$ -- 16
-duplicate$ -- 140
-empty$ -- 340
-format.name$ -- 124
-if$ -- 985
+cite$ -- 18
+duplicate$ -- 164
+empty$ -- 384
+format.name$ -- 128
+if$ -- 1077
 int.to.chr$ -- 0
-int.to.str$ -- 14
-missing$ -- 13
-newline$ -- 71
-num.names$ -- 22
-pop$ -- 121
+int.to.str$ -- 16
+missing$ -- 17
+newline$ -- 81
+num.names$ -- 26
+pop$ -- 137
 preamble$ -- 1
-purify$ -- 91
+purify$ -- 97
 quote$ -- 0
-skip$ -- 105
+skip$ -- 117
 stack$ -- 0
-substring$ -- 223
-swap$ -- 14
+substring$ -- 233
+swap$ -- 16
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 50
+type$ -- 54
 warning$ -- 2
-while$ -- 31
-width$ -- 16
-write$ -- 142
-(There were 3 warnings)
+while$ -- 35
+width$ -- 18
+write$ -- 162
+(There were 4 warnings)

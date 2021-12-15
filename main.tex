@@ -155,8 +155,8 @@ In the two previous projects, we studied how spatial and time-independent data c
 
 
 \section{Data}
-The data used for this project is collected via tha Entsoe Transparnecy Platform API. \footnote{https://www.entsoe.eu/data/transparency-platform/}. We also look at "fyllingsgrad" over Norwegian dams, which represents potential power generation. The data is publicaly provided via The Norwegian Energy Regulatory Authority (NVE) \cite{noauthor_magasinstatistikk_nodate}. TESTTTTT
-
+The data used for this project is collected via the Entsoe Transparnecy Platform API. \footnote{https://www.entsoe.eu/data/transparency-platform/}. We also look at "fyllingsgrad" over Norwegian dams, which represents potential power generation. The data is publicaly provided via The Norwegian Energy Regulatory Authority (NVE) \cite{noauthor_magasinstatistikk_nodate}. 
+We constructed our own data based on the ones downloaded from the two different APIs. The constucted dataset used for this project can be found in GitHub linked in the appendix, in the data folder. The file used is named MAIN\_DATASET.csv. The file contains 51649 rows and 20 columns containing variables related to power region 2 and 5 in Norway.
 
 \subsection{Time series data}
 \subsubsection{The nature of time series}
@@ -170,12 +170,15 @@ As already mentioned, in contrast to projects 1 and 2, this project deals with d
 where T $\subseteq {\rm I\!R}$ and k $\in \mathbb{N}$ \cite{Auffarth2021}
 
 
-In the scope of this project, our time series consist of discrete values that describe how various aspects regarding the energy sector changes over time. 
+In the scope of this project, our time series consist of discrete values that describe how price, actual power generation, generation forecast, actual load(demand), load forecast, delta between forecast and actual, and "fyllingsgrad" changes over time. 
+Dealing with data on such a format might yield an additional complexity when trying to analyze the raw data at hand. We first study the case of a univariate data stream for price, then we study the more complex multivariate time series problem including several data streams besides price. 
 
-Dealing with data on such a format might yield an additional complexity when trying to analyze the raw data at hand. 
-
-\subsection{Structuring our data}
-The dataset used for this project can be found in GitHub linked in the appendix, in the data folder. The file used is the aptly named MAIN\_DATASET.csv. The file contains 51649 rows and 20 columns containing variables related to power region 2 and 5 in Norway. The dataset has been preprocessed such that it does not contain any NaN values, \todo[inline]{MER OM PREPROC AV DATA}. When feeding data into the RNN, which will be described in greater detail in the coming sections, the data has to be formatted to take the form of the 3D array $\left(\text{Batch Size}, \text{Time Steps}, \text{Dimensionality}\right)$. Specifically, Batch Size refers to the number of samples, Time Steps is the total number of the input width added with the forecast horizon, and finally dimensionality refer to the number of time series used, such that dimensionality $= 1$ would refer to a univariate time series. 
+\subsection{Pre-processing}
+The dataset has been preprocessed such that it does not contain any NaN values, and the missing values are filled with the previous hours. The data from NVE, "fyllingsrad" initially has weekly time-steps, while the entsoe data has an hourly frequency. Since the nature of the data from NVE, "fyllingsgrad", turned out the be very low-frequency data, we interpolated hourly between weeks to match the hourly time-steps in the entsoe data. Lastly, we shifted the entire dataset to match the closing and opening of the bidding process for the day-ahead market. Thus, our first record starts at 12:00, not 00:00. The electricity price varies within each hour, but the price for the next 24 hours is set at 12:00 the day before. As such, one time-steps for the electricity price is actually 1 day (24 hours) not 1 single hour. It is essential that the model learns the patterns leading up to when Nord pool sets the system price before the market closes and the hourly prices for the next 24 hours are settled. If the model had had intervals between two days, it would not be synchronized with the power market subjected to forecasts.   
+\todo[inline]{ANDREAS ER HER NÅ}.
+ 
+ 
+ \todo[inline]{MER OM PREPROC AV DATA}. When feeding data into the RNN, which will be described in greater detail in the coming sections, the data has to be formatted to take the form of the 3D array $\left(\text{Batch Size}, \text{Time Steps}, \text{Dimensionality}\right)$. Specifically, Batch Size refers to the number of samples, Time Steps is the total number of the input width added with the forecast horizon, and finally dimensionality refer to the number of time series used, such that dimensionality $= 1$ would refer to a univariate time series. 
 
 
 \section{Theory and Methods}

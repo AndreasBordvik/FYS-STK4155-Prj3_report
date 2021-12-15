@@ -1,0 +1,57 @@
+This is BibTeX, Version 0.99d
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: main.aux
+Reallocating 'name_of_file' (item size: 1) to 10 items.
+Reallocating 'name_of_file' (item size: 1) to 7 items.
+Reallocating 'name_of_file' (item size: 1) to 6 items.
+The style file: plain.bst
+Database file #1: mainNotes.bib
+Warning--entry type for "Note1" isn't style-file defined
+--line 1 of file mainNotes.bib
+Database file #2: biblio.bib
+Warning--string name "october" is undefined
+--line 33 of file biblio.bib
+Warning--to sort, need author or key in nordpool
+Warning--to sort, need author or key in noauthor_magasinstatistikk_nodate
+You've used 17 entries,
+            2118 wiz_defined-function locations,
+            598 strings with 7015 characters,
+and the built_in function-call counts, 5612 in all, are:
+= -- 493
+> -- 363
+< -- 0
++ -- 147
+- -- 130
+* -- 425
+:= -- 964
+add.period$ -- 49
+call.type$ -- 17
+change.case$ -- 110
+chr.to.int$ -- 0
+cite$ -- 19
+duplicate$ -- 176
+empty$ -- 406
+format.name$ -- 130
+if$ -- 1123
+int.to.chr$ -- 0
+int.to.str$ -- 17
+missing$ -- 19
+newline$ -- 86
+num.names$ -- 28
+pop$ -- 145
+preamble$ -- 1
+purify$ -- 100
+quote$ -- 0
+skip$ -- 123
+stack$ -- 0
+substring$ -- 238
+swap$ -- 17
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 56
+warning$ -- 2
+while$ -- 37
+width$ -- 19
+write$ -- 172
+(There were 4 warnings)

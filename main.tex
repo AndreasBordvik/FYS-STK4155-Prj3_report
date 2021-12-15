@@ -228,17 +228,17 @@ Another component which can be highly descriptive for visualizing the time serie
 
 After the removal of these components, we are left with the residuals. This is the irregular variation, not explained by the above components \cite{Vishwas2020}.
 
+
+
 \subsection{The Auto Regressive Model}
+
+\subsubsection{Stationarity}
 With the different characteristics of the time series decomposed, we move forward with implementing a model, with the goal to be able to forecast the price of electricity a given amount of steps ahead in time. As already pointed out, this will be done solely based on the history of the price itself. A general challenge with univariate modelling may arise if the above mentioned trend is present in the data. If this is the case, the data series is \emph{non-stationary}, and might prove difficult to forecast. As almost all time-series will have a changing data to some degree, we introduce the Augmented Dickey Fuller(ADF) test, as a statistcal test for stationary checking. This is done by implementing the adfuller method from Statsmodel \cite{seabold2010statsmodels}. We state a $H_0$ that the unit root is present in the time series.The ADF will return a p-value, where a value smaller than 0.05 will result in the null hypothesis beeing rejected.Failing to reject this hypothesis will in term imply that the time series has non-stationary structure \cite{Vishwas2020}, and will need further processing before beeing used for forecasting.  
 
-In the case of the latter. a common method for further preprocessing is the use of differenceing. Using this method creates a new time series, consisiting of the differences beteween each value and the next \cite{Korstanje2021}.
+In the case of the latter, a common method for further preprocessing is the use of differenceing. Using this method creates a new time series, consisiting of the differences beteween each value and the next \cite{Korstanje2021}. This new data series is then used to plot 2 new \todo{SKRIV OM autocorr og partial autocorr}
 
-
-\subsubsection{Stationarity and Hypotesity test}
-With These 
-
-\subsubsection{Autocorrelation}
-\subsection{Auto regressive method}
+\subsubsection{Stationarity}
+\todo{SKRIV OM AR, NEVN OLS!!!}
 
 
 \section{Recurrent Neural Networks theory and Methods}

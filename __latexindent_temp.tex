@@ -44,7 +44,9 @@ amssymb,
     title=\lstname
   }
 \usepackage{dcolumn}% Align table columns on decimal point
-\usepackage[table]{xcolor}
+% \usepackage[table]{xcolor}
+\usepackage[table,xcdraw]{xcolor}
+% \usepackage[table,xcdraw]{xcolor}
 \usepackage{bm,ltablex,microtype}
 \usepackage{longtable}
 \usepackage{siunitx}
@@ -67,6 +69,8 @@ amssymb,
 \usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 \usepackage{tikz}
+
+
 
 % Hyperlinks in PDF:
 \definecolor{linkcolor}{rgb}{0,0,0}
@@ -165,7 +169,28 @@ The dataset has been preprocessed such that it does not contain any NaN values, 
 When feeding data into the RNN, which will be described in greater detail in the coming sections, the data has to be formatted to take the form of the 3D array $\left(\text{Batch Size}, \text{Time Steps}, \text{dimensionality}\right)$. Specifically, Batch Size refers to the number of samples, Time Steps reflect the historical sequence. Finally, dimensionality refers to the number of time series used, such that dimensionality $= 1$ would refer to a univariate time series. Some literature refers to the last dimension as the number of features. 
 
 
-
+\subsection{Sliding window}
+test k
+% Please add the following required packages to your document preamble:
+% \usepackage[table,xcdraw]{xcolor}
+% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
+\begin{center}%[t]
+  \begin{tabular}{|c|c|cc|c|c|cc|c|c|cc|c|c|c}
+  \cline{1-2} \cline{5-6} \cline{9-10} \cline{13-14}
+  \textbf{$t$} & \textbf{$p$}                  &                &  & \textbf{$t$}                  & \textbf{$p$}                  &                &  & \textbf{$t$}                  & \textbf{$p$}                  &                &  & \textbf{$t$}                  & \textbf{$p$}                      &                  \\ \cline{1-2} \cline{5-6} \cline{9-10} \cline{13-14}
+  $t_0$        & \cellcolor[HTML]{C0C0C0}$p_0$ &                &  & \cellcolor[HTML]{FFFFFF}$t_0$ & \cellcolor[HTML]{FFFFFF}$p_0$ &                &  & \cellcolor[HTML]{FFFFFF}$t_0$ & \cellcolor[HTML]{FFFFFF}$p_0$ &                &  & \cellcolor[HTML]{FFFFFF}$t_0$ & \cellcolor[HTML]{FFFFFF}$p_0$     &                  \\ \cline{1-2} \cline{5-6} \cline{9-10} \cline{13-14}
+  $t_1$        & \cellcolor[HTML]{C0C0C0}$p_1$ & \textbf{$X_0$} &  & $t_1$                         & \cellcolor[HTML]{C0C0C0}$p_1$ &                &  & \cellcolor[HTML]{FFFFFF}$t_1$ & \cellcolor[HTML]{FFFFFF}$p_1$ &                &  & \cellcolor[HTML]{FFFFFF}$t_0$ & \cellcolor[HTML]{FFFFFF}$p_1$     &                  \\ \cline{1-2} \cline{5-6} \cline{9-10} \cline{13-14}
+  $t_2$        & \cellcolor[HTML]{C0C0C0}$p_2$ &                &  & $t_2$                         & \cellcolor[HTML]{C0C0C0}$p_2$ & \textbf{$X_1$} &  & $t_2$                         & \cellcolor[HTML]{C0C0C0}$p_2$ & \textbf{}      &  & \cellcolor[HTML]{FFFFFF}...   & \cellcolor[HTML]{FFFFFF}...       &                  \\ \cline{1-2} \cline{5-6} \cline{9-10} \cline{13-14}
+  $t_3$        & \cellcolor[HTML]{C0C0C0}$p_3$ &                &  & $t_3$                         & \cellcolor[HTML]{C0C0C0}$p_3$ &                &  & $t_3$                         & \cellcolor[HTML]{C0C0C0}$p_3$ & \textbf{$X_2$} &  & \cellcolor[HTML]{FFFFFF}...   & \cellcolor[HTML]{FFFFFF}...       &                  \\ \cline{1-2} \cline{5-6} \cline{9-10} \cline{13-14}
+  $t_4$        & \cellcolor[HTML]{A2E4F6}$p_4$ & \textbf{$H_0$} &  & $t_4$                         & \cellcolor[HTML]{C0C0C0}$p_4$ &                &  & $t_4$                         & \cellcolor[HTML]{C0C0C0}$p_4$ &                &  & \cellcolor[HTML]{FFFFFF}$n-4$ & \cellcolor[HTML]{FFFFFF}$p_{n-4}$ &                  \\ \cline{1-2} \cline{5-6} \cline{9-10} \cline{13-14}
+  $t_5$        & \cellcolor[HTML]{A2E4F6}$p_5$ &                &  & $t_5$                         & \cellcolor[HTML]{A2E4F6}$p_5$ & \textbf{$H_1$} &  & $t_5$                         & \cellcolor[HTML]{C0C0C0}$p_5$ & \textbf{}      &  & \cellcolor[HTML]{C0C0C0}$n-3$ & \cellcolor[HTML]{C0C0C0}$p_{n-3}$ &                  \\ \cline{1-2} \cline{5-6} \cline{9-10} \cline{13-14}
+  $t_6$        & $p_6$                         &                &  & $t_6$                         & \cellcolor[HTML]{A2E4F6}$p_6$ &                &  & $t_6$                         & \cellcolor[HTML]{A2E4F6}$p_6$ & \textbf{$H_2$} &  & \cellcolor[HTML]{C0C0C0}$n-2$ & \cellcolor[HTML]{C0C0C0}$p_{n-2}$ & \textbf{$X_{n}$} \\ \cline{1-2} \cline{5-6} \cline{9-10} \cline{13-14}
+  $t_7$        & $p_7$                         &                &  & $t_7$                         & $p_7$                         &                &  & $t_7$                         & \cellcolor[HTML]{A2E4F6}$p_7$ &                &  & \cellcolor[HTML]{C0C0C0}$n-1$ & \cellcolor[HTML]{C0C0C0}$p_{n-1}$ &                  \\ \cline{1-2} \cline{5-6} \cline{9-10} \cline{13-14}
+  $\cdots$          & $\cdots$                           &                &  & $\cdots$                           & ...                           &                &  & ...                           & ...                           &                &  & \cellcolor[HTML]{C0C0C0}$n$   & \cellcolor[HTML]{C0C0C0}$p_{n}$   & \textbf{}        \\ \cline{1-2} \cline{5-6} \cline{9-10} \cline{13-14}
+  $\cdots$          & $\cdots$                           &                &  & $\cdots$                           & ...                           &                &  & ...                           & ...                           &                &  & \cellcolor[HTML]{A2E4F6}$n+1$ & \cellcolor[HTML]{A2E4F6}$p_{n+1}$ & \textbf{$H_{n}$} \\ \cline{1-2} \cline{5-6} \cline{9-10} \cline{13-14}
+  $t_n$        & $p_n$                         &                &  & $t_n$                         & $p_n$                         &                &  & $t_n$                         & $p_n$                         &                &  & \cellcolor[HTML]{A2E4F6}$n+2$ & \cellcolor[HTML]{A2E4F6}$p_{n+2}$ &                  \\ \cline{1-2} \cline{5-6} \cline{9-10} \cline{13-14}
+  \end{tabular}
+  \end{center}
 
 
 \subsection{Data Windowing}
@@ -193,13 +218,18 @@ In the scope of this project, our time series consist of discrete values that de
 Dealing with data on such a format might yield an additional complexity when trying to analyze the raw data at hand. A widely used yet simple approach for analyzing and forecasting time series includes only the variable destined for forecasting.  When analyzing time series on this form, we do not attempt to explain the observed data by the relationship with other possible variables. The only relevant data used for analyzing and forecasting is the past of the variable itself. Data in this format is called a univariate time series, as a contrast to a multivariate time series, which includes several variables connected through a shared period of time. Methods for forecasting the latter will be discussed thoroughly in later sections, but the following section will focus on univariate time series leading up to the Auto Regressive model, as this works as the most fundamental building block for time series forecasting \cite{Korstanje2021} 
 
 \subsection{Decomposing the Characteristics}
-As previously mentioned, time series consists of data that describes how different variabels changes through time. As a result of this aggregation of data, specific characteristics of interest can be decomposed from the original time series. These characterstics can highlight certain aspects with the data in question and help in better the understanding and analysis of the data.  
+As previously mentioned, time series consists of data that describes how different variabels changes through time. As a result of this aggregation of data, specific characteristics of interest can be decomposed from the original time series. These characterstics can highlight certain aspects with the data in question and help in better the understanding and analysis of the data. To be able to decompose these characteristics, we hav made use of the methods implemented in the python module Statsmodels \cite{seabold2010statsmodels}. 
 
-The first characteristic we chose to decompose is the \emph{trend}. A trend is the general direction in which something is changing \cite{Auffarth2021}. 
 
-\subsubsection{Trend}
+This will help us in visualizing 3 different components from the time series, in addition to the original data. The first component produced from this method is the trend. This is produced by implementing the method seasonal_decompose. from the Statsmodels module. This method estimates the trend by applying a convolutional filter \cite{seabold2010statsmodels}. 
+
+A trend is the general direction in which something is changing \cite{Auffarth2021}. This trend is of course highly dependent on the scope of the time period in question, and the direction of change can differ for different parts of the time series \cite{Vishwas2020}  
+
+Another component which can be highly descriptive for visualizing the time series is the seasonal component. This component is the .....
 
 \subsubsection{Stationarity and Hypotesity test}
+With These 
+
 \subsubsection{Autocorrelation}
 \subsection{Auto regressive method}
 

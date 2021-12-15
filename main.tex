@@ -218,13 +218,18 @@ In the scope of this project, our time series consist of discrete values that de
 Dealing with data on such a format might yield an additional complexity when trying to analyze the raw data at hand. A widely used yet simple approach for analyzing and forecasting time series includes only the variable destined for forecasting.  When analyzing time series on this form, we do not attempt to explain the observed data by the relationship with other possible variables. The only relevant data used for analyzing and forecasting is the past of the variable itself. Data in this format is called a univariate time series, as a contrast to a multivariate time series, which includes several variables connected through a shared period of time. Methods for forecasting the latter will be discussed thoroughly in later sections, but the following section will focus on univariate time series leading up to the Auto Regressive model, as this works as the most fundamental building block for time series forecasting \cite{Korstanje2021} 
 
 \subsection{Decomposing the Characteristics}
-As previously mentioned, time series consists of data that describes how different variabels changes through time. As a result of this aggregation of data, specific characteristics of interest can be decomposed from the original time series. These characterstics can highlight certain aspects with the data in question and help in better the understanding and analysis of the data.  
+As previously mentioned, time series consists of data that describes how different variabels changes through time. As a result of this aggregation of data, specific characteristics of interest can be decomposed from the original time series. These characterstics can highlight certain aspects with the data in question and help in better the understanding and analysis of the data. To be able to decompose these characteristics, we hav made use of the methods implemented in the python module Statsmodels \cite{seabold2010statsmodels}. 
 
-The first characteristic we chose to decompose is the \emph{trend}. A trend is the general direction in which something is changing \cite{Auffarth2021}. 
 
-\subsubsection{Trend}
+This will help us in visualizing 3 different components from the time series, in addition to the original data. The first component produced from this method is the trend. This is produced by implementing the method seasonal_decompose. from the Statsmodels module. This method estimates the trend by applying a convolutional filter \cite{seabold2010statsmodels}. 
+
+A trend is the general direction in which something is changing \cite{Auffarth2021}. This trend is of course highly dependent on the scope of the time period in question, and the direction of change can differ for different parts of the time series \cite{Vishwas2020}  
+
+Another component which can be highly descriptive for visualizing the time series is the seasonal component. This component is the .....
 
 \subsubsection{Stationarity and Hypotesity test}
+With These 
+
 \subsubsection{Autocorrelation}
 \subsection{Auto regressive method}
 

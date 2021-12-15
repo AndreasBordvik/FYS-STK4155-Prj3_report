@@ -225,13 +225,20 @@ This will help us in visualizing 3 different components from the time series, in
 
 A trend is the general direction in which something is changing \cite{Auffarth2021}. This trend is of course highly dependent on the scope of the time period in question, and the direction of change can differ for different parts of the time series \cite{Vishwas2020}  
 
-Another component which can be highly descriptive for visualizing the time series is the seasonal component. This component is the .....
+
+Another component which can be highly descriptive for visualizing the time series is the seasonal component. This component is the .......
+
 
 After the removal of these components, we are left with the residuals. This is the irregular variation, not explained by the above components \cite{Vishwas2020}.
 
-\subsection{Auto regressive method}
-\subsubsection{Stationarity and Hypotesity test}
+\subsection{The Auto Regressive Model}
+With the different characteristics of the time series decomposed, we move forward with implementing a model, with the goal to be able to forecast the price of electricity a given amount of steps ahead in time. As already pointed out, this will be done solely based on the history of the price itself. A general challenge with univariate modelling may arise if the above mentioned trend is present in the data. If this is the case, the data series is \emph{non-stationary}, and might prove difficult to forecast. As almost all time-series will have a changing data to some degree, we introduce the Augmented Dickey Fuller(ADF) test, as a statistcal test for stationary checking. We state a $H_0$   
+
+
 \subsubsection{Autocorrelation}
+\subsubsection{The Auto Regressive Model}
+As stated in the previous section, Auto Regressive models are the most basic building block of time series forecasting. As such, this model is not implemented with the goal of achieving great results, but rather as a way to revisit one of the central algorithms from project 1; Ordinary Least Squares.
+
 
 
 

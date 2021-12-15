@@ -1477,11 +1477,8 @@ INPUT /Users/gardpavels/uio/mstr_courses/FYS-STK4155-Prj3_report/figures/bidding
 INPUT /Users/gardpavels/uio/mstr_courses/FYS-STK4155-Prj3_report/figures/bidding_zones.png
 INPUT /usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map
 INPUT /usr/local/texlive/2021/texmf-dist/fonts/tfm/public/lm/ec-lmr5.tfm
-INPUT /usr/local/texlive/2021/texmf-dist/fonts/tfm/public/lm/rm-lmbx10.tfm
-INPUT /usr/local/texlive/2021/texmf-dist/fonts/tfm/public/lm/rm-lmbx7.tfm
-INPUT /usr/local/texlive/2021/texmf-dist/fonts/tfm/public/lm/rm-lmbx5.tfm
-INPUT /usr/local/texlive/2021/texmf-dist/fonts/tfm/public/lm/ec-lmri10.tfm
 INPUT /usr/local/texlive/2021/texmf-dist/fonts/tfm/public/lm/ec-lmbx10.tfm
+INPUT /usr/local/texlive/2021/texmf-dist/fonts/tfm/public/lm/ec-lmri10.tfm
 INPUT /Users/gardpavels/uio/mstr_courses/FYS-STK4155-Prj3_report/main.bbl
 INPUT /Users/gardpavels/uio/mstr_courses/FYS-STK4155-Prj3_report/main.bbl
 INPUT /Users/gardpavels/uio/mstr_courses/FYS-STK4155-Prj3_report/main.bbl
@@ -1499,8 +1496,6 @@ INPUT /usr/local/texlive/2021/texmf-dist/fonts/tfm/public/lm/rm-lmtt9.tfm
 INPUT /usr/local/texlive/2021/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm
 INPUT /usr/local/texlive/2021/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT /usr/local/texlive/2021/texmf-dist/fonts/tfm/public/cm/cmbx9.tfm
-INPUT /usr/local/texlive/2021/texmf-dist/fonts/tfm/public/lm/rm-lmbx9.tfm
-INPUT /usr/local/texlive/2021/texmf-dist/fonts/tfm/public/lm/rm-lmbx6.tfm
 INPUT /usr/local/texlive/2021/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmmib9.tfm
 INPUT /usr/local/texlive/2021/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy9.tfm
 INPUT /Users/gardpavels/uio/mstr_courses/FYS-STK4155-Prj3_report/main.aux

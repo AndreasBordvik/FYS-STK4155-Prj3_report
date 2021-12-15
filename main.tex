@@ -214,14 +214,14 @@ where T $\subseteq {\rm I\!R}$ and k $\in \mathbb{N}$ \cite{Auffarth2021}
 In the scope of this project, our time series consist of discrete values that describe how price, actual power generation, generation forecast, actual load(demand), load forecast, delta between forecast and actual, and "fyllingsgrad" changes over time. 
 Dealing with data on such a format might yield an additional complexity when trying to analyze the raw data at hand. A widely used yet simple approach for analyzing and forecasting time series includes only the variable destined for forecasting.  When analyzing time series on this form, we do not attempt to explain the observed data by the relationship with other possible variables. The only relevant data used for analyzing and forecasting is the past of the variable itself. Data in this format is called a univariate time series, as a contrast to a multivariate time series, which includes several variables connected through a shared period of time. Methods for forecasting the latter will be discussed thoroughly in later sections, but the following section will focus on univariate time series leading up to the Auto Regressive model, as this works as the most fundamental building block for time series forecasting \cite{Korstanje2021} 
 
-\subsection{Characteristics}
-As previously mentioned, time series consists of data that describes how different variabels changes through time. As a result of this aggregation of data, specific characteristics of interest can be decomposed from the original time series. These characterstics can highlight certain aspects with the data in question and help in better understanding  
+\subsection{Decomposing the Characteristics}
+As previously mentioned, time series consists of data that describes how different variabels changes through time. As a result of this aggregation of data, specific characteristics of interest can be decomposed from the original time series. These characterstics can highlight certain aspects with the data in question and help in better the understanding and analysis of the data.  
 
-\subsection{Trend analysis}
+The first characteristic we chose to decompose is the \emph{trend}. A trend is the general direction in which something is changing \cite{Auffarth2021}. 
 
+\subsubsection{Trend}
 
-\subsubsection{Slope, dekomponering}
-\subsubsection{Hypotese test}
+\subsubsection{Stationarity and Hypotesity test}
 \subsubsection{Autocorrelation}
 \subsection{Auto regressive method}
 

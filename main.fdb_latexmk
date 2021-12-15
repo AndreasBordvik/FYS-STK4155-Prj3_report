@@ -1,18 +1,18 @@
 # Fdb version 3
-["bibtex main"] 1639574959 "main.aux" "main.bbl" "main" 1639574962
+["bibtex main"] 1639575026 "main.aux" "main.bbl" "main" 1639575030
   "C:/Users/andre/AppData/Local/Programs/MiKTeX/bibtex/bst/bibtex/plain.bst" 1291864736 20613 bd3fbfa9f64872b81ac57a0dd2ed855f ""
-  "biblio.bib" 1639572992 24085 2d694d974650b7018a84b472eca273f5 ""
-  "main.aux" 1639574961 5711 3846cb31a252fd632bca9f80f2d60e89 "pdflatex"
-  "mainNotes.bib" 1639574961 86 f4846bb1c8a38396624ed3b19a4ac864 "pdflatex"
+  "biblio.bib" 1639575022 24340 3023d97f2fdda761468ea216c52857e5 ""
+  "main.aux" 1639575029 5640 2316f86b4d244d8037a09fe498dba6d3 "pdflatex"
+  "mainNotes.bib" 1639575029 86 f4846bb1c8a38396624ed3b19a4ac864 "pdflatex"
   (generated)
-  "main.bbl"
   "main.blg"
-["makeindex main.idx"] 1639571629 "main.idx" "main.ind" "main" 1639574962
-  "main.idx" 1639574961 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "main.bbl"
+["makeindex main.idx"] 1639571629 "main.idx" "main.ind" "main" 1639575030
+  "main.idx" 1639575028 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
   (generated)
-  "main.ind"
   "main.ilg"
-["pdflatex"] 1639574959 "c:/Users/andre/Dropbox/FYS-STK4155_projects/FYS-STK4155 - Project3/FYS-STK4155-Prj3_report/main.tex" "main.pdf" "main" 1639574962
+  "main.ind"
+["pdflatex"] 1639575026 "c:/Users/andre/Dropbox/FYS-STK4155_projects/FYS-STK4155 - Project3/FYS-STK4155-Prj3_report/main.tex" "main.pdf" "main" 1639575030
   "C:/Users/andre/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1633121266 9715384 ab11fa3a7c67255819b548dcc7cc2452 ""
   "C:/Users/andre/AppData/Local/MiKTeX/pdftex/config/pdftex.map" 1637967114 279811 21458d7cb40c17308453d8eee000b2b5 ""
   "C:/Users/andre/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc" 1254935040 2375 baa924870cfb487815765f9094cf3728 ""
@@ -295,17 +295,17 @@
   "C:/Users/andre/AppData/Local/Programs/MiKTeX/tex/latex/url/url.sty" 1388490452 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "C:/Users/andre/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1623002060 55589 34128738f682d033422ca125f82e5d62 ""
   "C:/Users/andre/AppData/Local/Programs/MiKTeX/tex/latex/xkeyval/xkeyval.sty" 1623002090 4902 efb3d66683a2da2a232f71e3a571a899 ""
-  "c:/Users/andre/Dropbox/FYS-STK4155_projects/FYS-STK4155 - Project3/FYS-STK4155-Prj3_report/main.tex" 1639574939 28511 51fbbf47eb70f3db926270aaab551081 ""
+  "c:/Users/andre/Dropbox/FYS-STK4155_projects/FYS-STK4155 - Project3/FYS-STK4155-Prj3_report/main.tex" 1639575022 28687 1c6ef91dbe48fb279b4087ae02511df0 ""
   "figures/bidding_zones.png" 1639511604 553680 3bb28aee076f8f83e54990a7c38bd6f7 ""
-  "main.aux" 1639574961 5711 3846cb31a252fd632bca9f80f2d60e89 "pdflatex"
-  "main.bbl" 1639574959 3771 22773d1848482f1aca518add9e81642f "bibtex main"
+  "main.aux" 1639575029 5640 2316f86b4d244d8037a09fe498dba6d3 "pdflatex"
+  "main.bbl" 1639575026 3771 22773d1848482f1aca518add9e81642f "bibtex main"
   "main.ind" 1639572834 0 d41d8cd98f00b204e9800998ecf8427e "makeindex main.idx"
-  "main.out" 1639574961 4130 74edd74b749b12b2baf6b642b70067b6 "pdflatex"
-  "main.tex" 1639574939 28511 51fbbf47eb70f3db926270aaab551081 ""
+  "main.out" 1639575029 4107 24ef179b6ba4aee08b1a5fc947dd184a "pdflatex"
+  "main.tex" 1639575022 28687 1c6ef91dbe48fb279b4087ae02511df0 ""
   (generated)
-  "main.out"
-  "mainNotes.bib"
-  "main.aux"
   "main.log"
   "main.idx"
+  "mainNotes.bib"
+  "main.aux"
+  "main.out"
   "main.pdf"

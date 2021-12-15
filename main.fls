@@ -1429,8 +1429,11 @@ INPUT .\figures\bidding_zones.png
 INPUT .\figures\bidding_zones.png
 INPUT C:\Users\andre\AppData\Local\MiKTeX\pdftex\config\pdftex.map
 INPUT C:\Users\andre\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ec-lmr5.tfm
-INPUT C:\Users\andre\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ec-lmbx10.tfm
+INPUT C:\Users\andre\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\rm-lmbx10.tfm
+INPUT C:\Users\andre\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\rm-lmbx7.tfm
+INPUT C:\Users\andre\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\rm-lmbx5.tfm
 INPUT C:\Users\andre\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ec-lmri10.tfm
+INPUT C:\Users\andre\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ec-lmbx10.tfm
 INPUT .\main.bbl
 INPUT main.bbl
 INPUT .\main.bbl
@@ -1446,6 +1449,8 @@ INPUT C:\Users\andre\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\lmsy9.tfm
 INPUT C:\Users\andre\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\symbols\msam10.tfm
 INPUT C:\Users\andre\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
 INPUT C:\Users\andre\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbx9.tfm
+INPUT C:\Users\andre\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\rm-lmbx9.tfm
+INPUT C:\Users\andre\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\rm-lmbx6.tfm
 INPUT C:\Users\andre\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmmib9.tfm
 INPUT C:\Users\andre\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmbsy9.tfm
 INPUT main.aux

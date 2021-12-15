@@ -1,20 +1,20 @@
 # Fdb version 3
-["bibtex main"] 1639572273 "main.aux" "main.bbl" "main" 1639572276
+["bibtex main"] 1639572902 "main.aux" "main.bbl" "main" 1639572905
   "/usr/local/texlive/2021/texmf-dist/bibtex/bst/base/plain.bst" 1292289607 20613 bd3fbfa9f64872b81ac57a0dd2ed855f ""
   "biblio.bib" 1639572272 23708 2d694d974650b7018a84b472eca273f5 ""
-  "main.aux" 1639572275 5606 83b3f6b006ad775aaab7bf6ec6b55f9c "pdflatex"
-  "mainNotes.bib" 1639572275 86 f4846bb1c8a38396624ed3b19a4ac864 "pdflatex"
+  "main.aux" 1639572904 5635 415b997b2da533b5f7444ebed8bee672 "pdflatex"
+  "mainNotes.bib" 1639572904 86 f4846bb1c8a38396624ed3b19a4ac864 "pdflatex"
   (generated)
-  "main.blg"
   "main.bbl"
-["makeindex main.idx"] 1639571629 "main.idx" "main.ind" "main" 1639572276
-  "main.idx" 1639572275 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "main.blg"
+["makeindex main.idx"] 1639571629 "main.idx" "main.ind" "main" 1639572905
+  "main.idx" 1639572903 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
   (generated)
   "main.ilg"
   "main.ind"
-["pdflatex"] 1639572273 "/Users/gardpavels/uio/mstr_courses/FYS-STK4155-Prj3_report/main.tex" "/Users/gardpavels/uio/mstr_courses/FYS-STK4155-Prj3_report/main.pdf" "main" 1639572276
-  "/Users/gardpavels/uio/mstr_courses/FYS-STK4155-Prj3_report/main.aux" 1639572275 5606 83b3f6b006ad775aaab7bf6ec6b55f9c ""
-  "/Users/gardpavels/uio/mstr_courses/FYS-STK4155-Prj3_report/main.tex" 1639572273 24150 da55907fc4f22c38f636a87cbf08ec93 ""
+["pdflatex"] 1639572902 "/Users/gardpavels/uio/mstr_courses/FYS-STK4155-Prj3_report/main.tex" "/Users/gardpavels/uio/mstr_courses/FYS-STK4155-Prj3_report/main.pdf" "main" 1639572905
+  "/Users/gardpavels/uio/mstr_courses/FYS-STK4155-Prj3_report/main.aux" 1639572904 5635 415b997b2da533b5f7444ebed8bee672 ""
+  "/Users/gardpavels/uio/mstr_courses/FYS-STK4155-Prj3_report/main.tex" 1639572898 24209 577454473b81c76dd6667fc3788a3f37 ""
   "/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc" 1254269338 2375 baa924870cfb487815765f9094cf3728 ""
   "/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc" 1202520719 2405 5dcf2c1b967ee25cc46c58cd52244aed ""
   "/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc" 1202520719 2840 216e6e45ad352e2456e1149f28885bee ""
@@ -310,17 +310,17 @@
   "/usr/local/texlive/2021/texmf-var/web2c/pdftex/pdflatex.fmt" 1632855627 2724743 1e2fc84883cf4b9317c335ca2e2aabaa ""
   "/usr/local/texlive/2021/texmf.cnf" 1616695596 577 4c1911a7228e554c6032256d3cf5567d ""
   "figures/bidding_zones.png" 1639526265 553680 16cf6282d1f9b6441e21bf331f1065b1 ""
-  "main.aux" 1639572275 5606 83b3f6b006ad775aaab7bf6ec6b55f9c "pdflatex"
-  "main.bbl" 1639572273 3668 22773d1848482f1aca518add9e81642f "bibtex main"
+  "main.aux" 1639572904 5635 415b997b2da533b5f7444ebed8bee672 "pdflatex"
+  "main.bbl" 1639572902 3668 22773d1848482f1aca518add9e81642f "bibtex main"
   "main.ind" 1639571629 0 d41d8cd98f00b204e9800998ecf8427e "makeindex main.idx"
-  "main.out" 1639572275 3998 a0b415cea29218a1c1d25c23d8e7bd4c "pdflatex"
-  "main.tex" 1639572273 24150 da55907fc4f22c38f636a87cbf08ec93 ""
+  "main.out" 1639572904 4137 a0c51b39b1bf070b2f3b2e4615430b39 "pdflatex"
+  "main.tex" 1639572898 24209 577454473b81c76dd6667fc3788a3f37 ""
   (generated)
-  "main.pdf"
-  "main.log"
-  "mainNotes.bib"
+  "/Users/gardpavels/uio/mstr_courses/FYS-STK4155-Prj3_report/main.pdf"
   "main.out"
   "main.aux"
-  "/Users/gardpavels/uio/mstr_courses/FYS-STK4155-Prj3_report/main.pdf"
+  "main.log"
+  "main.pdf"
+  "mainNotes.bib"
   "/Users/gardpavels/uio/mstr_courses/FYS-STK4155-Prj3_report/main.log"
   "main.idx"

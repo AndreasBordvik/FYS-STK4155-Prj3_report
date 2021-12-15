@@ -232,9 +232,8 @@ Another component which can be highly descriptive for visualizing the time serie
 After the removal of these components, we are left with the residuals. This is the irregular variation, not explained by the above components \cite{Vishwas2020}.
 
 \subsection{The Auto Regressive Model}
-With the different characteristics of the time series decomposed, we move forward with implementing a model, with the goal to be able to forecast the price of electricity a given amount of steps ahead in time. As already pointed out, this will be done solely based on the history of the price itself. A general challenge with univariate modelling may arise if the above mentioned trend is present in the data. 
+With the different characteristics of the time series decomposed, we move forward with implementing a model, with the goal to be able to forecast the price of electricity a given amount of steps ahead in time. As already pointed out, this will be done solely based on the history of the price itself. A general challenge with univariate modelling may arise if the above mentioned trend is present in the data. If this is the case, the data series is \emph{non-stationary}, and might prove difficult to forecast. As almost all time-series will have a changing data to some degree, we introduce the Augmented Dickey Fuller(ADF) test, as a statistcal test for stationary checking. We state a $H_0$   
 
-\subsubsection{Stationarity and Hypotesity test}
 
 \subsubsection{Autocorrelation}
 \subsubsection{The Auto Regressive Model}

@@ -309,10 +309,15 @@ These results are part of a preliminary study to determine how the different Rec
 
 \begin{figure}
   \includegraphics[width=\columnwidth]{figures/small_architecture_grid_search.pdf}
-  \caption{\label{fig_smallgs}Mean Squared Error as function of number of neurons for a univariate model using price as its feature}
+  \caption{\label{fig_smallgs}Mean Squared Error as function of number of neurons for a single layer, univariate model using price as its feature}
 \end{figure}
 
-Figure 
+\begin{figure}
+  \includegraphics[width=\columnwidth]{figures/multivariate_actual_small_architecture_grid_search.pdf}
+  \caption{\label{fig_smallmultigs}Mean Squared Error as a function of number of neurons for a single layer, multivariate model using actual values including price as its features}
+\end{figure}
+
+Figure (\ref{fig_smallgs}) shows the Mean Squared Error as a function of number of Neurons for a single layered, univariate model. Whereas Figure (\ref{fig_smallmultigs}) shows the Mean Squared error for the same models, but this time using a multivariate input of price, actual load and actual generation.
 
 \subsubsection{Effect of data alteration for long sequences}
 In the context of our data, we refer to a long sequence as a input width of 168 hours, i.e. one week of data. We set up an RNN with with two GRU cells each with 128 neurons, as an immediate response to the MSE values obtained in previous results. We then performed different experiments by tweaking individual aspects of the RNN while keeping the other constant. 

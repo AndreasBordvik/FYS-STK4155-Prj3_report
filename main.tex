@@ -200,7 +200,7 @@ For our windowed dataset, the window algorithm starts off by sectioning the data
 
 Since the chunks containing days are repeated in all data windows within the range of the sliding window, we are able to reuse data points in new isolated sequences as the window strides though the chunks. This allows us to effectively increase the number of samples, as contiguous samples contain overlapping data, though differ with regards to the first day used in the input width and data used as forecast horizon. This data window structure allows us to forecast an arbitrarily amount of time ahead, based on the data from a specified number of days ago.
 
-Finally, during train test split, a single data window sample is split in such a way that the input width defines our X (input signal), and the forecast horizon specifies labels y. If the labels y have a length of 1, the RNN is a sequence to vector model predicting a single time step ahead. However, a label vector y with length greater than 1 would not itself specify whether the Recurrent Neural Network is a vector or sequence outputting model, as that would have to be specified in the model declaration. However, a length greater than 1 would indeed indicate that the model is forecasting several time steps ahead. Ferdig med å TESTE!!!
+Finally, during train test split, a single data window sample is split in such a way that the input width defines our X (input signal), and the forecast horizon specifies labels y. If the labels y have a length of 1, the RNN is a sequence to vector model predicting a single time step ahead. However, a label vector y with length greater than 1 would not itself specify whether the Recurrent Neural Network is a vector or sequence outputting model, as that would have to be specified in the model declaration. However, a length greater than 1 would indeed indicate that the model is forecasting several time steps ahead. 
 
 \subsection{Time-series and statistical analysis}
 
@@ -322,40 +322,61 @@ We note that all results have been created with the Source Code found in the App
 \subsubsection{Behaviour of uni -and multivariate models}
 These results are part of a preliminary study to determine how the different Recurrent Neural Network Cells respond to a change in number of neurons. For all results, each model is created equal according to the choice of parameters, except for the Cell structure. In the univariate case, only price is used. Moreover, in the multivariate case, forecasted values and actual values are assigned to specific models. For clarity, no results show the inclusion of the NVE \"fyllingsgrad\" data. All results for the current subsection are made using a Sequence to Sequence model.
 
+% Training evaluation
 \begin{figure}
-  \includegraphics[width=\columnwidth]{figures/multivariate_train_evaluation_RNN.pdf}
+  \includegraphics[width=\columnwidth]{figures/univariate_train_evaluation_RNN.pdf}
   \caption{\label{fig:univariate_train_evaluation_RNN} Univariate train evaluation RNN}
-\end{figure}
-
-\begin{figure}
-  \includegraphics[width=\columnwidth]{figures/multivariate_train_evaluation_RNN.pdf}
+  \includegraphics[width=\columnwidth]{figures/univariate_train_evaluation_convGRU.pdf}
   \caption{\label{fig:univariate_train_evaluation_ConvGRU} Univariate train evaluation conv GRU}
-\end{figure}
-
-\begin{figure}
-  \includegraphics[width=\columnwidth]{figures/multivariate_train_evaluation_RNN.pdf}
+  \includegraphics[width=\columnwidth]{figures/univariate_train_evaluation_LSTM.pdf}
   \caption{\label{fig:univariate_train_evaluation_LSTM} Univariate train evaluation LSTM}
 \end{figure}
 
 \begin{figure}
   \includegraphics[width=\columnwidth]{figures/multivariate_train_evaluation_RNN.pdf}
   \caption{\label{fig:multivariate_train_evaluation_RNN} multivariate train evaluation RNN}
-\end{figure}
-
-\begin{figure}
   \includegraphics[width=\columnwidth]{figures/multivariate_train_evaluation_RNN.pdf}
   \caption{\label{fig:multivariate_train_evaluation_ConvGRU} multivariate train evaluation conv GRU}
-\end{figure}
-
-\begin{figure}
   \includegraphics[width=\columnwidth]{figures/multivariate_train_evaluation_RNN.pdf}
   \caption{\label{fig:multivariate_train_evaluation_LSTM} multivariate train evaluation LSTM}
 \end{figure}
 
+% Hourly statistics
 \begin{figure}
-  \includegraphics[width=\columnwidth]{figures/multivariate_predictions_RNN.pdf}
-  \caption{\label{fig:multivariate_predictions_RNN} Prediction of the best performing model}
+  \includegraphics[width=\columnwidth]{figures/univariate_hourly_stats_RNN.pdf}
+  \caption{\label{fig:univariate_hourly_stats_RNN} Univariate Simple RNN performance - Blue color indicate MSE for spesific hours. Black indicate mean and variance of target, and red indicate mean and variance of all predictions relative to its hour}
+  \includegraphics[width=\columnwidth]{figures/univariate_hourly_stats_convGRU.pdf}
+  \caption{\label{fig:univariate_hourly_stats_convGRU} Univariate ConvGRU performance - Blue color indicate MSE for spesific hours. Black indicate mean and variance of target, and red indicate mean and variance of all predictions relative to its hour}
+  \includegraphics[width=\columnwidth]{figures/univariate_hourly_stats_LSTM.pdf}
+  \caption{\label{fig:univariate_hourly_stats_LSTM} Univariate LSTM performance - Blue color indicate MSE for spesific hours. Black indicate mean and variance of target, and red indicate mean and variance of all predictions relative to its hour}
 \end{figure}
+
+\begin{figure}
+  \includegraphics[width=\columnwidth]{figures/multivariate_hourly_stats_RNN.pdf}
+  \caption{\label{fig:multivariate_hourly_stats_RNN} Multivariate Simple RNN performance - Blue color indicate MSE for spesific hours. Black indicate mean and variance of target, and red indicate mean and variance of all predictions relative to its hour}
+  \includegraphics[width=\columnwidth]{figures/multivariate_hourly_stats_convGRU.pdf}
+  \caption{\label{fig:multivariate_hourly_stats_convGRU} Multivariate ConvGRU performance - Blue color indicate MSE for spesific hours. Black indicate mean and variance of target, and red indicate mean and variance of all predictions relative to its hour}
+  \includegraphics[width=\columnwidth]{figures/multivariate_hourly_stats_LSTM.pdf}
+  \caption{\label{fig:multivariate_hourly_stats_LSTM} Multivariate LSTM performance - Blue color indicate MSE for spesific hours. Black indicate mean and variance of target, and red indicate mean and variance of all predictions relative to its hour}
+\end{figure}
+
+
+% Best univariate predictions
+\begin{figure}
+  \includegraphics[width=\columnwidth]{figures/univariate_predictions_convGRU_testsample11.pdf}
+  \includegraphics[width=\columnwidth]{figures/univariate_predictions_convGRU_testsample24.pdf}
+  \includegraphics[width=\columnwidth]{figures/univariate_predictions_convGRU_testsample98.pdf}  
+  \caption{\label{fig:univariate_best_predictions} Three sample predictions from the best univariate model GRU with 1d convolution}
+\end{figure}
+
+% Best multivariate predictions
+\begin{figure}
+  \includegraphics[width=\columnwidth]{figures/multivariate_predictions_convGRU_testsample11.pdf}
+  \includegraphics[width=\columnwidth]{figures/multivariate_predictions_convGRU_testsample24.pdf}
+  \includegraphics[width=\columnwidth]{figures/multivariate_predictions_convGRU_testsample98.pdf}  
+  \caption{\label{fig:multivariate_best_predictions} Three sample predictions from the best multivariate model GRU with 1d convolution}
+\end{figure}
+
 
 \begin{figure}
   \includegraphics[width=\columnwidth]{figures/small_architecture_grid_search.pdf}

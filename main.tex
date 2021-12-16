@@ -300,8 +300,48 @@ A preprocessing layers such as a 1-dimensional convolution layer or a FeedForwar
 As stated previously, the hyperbolic tangent function is sufficient as activation function for an RNN due to its saturating property. As such, our RNNs will default to the hyperbolic tangent as activation function. Moreover, an adaptive learning rate optimizer during gradient descent is chosen. For our models, we will default to the ADAM optimizer.
 
 \section{Results}
+We note that all results have been created with the Source Code found in the Appendix. The results are reproducible, for further explanation for how to run the code and reproduce the results, refer to the README in the GitHub. All color maps used have been developed to fairly represent all data, with an emphasis of being readable for those with visual deficiency \cite{Crameri2021}. 
+
+\subsection{Recurrent Neural Networks}
+
+\subsubsection{Behaviour of uni -and multivariate models}
+These results are part of a preliminary study to determine how the different Recurrent Neural Network Cells respond to a change in number of neurons. For all results, each model is created equal according to the choice of parameters, except for the Cell structure. In the univariate case, only price is used. Moreover, in the multivariate case, forecasted values and actual values are assigned to specific models. For clarity, no results show the inclusion of the NVE \"fyllingsgrad\" data. 
+
+\begin{figure}
+  \includegraphics[width=\columnwidth]{figures/small_architecture_grid_search.pdf}
+  \caption{\label{fig_smallgs}Mean Squared Error as function of number of neurons for a univariate model using price as its feature}
+\end{figure}
+
+Figure 
+
+\subsubsection{Effect of data alteration for long sequences}
+In the context of our data, we refer to a long sequence as a input width of 168 hours, i.e. one week of data. We set up an RNN with with two GRU cells each with 128 neurons, as an immediate response to the MSE values obtained in previous results. We then performed different experiments by tweaking individual aspects of the RNN while keeping the other constant. 
+
+\begin{figure*}
+  \includegraphics[width=.725\textwidth]{figures/Large_forecast_ff_gridsearch_gru.pdf}
+  \caption{\label{fig_gsff}Grid search over different architectures utilizing Dense layers preceding the GRU layers}
+\end{figure*}
+
+Figure (\ref{fig_gsff}) displays a Grid Search performed over different architectures where one or two Dense Feed Forward layers preceded the GRU layers in the RNN.
+
+\begin{figure*}
+  \includegraphics[width=.725\textwidth]{figures/Large_forecast_conv_gridsearch_gru.pdf}
+  \caption{\label{fig_gsconv}Grid Search over different architectures utilizing a 1 Dimensional convolutional layer preceding the GRU layers}
+\end{figure*}
+
+Figure (\ref{fig_gsconv}) shows a Grid Search performed over different output space dimensionality and kernel sizes, with a fixed stride of 3.
+
+\begin{figure*}
+  \includegraphics[width=.725\textwidth]{figures/Large_forecast_dropout_gridsearch_gru.pdf}
+  \caption{\label{fig_gsdrop}Grid Search over different ratios of dropout and recurrent dropout.}
+\end{figure*}
+
+Finally, Figure (\ref{fig_gsdrop}) presents a Grid Search performed over different combinations of dropout and recurrent dropout. 
+
 
 \section{Discussion}
+
+\subsection{Recurrent Neural Network}
 
 \section{Conclusions}
 

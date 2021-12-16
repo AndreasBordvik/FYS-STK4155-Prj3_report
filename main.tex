@@ -307,6 +307,7 @@ We note that all results have been created with the Source Code found in the App
 \subsubsection{Behaviour of uni -and multivariate models}
 These results are part of a preliminary study to determine how the different Recurrent Neural Network Cells respond to a change in number of neurons. For all results, each model is created equal according to the choice of parameters, except for the Cell structure. In the univariate case, only price is used. Moreover, in the multivariate case, forecasted values and actual values are assigned to specific models. For clarity, no results show the inclusion of the NVE \"fyllingsgrad\" data. 
 
+% Plots of training evaluation
 \begin{figure}
   \includegraphics[width=\columnwidth]{figures/multivariate_train_evaluation_RNN.pdf}
   \caption{\label{fig:univariate_train_evaluation_RNN} Univariate train evaluation RNN}
@@ -345,6 +346,37 @@ These results are part of a preliminary study to determine how the different Rec
 \begin{figure}
   \includegraphics[width=\columnwidth]{figures/small_architecture_grid_search.pdf}
   \caption{\label{fig_smallgs}Mean Squared Error as function of number of neurons for a univariate model using price as its feature}
+\end{figure}
+
+% Plots of hourly stats
+\begin{figure}
+  \includegraphics[width=\columnwidth]{figures/multivariate_hourly_stats_RNN.pdf}
+  \caption{\label{fig:univariate_hourly_stats_RNN} Univariate hourly statistics RNN}
+\end{figure}
+
+\begin{figure}
+  \includegraphics[width=\columnwidth]{figures/multivariate_hourly_stats_RNN.pdf}
+  \caption{\label{fig:univariate_hourly_stats_convGRU} Univariate hourly statistics ConvGRU}
+\end{figure}
+
+\begin{figure}
+  \includegraphics[width=\columnwidth]{figures/multivariate_hourly_stats_RNN.pdf}
+  \caption{\label{fig:univariate_hourly_stats_LSTM} Univariate hourly statistics LSTM}
+\end{figure}
+
+\begin{figure}
+  \includegraphics[width=\columnwidth]{figures/multivariate_hourly_stats_RNN.pdf}
+  \caption{\label{fig:multivariate_hourly_stats_RNN} Multivariate hourly statistics RNN}
+\end{figure}
+
+\begin{figure}
+  \includegraphics[width=\columnwidth]{figures/multivariate_hourly_stats_RNN.pdf}
+  \caption{\label{fig:multivariate_hourly_stats_convGRU} Multivariate hourly statistics ConvGRU}
+\end{figure}
+
+\begin{figure}
+  \includegraphics[width=\columnwidth]{figures/multivariate_hourly_stats_RNN.pdf}
+  \caption{\label{fig:multivariate_hourly_stats_LSTM} Multivariate hourly statistics LSTM}
 \end{figure}
 
 Figure 

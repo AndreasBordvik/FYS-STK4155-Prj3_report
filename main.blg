@@ -1,6 +1,9 @@
-This is BibTeX, Version 0.99d (TeX Live 2021)
+This is BibTeX, Version 0.99d
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: main.aux
+Reallocating 'name_of_file' (item size: 1) to 10 items.
+Reallocating 'name_of_file' (item size: 1) to 7 items.
+Reallocating 'name_of_file' (item size: 1) to 6 items.
 The style file: plain.bst
 Database file #1: mainNotes.bib
 Warning--entry type for "Note1" isn't style-file defined
@@ -8,47 +11,46 @@ Warning--entry type for "Note1" isn't style-file defined
 Database file #2: biblio.bib
 Warning--string name "october" is undefined
 --line 33 of file biblio.bib
-Warning--to sort, need author or key in nordpool
 Warning--to sort, need author or key in noauthor_magasinstatistikk_nodate
-You've used 18 entries,
+You've used 19 entries,
             2118 wiz_defined-function locations,
-            603 strings with 7170 characters,
-and the built_in function-call counts, 5884 in all, are:
-= -- 516
-> -- 376
+            610 strings with 7288 characters,
+and the built_in function-call counts, 6137 in all, are:
+= -- 540
+> -- 389
 < -- 0
-+ -- 152
-- -- 134
-* -- 438
-:= -- 1009
-add.period$ -- 52
-call.type$ -- 18
-change.case$ -- 115
++ -- 157
+- -- 138
+* -- 444
+:= -- 1061
+add.period$ -- 56
+call.type$ -- 19
+change.case$ -- 120
 chr.to.int$ -- 0
 cite$ -- 20
-duplicate$ -- 190
-empty$ -- 434
-format.name$ -- 134
-if$ -- 1182
+duplicate$ -- 197
+empty$ -- 455
+format.name$ -- 138
+if$ -- 1233
 int.to.chr$ -- 0
-int.to.str$ -- 18
+int.to.str$ -- 19
 missing$ -- 20
-newline$ -- 91
-num.names$ -- 30
-pop$ -- 154
+newline$ -- 97
+num.names$ -- 34
+pop$ -- 163
 preamble$ -- 1
-purify$ -- 104
+purify$ -- 108
 quote$ -- 0
-skip$ -- 131
+skip$ -- 137
 stack$ -- 0
-substring$ -- 243
-swap$ -- 19
+substring$ -- 248
+swap$ -- 20
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 60
-warning$ -- 2
-while$ -- 39
-width$ -- 20
-write$ -- 182
-(There were 4 warnings)
+type$ -- 64
+warning$ -- 1
+while$ -- 43
+width$ -- 21
+write$ -- 194
+(There were 3 warnings)

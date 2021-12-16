@@ -3,9 +3,6 @@
 \bibitem{noauthor_magasinstatistikk_nodate}
 Magasinstatistikk - {NVE}.
 
-\bibitem{nordpool}
-Markets divided into bidding areas.
-
 \bibitem{tensorflow2015-whitepaper}
 Mart\'{\i}n Abadi, Ashish Agarwal, Paul Barham, Eugene Brevdo, Zhifeng Chen,
   Craig Citro, Greg~S. Corrado, Andy Davis, Jeffrey Dean, Matthieu Devin,
@@ -35,6 +32,10 @@ D.W. Bunn.
 \newblock Forecasting loads and prices in competitive power markets.
 \newblock {\em Proceedings of the IEEE}, 88(2):163--169, February 2000.
 \newblock Conference Name: Proceedings of the IEEE.
+
+\bibitem{Crameri2021}
+Fabio Crameri.
+\newblock Scientific colour maps, 2021.
 
 \bibitem{Goodfellow2016}
 Ian Goodfellow, Yoshua Bengio, and Aaron Courville.
@@ -99,6 +100,11 @@ Jakub Nowotarski and Rafał Weron.
   probabilistic forecasting.
 \newblock {\em Renewable and Sustainable Energy Reviews}, 81:1548--1568,
   January 2018.
+
+\bibitem{nordpool}
+Nord Pool.
+\newblock Bidding areas.
+\newblock \url{https://www.nordpoolgroup.com/the-power-market/Bidding-areas/}.
 
 \bibitem{seabold2010statsmodels}
 Skipper Seabold and Josef Perktold.

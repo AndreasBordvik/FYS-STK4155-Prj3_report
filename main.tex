@@ -384,24 +384,24 @@ Figures (\ref{fig_largegsrnn}) and (\ref{fig_largegsgru}) display a Grid Search 
 \subsubsection{Data alteration for long sequences}
 In the context of our data, we refer to a long sequence as a input width of 168 hours, i.e. one week of data. We set up an RNN with with two GRU cells each with 128 neurons, as an immediate response to the MSE values obtained in previous results. We then performed different experiments by tweaking individual aspects of the RNN while keeping the other constant. All results for this subsection are also made using a Sequence to Sequence model, as for the results in the subsection above.
 
-\begin{figure*}
-  \includegraphics[width=.725\textwidth]{figures/Large_forecast_ff_gridsearch_gru.pdf}
+\begin{figure}
+  \includegraphics[width=\columnwidth]{figures/Large_forecast_ff_gridsearch_gru.pdf}
   \caption{\label{fig_gsff}Grid search over different architectures utilizing Dense layers preceding the GRU layers}
-\end{figure*}
+\end{figure}
 
 Figure (\ref{fig_gsff}) displays a Grid Search performed over different architectures where one or two Dense Feed Forward layers preceded the GRU layers in the RNN.
 
-\begin{figure*}
-  \includegraphics[width=.725\textwidth]{figures/Large_forecast_conv_gridsearch_gru.pdf}
+\begin{figure}
+  \includegraphics[width=\columnwidth]{figures/Large_forecast_conv_gridsearch_gru.pdf}
   \caption{\label{fig_gsconv}Grid Search over different architectures utilizing a 1 Dimensional convolutional layer preceding the GRU layers}
-\end{figure*}
+\end{figure}
 
 Figure (\ref{fig_gsconv}) shows a Grid Search performed over different output space dimensionality and kernel sizes, with a fixed stride of 3.
 
-\begin{figure*}
-  \includegraphics[width=.725\textwidth]{figures/Large_forecast_dropout_gridsearch_gru.pdf}
+\begin{figure}
+  \includegraphics[width=\columnwidth]{figures/Large_forecast_dropout_gridsearch_gru.pdf}
   \caption{\label{fig_gsdrop}Grid Search over different ratios of dropout and recurrent dropout.}
-\end{figure*}
+\end{figure}
 
 Finally, Figure (\ref{fig_gsdrop}) presents a Grid Search performed over different combinations of dropout and recurrent dropout. 
 
@@ -415,7 +415,7 @@ By inspecting Figure (\ref{fig_smallgs}), it can be seen how the MSE varies as a
 
 Furthermore, by moving over to Figure (\ref{fig_smallmultigs}), some similarities may be drawn as the SimpleRNN is having a harder time fitting to the data than the LSTM and GRU cell models. As such, by introducing to more features to be used when predicting the price, the SimpleRNN may be overloaded with data such that it is having a harder time extracting the relevant structures for further predictions. However, this may not be the case for the LSTM and GRU cell networks, where it seems that their internal gates are able to extract and remember the relevant structures even with a lower neuron count. Interestingly, the LSTM network performs better with the multivariate data than the univariate data for both 16 and 32 neurons. Thus, Figures (\ref{fig_smallgs}) and (\ref{fig_smallmultigs}) may indicate that the SimpleRNN is sufficient for univariate data, while for the multivariate case it is more suitable to use an LSTM or GRU. This may be a consequence of the short-term memory problem of SimpleRNN cells, as the multivariate feature space is three times as large as the univariate feature space. Thus, having a long-term memory component as found in the LSTM and GRU cell is necessary to not discard relevant information during training.
 
-Figures ()
+Figures (\ref{fig_largegsrnn}) and (\ref{fig_largegsgru}) are Grid Search approaches to determine how the Mean Squared Error responds to a change in architecture for a two layered dense multivariate model. Inspecting Figure (\ref{fig_largegsrnn}), it can be seen that the MSE responds somewhat similarly to the multilayered model as for the single layered SimpleRNN model. Namely that the MSE attains lower values as the complexity of both layers are increased. This trend is similar for Figure (\ref{fig_largegsgru}), which displays the same Grid Search but for a GRU model instead. It can easily be seen that the lowest MSE is attained with the most complex model.
 
 \subsubsection{Response to architectural changes}
 

@@ -172,7 +172,7 @@ We constructed our own data based on the ones downloaded from the two different 
 
 
 \subsection{Market coupling}
-As previously mentioned, the different power markets are being tighter connected thorug  
+As previously mentioned, the different power markets are being tighter connected thorug interconnecting cables which enables flow of energy between bidding zones and countires. The dotten lines in Figure \ref{fig:biddin_zones} indicates transmission infrastructure, both export and import, 
 
 \subsection{Pre-processing}
 The dataset has been preprocessed such that it does not contain any NaN values, and the missing values are filled with the previous hours. The data from NVE, "fyllingsrad" initially has weekly time-steps, while the entsoe data has an hourly frequency. Since the nature of the data from NVE, "fyllingsgrad", turned out the be very low-frequency data, we interpolated hourly between weeks to match the hourly time-steps in the entsoe data. Lastly, we shifted the entire dataset to match the closing and opening of the bidding process for the day-ahead market. Thus, our first record starts at 12:00, not 00:00. The electricity price varies within each hour, but the price for the next 24 hours is set at 12:00 the day before. As such, one time-steps for the electricity price is actually 1 day (24 hours) not 1 single hour. It is essential that the model learns the patterns leading up to when Nord pool sets the system price before the market closes and the hourly prices for the next 24 hours are settled. If the model had been trained on intervals between two market days, it would not be synchronized with the power market and our task of forecasts the next day.

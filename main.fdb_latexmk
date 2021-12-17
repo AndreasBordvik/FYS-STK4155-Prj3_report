@@ -1,18 +1,18 @@
 # Fdb version 3
-["bibtex main"] 1639776222 "main.aux" "main.bbl" "main" 1639776227
+["bibtex main"] 1639776222 "main.aux" "main.bbl" "main" 1639776805
   "C:/Users/andre/AppData/Local/Programs/MiKTeX/bibtex/bst/bibtex/plain.bst" 1291864736 20613 bd3fbfa9f64872b81ac57a0dd2ed855f ""
   "biblio.bib" 1639676787 24381 e4ad0bc621b9c8c8b0acdae1550f2fb6 ""
-  "main.aux" 1639776225 19231 0bf4e44eeed5e061dc3bc5e9ac0e9215 "pdflatex"
-  "mainNotes.bib" 1639776225 86 f4846bb1c8a38396624ed3b19a4ac864 "pdflatex"
+  "main.aux" 1639776804 19231 0bf4e44eeed5e061dc3bc5e9ac0e9215 "pdflatex"
+  "mainNotes.bib" 1639776804 86 f4846bb1c8a38396624ed3b19a4ac864 "pdflatex"
   (generated)
-  "main.bbl"
   "main.blg"
-["makeindex main.idx"] 1639776148 "main.idx" "main.ind" "main" 1639776227
-  "main.idx" 1639776224 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "main.bbl"
+["makeindex main.idx"] 1639776148 "main.idx" "main.ind" "main" 1639776805
+  "main.idx" 1639776802 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
   (generated)
-  "main.ilg"
   "main.ind"
-["pdflatex"] 1639776222 "c:/Users/andre/Dropbox/FYS-STK4155_projects/FYS-STK4155 - Project3/FYS-STK4155-Prj3_report/main.tex" "main.pdf" "main" 1639776227
+  "main.ilg"
+["pdflatex"] 1639776799 "c:/Users/andre/Dropbox/FYS-STK4155_projects/FYS-STK4155 - Project3/FYS-STK4155-Prj3_report/main.tex" "main.pdf" "main" 1639776805
   "C:/Users/andre/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1633121266 9715384 ab11fa3a7c67255819b548dcc7cc2452 ""
   "C:/Users/andre/AppData/Local/MiKTeX/pdftex/config/pdftex.map" 1637967114 279811 21458d7cb40c17308453d8eee000b2b5 ""
   "C:/Users/andre/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc" 1254935040 2375 baa924870cfb487815765f9094cf3728 ""
@@ -312,7 +312,7 @@
   "figures/bidding_zones_selfmaid.png" 1639735745 926281 a91c2f8e788ee856e94707d683647884 ""
   "figures/decomposed_characteristics.pdf" 1639752973 379415 2718c696725a01b742c13ef244474efa ""
   "figures/feature_corr_analysis.pdf" 1639764595 16779 5716965e660ca5b9aa741ccb43535c1e ""
-  "figures/iterative_LSTM.pdf" 1639775487 16517 5ea15621c7b929d1768bde3d28dc8805 ""
+  "figures/iterative_LSTM.pdf" 1639776799 16513 b47b57ad6e578eaaac54ed8bfb838ee9 ""
   "figures/iterative_OWN_NN.pdf" 1639775593 16531 678176552cf06f990786cbda855a7082 ""
   "figures/multivariate_forecast_small_architecture_grid_search.pdf" 1639759127 16329 7598876f1baa19b4e34685a9b8064827 ""
   "figures/multivariate_hourly_stats_LSTM.pdf" 1639764593 13375 97d9bd80c53b92e1acd30d5c0c1e7399 ""
@@ -327,15 +327,15 @@
   "figures/univariate_train_evaluation_LSTM.pdf" 1639764440 12211 2b1ec204c9d35db9bba92f41836b2036 ""
   "figures/univariate_train_evaluation_RNN.pdf" 1639764364 11245 ef8484c76dfe7fb8709779ac46acbe4c ""
   "figures/univariate_train_evaluation_convGRU.pdf" 1639764411 12358 8dcae8d7a19fb12d1993c570a0349549 ""
-  "main.aux" 1639776225 19231 0bf4e44eeed5e061dc3bc5e9ac0e9215 "pdflatex"
+  "main.aux" 1639776804 19231 0bf4e44eeed5e061dc3bc5e9ac0e9215 "pdflatex"
   "main.bbl" 1639776222 4141 4bd4d2e7b678b0bfeb55c7a3e1be6397 "bibtex main"
   "main.ind" 1639776148 0 d41d8cd98f00b204e9800998ecf8427e "makeindex main.idx"
-  "main.out" 1639776225 6991 aa70d0a315a06ad5871c33eabe0e4d13 "pdflatex"
+  "main.out" 1639776804 6991 aa70d0a315a06ad5871c33eabe0e4d13 "pdflatex"
   "main.tex" 1639776217 68417 d6574a9584cfe92e5a541f7c9c4adbcf ""
   (generated)
-  "main.idx"
-  "main.pdf"
+  "main.out"
   "main.log"
   "mainNotes.bib"
-  "main.out"
+  "main.pdf"
+  "main.idx"
   "main.aux"

@@ -516,7 +516,17 @@ Figure (\ref{fig_gsconv}) shows a Grid Search approach which studies the impleme
 
 Finally, the effect of Dropout and Recurrent Dropout can be seen in Figure (\ref{fig_gsdrop}). The central idea behind dropout is to generalize the training data by deactivating a ratio of the current neurons, i.e. setting their internal value to 0 essentially stopping all incoming signals. By inspecting Figure (\ref{fig_gsdrop}), a single MSE value, that being the rightmost uppermost corner value related to Dropout = 0 and Recurrent Dropout = 0.3 do achieve a lower MSE value than what was reported in Figure (\ref{fig_largegs}). However, the trend is that Dropout heightens the MSE value, with regular Dropout having a more severe negative impact to the MSE than Recurrent Dropout. This may be due to the training sample used being relative sparse, only counting a total of $\tilde1500$ individual samples. As such, the dropout removes important information from the dataset, which may not be covered elsewhere, instead of generalizing the dataset. 
 
-\subsection{Recurrent Neural Network}
+\subsection{Univariate and Multivariate performance}
+The figures (\ref{fig:univariate_train_evaluation_RNN} - \ref{fig:multivariate_train_evaluation_LSTM}) shows the training evaluation performance of univariate and multivariate models. For the univariate models the RNN and GRU had similar pattern with the validation loss spiking at epoch 4-5. We have implemented a learning rate scheduler that reduces the learning rate on plateau which helps in correcting for the overfit. Furthermore, univariate LSTM, multivariate RNN, multivariate GRU, and multivariate LSTM had similar training performance, and they all converge at an early epoch. None of the aforementioned training evaluation plots shows signs of overfit.
+
+
+The figures (\ref{fig:univariate_hourly_stats_RNN} - \ref{fig:multivariate_hourly_stats_LSTM}) 
+shows how the model models perform relative to each specific hour. The blue line visualizes the MSE specific to each hour (MSE of the forecast for an hour $n$ against the target for an hour $n$). The black line indicates the true mean for the target and the true variance of the target for each hour. The red lines show the corresponding mean and variance of the forecasts from each model. We see that the mean value reflects the load or demand signature of a daily household. We start our predictions at hour 13:00. This means that $0$ on the x-axis corresponds to 13:00. At x-axis equal to 3 corresponds to 16:00. At this time, people start to come home from work and use more electricity. When many consumers consume electricity simultaneously, the electricity price increases, thus following an increase in the mean value. For the performance of the univariate models, we observe from the mean value of the forecasted hour (red lines) that the models cannot fit closely to the true mean value of the price for each specific hour. We see a small variation in the prediction over all the 24 hours. Looking at the variance of the forecasted hours, we observe a somewhat similar pattern as for the mean. The models cannot learn the variance specific for each hour considering all samples. Looking at the blue line representing MSE, the values show a significant increase in residual error following the mean price signature hours. The models have larger residual error between 16:00-20:00 and between 05:00 and 09:00. Looking at the multivariate performance, they share similar performance as for the univariate. 
+
+
+
+
+
 
 \section{Conclusions}
 

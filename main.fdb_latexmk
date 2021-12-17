@@ -1,18 +1,18 @@
 # Fdb version 3
-["bibtex main"] 1639689768 "main.aux" "main.bbl" "main" 1639689772
+["bibtex main"] 1639689768 "main.aux" "main.bbl" "main" 1639724564
   "C:/Users/andre/AppData/Local/Programs/MiKTeX/bibtex/bst/bibtex/plain.bst" 1291864736 20613 bd3fbfa9f64872b81ac57a0dd2ed855f ""
   "biblio.bib" 1639676787 24381 e4ad0bc621b9c8c8b0acdae1550f2fb6 ""
-  "main.aux" 1639689771 16401 03806829d2f63eb0c8d8289796030fc1 "pdflatex"
-  "mainNotes.bib" 1639689771 86 f4846bb1c8a38396624ed3b19a4ac864 "pdflatex"
+  "main.aux" 1639724562 16401 03806829d2f63eb0c8d8289796030fc1 "pdflatex"
+  "mainNotes.bib" 1639724562 86 f4846bb1c8a38396624ed3b19a4ac864 "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
-["makeindex main.idx"] 1639686987 "main.idx" "main.ind" "main" 1639689772
-  "main.idx" 1639689770 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+["makeindex main.idx"] 1639686987 "main.idx" "main.ind" "main" 1639724564
+  "main.idx" 1639724562 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
   (generated)
-  "main.ind"
   "main.ilg"
-["pdflatex"] 1639689769 "c:/Users/andre/Dropbox/FYS-STK4155_projects/FYS-STK4155 - Project3/FYS-STK4155-Prj3_report/main.tex" "main.pdf" "main" 1639689772
+  "main.ind"
+["pdflatex"] 1639724560 "c:/Users/andre/Dropbox/FYS-STK4155_projects/FYS-STK4155 - Project3/FYS-STK4155-Prj3_report/main.tex" "main.pdf" "main" 1639724564
   "C:/Users/andre/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1633121266 9715384 ab11fa3a7c67255819b548dcc7cc2452 ""
   "C:/Users/andre/AppData/Local/MiKTeX/pdftex/config/pdftex.map" 1637967114 279811 21458d7cb40c17308453d8eee000b2b5 ""
   "C:/Users/andre/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc" 1254935040 2375 baa924870cfb487815765f9094cf3728 ""
@@ -313,24 +313,24 @@
   "figures/multivariate_predictions_convGRU_testsample98.pdf" 1639687596 13369 ceac616d9b32234076f90c2566a837a7 ""
   "figures/multivariate_train_evaluation_RNN.pdf" 1639687454 12368 1439d16f1a090a5c6aa239ed7fa53279 ""
   "figures/small_architecture_grid_search.pdf" 1639676787 16005 1bb1d559f33ad32e4b3a5ecc81c18e81 ""
-  "figures/univariate_hourly_stats_LSTM.pdf" 1639685138 13353 ecc8b43015629b5debe5abc5351aff6f ""
-  "figures/univariate_hourly_stats_RNN.pdf" 1639685120 13344 1f7ad4a844b36d06656a9e1d1f4f4428 ""
-  "figures/univariate_hourly_stats_convGRU.pdf" 1639685026 13330 4e9a10c9a812319773dd3d4eddc0d735 ""
+  "figures/univariate_hourly_stats_LSTM.pdf" 1639724450 13353 ecc8b43015629b5debe5abc5351aff6f ""
+  "figures/univariate_hourly_stats_RNN.pdf" 1639724450 13344 1f7ad4a844b36d06656a9e1d1f4f4428 ""
+  "figures/univariate_hourly_stats_convGRU.pdf" 1639724450 13330 4e9a10c9a812319773dd3d4eddc0d735 ""
   "figures/univariate_predictions_convGRU_testsample11.pdf" 1639685025 13315 8e098aa45c7e1528a28d4cfd6b28bbf0 ""
-  "figures/univariate_predictions_convGRU_testsample24.pdf" 1639685025 13363 c7caf7693704741d9a43ea850ec2a19e ""
+  "figures/univariate_predictions_convGRU_testsample24.pdf" 1639724559 13365 320b1380f31c00c6e4e0f56bf6dece1f ""
   "figures/univariate_predictions_convGRU_testsample98.pdf" 1639685025 13370 cbf51d0b5f108b0f723ddf30ba971326 ""
-  "figures/univariate_train_evaluation_LSTM.pdf" 1639685138 11030 47bfd6e5bb1e518d0b6e4710af7f9d0a ""
-  "figures/univariate_train_evaluation_RNN.pdf" 1639685120 11773 c3d5d96ec5feef1ed869b8995aeab7bb ""
-  "figures/univariate_train_evaluation_convGRU.pdf" 1639685025 12194 b084c56e4483a40e081f45e64cf101d3 ""
-  "main.aux" 1639689771 16401 03806829d2f63eb0c8d8289796030fc1 "pdflatex"
+  "figures/univariate_train_evaluation_LSTM.pdf" 1639724450 11030 47bfd6e5bb1e518d0b6e4710af7f9d0a ""
+  "figures/univariate_train_evaluation_RNN.pdf" 1639724450 11773 c3d5d96ec5feef1ed869b8995aeab7bb ""
+  "figures/univariate_train_evaluation_convGRU.pdf" 1639724450 12194 b084c56e4483a40e081f45e64cf101d3 ""
+  "main.aux" 1639724562 16401 03806829d2f63eb0c8d8289796030fc1 "pdflatex"
   "main.bbl" 1639689768 4141 4bd4d2e7b678b0bfeb55c7a3e1be6397 "bibtex main"
   "main.ind" 1639686987 0 d41d8cd98f00b204e9800998ecf8427e "makeindex main.idx"
-  "main.out" 1639689771 6025 64a534132d35a14a7ecf7f85b2679591 "pdflatex"
+  "main.out" 1639724562 6025 64a534132d35a14a7ecf7f85b2679591 "pdflatex"
   "main.tex" 1639689764 53064 837639c37214dcafbb837d0aef921b2e ""
   (generated)
-  "main.idx"
-  "main.pdf"
   "main.log"
-  "main.aux"
-  "mainNotes.bib"
   "main.out"
+  "main.pdf"
+  "mainNotes.bib"
+  "main.aux"
+  "main.idx"

@@ -323,7 +323,6 @@ Going backwards trough time ($t < \tau)$, the gradient of the propagated loss ca
 \end{equation}
 where $\bm{W}$ is the weights associated with the hidden-to-hidden state connection and $J(\bm{a})$ is the jacobian of the activation function.%
 
-
 Given a long time sequence, a Recurrent Neural Network can be both memory and cpu intensive. Moreover, for long sequences of data, the unrolled RNN will be a considerably deep Neural Network. As we discussed in Project 2, a deep Neural Network is prone to the unstable gradient problem, where the gradient can either completely vanish or explode through the bounds of the datatype used to contain the value. In addition to the RNN being prone to unstable gradients given a long sequence, the memory of the first inputs will deter if the RNN is processing a long sequence \cite{Geron2019}.
 
 \subsection{The unstable gradient problem}

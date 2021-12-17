@@ -343,6 +343,13 @@ A preprocessing layers such as a 1-dimensional convolution layer or a FeedForwar
 
 As stated previously, the hyperbolic tangent function is sufficient as activation function for an RNN due to its saturating property. As such, our RNNs will default to the hyperbolic tangent as activation function. Moreover, an adaptive learning rate optimizer during gradient descent is chosen. For our models, we will default to the ADAM optimizer.
 
+\subsection{Iterative Forecasting}
+Though the main objective of this Project have been to utilize a Sequence to Sequence Recurrent Neural Network to simultaneously predict day-ahead price 24 hours into the future, we also wanted to study another approach to forecast for several time-steps ahead. As such, we have studied iterative forecasting as an alternative way to forecast day-ahead price for the following day. The main idea behind the iterative scheme is to predict one time step into future, then reusing the just made prediction by including it in the test dataset sample to iteratively predict forwards in time \cite{Geron2019}.
+
+However, as iterative forecasting depend on an ever increasing amount of forecasted values to make predictions, earlier predictions are likely to attain higher accuracy than later predictions. This is due to how later predictions base themselves on previous predictions, inheriting both the errors in the data as well as the prediction error \cite{Geron2019}.
+
+Moreover, as the iterative approach only requires one target value to make an prediction, it is possible to implement a sliding window algorithm which structures the data such that it can be fed through the Feed Forward Neural Network which we developed for Project 2.
+
 \section{Results}
 We note that all results have been created with the Source Code found in the Appendix. The results are reproducible, for further explanation for how to run the code and reproduce the results, refer to the README in the GitHub. All color maps used have been developed to fairly represent all data, with an emphasis of being readable for those with visual deficiency \cite{Crameri2021}. 
 
@@ -459,12 +466,14 @@ Figures (\ref{fig:univariate_train_evaluation_RNN} - \ref{fig:multivariate_train
   \caption{\label{fig:multivariate_hourly_stats_LSTM} Multivariate LSTM performance - Blue color indicate difference in MSE between target and predicted for specific hours. Black indicate mean and variance of target, and red indicate mean and variance of all predictions relative to its hour}
 \end{figure}
 
-
+\subsection{Iterative predicitions}
+The following Figures (\ref{fig:iterative_LSTM}) and (\ref{fig:iterative_NN}) presents the result of a 24 hour iterative prediction made with an LSTM - Recurrent Neural Network as well as our own Feed Forward Neural Network. The predictions are made for the last sample in the training data. The LSTM has a deep architecture with two layers, both containing 25 neurons, whereas our own Neural Network is initialized with a single hidden layer containing 64 neurons, as well as the leaky ReLU activation function. 
+ 
 \begin{figure}
   \includegraphics[width=\columnwidth]{figures/iterative_LSTM.pdf}
   \caption{\label{fig:iterative_LSTM}Iterative LSTM approach forecasting price for the next 24 hours reusing previous forcasted values}
   \includegraphics[width=\columnwidth]{figures/iterative_OWN_NN.pdf}
-  \caption{\label{fig:iterative_LSTM}Iterative Own developed Neural Net from project 2 - forecasting the next 24 hours reusing previous forcasted values}
+  \caption{\label{fig:iterative_NN}Iterative Own developed Neural Net from project 2 - forecasting the next 24 hours reusing previous forcasted values}
 \end{figure}
 
 \begin{table}[]
@@ -527,6 +536,12 @@ shows how the model models perform relative to each specific hour. The blue line
 
 
 
+\subsection{Iterative predictions}
+Figures (\ref{fig:iterative_LSTM}) and (\ref{fig:iterative_NN}) show how an LSTM network and our own Neural Network iteratively predicts 24 hours into the future. As noted in the introduction, Feed Forward Neural Networks are not optimized for fitting time-series data, as it relates a specific point in a time-series to a specific target. However, as seen in Figure (\ref{fig:iterative_NN}), our own Neural Network is able to somewhat predict the shape of the actual observations. Though there is a bias towards greater values, especially when comparing to the LSTM forecast. 
+
+Moreover, though our Neural Network seem to be able to predict that the price will rise two times as seen in the target observation, it is not able to accurately predict the initial dip in value. Moreover, the prediction seem to stay high towards the end of forecast where sum of errors by previous forecasts may further increase the predicted values. This also is a result of the positive bias of the outputs from our Neural Network prediction. 
+
+In comparison, the LSTM network is 
 
 \section{Conclusions}
 
@@ -539,7 +554,7 @@ Due to time constraints, this project only focuses on forecasting the electricit
 
 \section{Source Code}
 \label{sec:sc}
-Link to github repository containing all developed code for this project: \textbf{CORRECT URL HERE}%\url{https://github.com/AndreasBordvik/FYS-STK4155-Prj2_report}
+Link to github repository containing all developed code for this project: \url{https://github.com/AndreasBordvik/FYS-STK4155-Prj3_report}
 
 % Create the reference section using BibTeX:
 

@@ -1434,12 +1434,64 @@ INPUT figures\price_2016_2021.pdf
 INPUT .\figures\price_2016_2021.pdf
 INPUT .\figures\price_2016_2021.pdf
 INPUT .\figures\price_2016_2021.pdf
+INPUT .\figures\feature_corr_analysis.pdf
+INPUT .\figures\feature_corr_analysis.pdf
+INPUT figures\feature_corr_analysis.pdf
+INPUT .\figures\feature_corr_analysis.pdf
+INPUT .\figures\feature_corr_analysis.pdf
+INPUT .\figures\feature_corr_analysis.pdf
 INPUT C:\Users\andre\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ec-lmr5.tfm
 INPUT C:\Users\andre\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\rm-lmbx10.tfm
 INPUT C:\Users\andre\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\rm-lmbx7.tfm
 INPUT C:\Users\andre\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\rm-lmbx5.tfm
+INPUT .\figures\decomposed_characteristics.pdf
+INPUT .\figures\decomposed_characteristics.pdf
+INPUT figures\decomposed_characteristics.pdf
+INPUT .\figures\decomposed_characteristics.pdf
+INPUT .\figures\decomposed_characteristics.pdf
+INPUT .\figures\decomposed_characteristics.pdf
+INPUT .\figures\NVE_decomposed_characteristics.pdf
+INPUT .\figures\NVE_decomposed_characteristics.pdf
+INPUT figures\NVE_decomposed_characteristics.pdf
+INPUT .\figures\NVE_decomposed_characteristics.pdf
+INPUT .\figures\NVE_decomposed_characteristics.pdf
+INPUT .\figures\NVE_decomposed_characteristics.pdf
 INPUT C:\Users\andre\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ec-lmri10.tfm
+INPUT .\figures\AR_acf.pdf
+INPUT .\figures\AR_acf.pdf
+INPUT figures\AR_acf.pdf
+INPUT .\figures\AR_acf.pdf
+INPUT .\figures\AR_acf.pdf
+INPUT .\figures\AR_acf.pdf
+INPUT .\figures\AR_pacf.pdf
+INPUT .\figures\AR_pacf.pdf
+INPUT figures\AR_pacf.pdf
+INPUT .\figures\AR_pacf.pdf
+INPUT .\figures\AR_pacf.pdf
+INPUT .\figures\AR_pacf.pdf
 INPUT C:\Users\andre\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ec-lmbx10.tfm
+INPUT .\figures\AR_gridsearch.pdf
+INPUT .\figures\AR_gridsearch.pdf
+INPUT figures\AR_gridsearch.pdf
+INPUT .\figures\AR_gridsearch.pdf
+INPUT .\figures\AR_gridsearch.pdf
+INPUT .\figures\AR_gridsearch.pdf
+INPUT C:\Users\andre\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\rm-lmr9.tfm
+INPUT C:\Users\andre\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\lmmi9.tfm
+INPUT C:\Users\andre\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\lmsy9.tfm
+INPUT C:\Users\andre\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\symbols\msam10.tfm
+INPUT C:\Users\andre\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
+INPUT C:\Users\andre\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbx9.tfm
+INPUT C:\Users\andre\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\rm-lmbx9.tfm
+INPUT C:\Users\andre\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\rm-lmbx6.tfm
+INPUT C:\Users\andre\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmmib9.tfm
+INPUT C:\Users\andre\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmbsy9.tfm
+INPUT .\figures\AR(24)_daily predictions.pdf
+INPUT .\figures\AR(24)_daily predictions.pdf
+INPUT figures\AR(24)_daily predictions.pdf
+INPUT .\figures\AR(24)_daily predictions.pdf
+INPUT .\figures\AR(24)_daily predictions.pdf
+INPUT .\figures\AR(24)_daily predictions.pdf
 INPUT .\figures\univariate_train_evaluation_RNN.pdf
 INPUT .\figures\univariate_train_evaluation_RNN.pdf
 INPUT figures\univariate_train_evaluation_RNN.pdf
@@ -1595,16 +1647,6 @@ INPUT C:\Users\andre\AppData\Local\Programs\MiKTeX\tex\latex\lm\t1lmtt.fd
 INPUT C:\Users\andre\AppData\Local\Programs\MiKTeX\tex\latex\lm\t1lmtt.fd
 INPUT C:\Users\andre\AppData\Local\Programs\MiKTeX\tex\latex\lm\t1lmtt.fd
 INPUT C:\Users\andre\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ec-lmtt9.tfm
-INPUT C:\Users\andre\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\rm-lmr9.tfm
-INPUT C:\Users\andre\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\lmmi9.tfm
-INPUT C:\Users\andre\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\lmsy9.tfm
-INPUT C:\Users\andre\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\symbols\msam10.tfm
-INPUT C:\Users\andre\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
-INPUT C:\Users\andre\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbx9.tfm
-INPUT C:\Users\andre\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\rm-lmbx9.tfm
-INPUT C:\Users\andre\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\rm-lmbx6.tfm
-INPUT C:\Users\andre\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmmib9.tfm
-INPUT C:\Users\andre\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmbsy9.tfm
 INPUT main.aux
 INPUT .\main.out
 INPUT .\main.out
@@ -1631,6 +1673,8 @@ INPUT C:\Users\andre\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmmi5.p
 INPUT C:\Users\andre\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmmi5.pfb
 INPUT C:\Users\andre\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmmi7.pfb
 INPUT C:\Users\andre\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmmi7.pfb
+INPUT C:\Users\andre\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmmi9.pfb
+INPUT C:\Users\andre\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmmi9.pfb
 INPUT C:\Users\andre\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmr10.pfb
 INPUT C:\Users\andre\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmr10.pfb
 INPUT C:\Users\andre\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmr5.pfb

@@ -172,7 +172,17 @@ We constructed our own data based on the ones downloaded from the two different 
 
 
 \subsection{Market coupling}
-As previously mentioned, the different power markets are being tighter connected thorug  
+\todo[inline]{Bør denne ligge i et annet chp?}
+As previously mentioned, the different power markets are being tighter connected thorug interconnecting cables which enables flow of energy between bidding zones and countires. The dotten lines in Figure \ref{fig:biddin_zones} indicates transmission infrastructure, both export and import, 
+
+
+\subsection{Feature investigation}
+Figure \ref{fig:feature_correlation} shows the data and features we focused on and downloaded through the entsoe and NVE API. This include the actual day ahead price, actual and forecasted data of electricity load (demand) and electricity  generation, and the aggrigated "fyllingsgrad" from the dams in zone NO2. "fyllingsgrad" represents electricity that potentially can be produced relative the the amount of water residing within the dam. The delta features were created extra as we wanted to see if forcasted minus actual value would be beneficial. None of the features indicate a significant correlation with respect to the NO2 day ahead price.
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=90mm,scale=1.0]{figures/feature_corr_analysis.pdf}
+  \caption{\label{fig:feature_correlation}Correlation between data}
+\end{figure}
 
 \subsection{Pre-processing}
 The dataset has been preprocessed such that it does not contain any NaN values, and the missing values are filled with the previous hours. The data from NVE, "fyllingsrad" initially has weekly time-steps, while the entsoe data has an hourly frequency. Since the nature of the data from NVE, "fyllingsgrad", turned out the be very low-frequency data, we interpolated hourly between weeks to match the hourly time-steps in the entsoe data. Lastly, we shifted the entire dataset to match the closing and opening of the bidding process for the day-ahead market. Thus, our first record starts at 12:00, not 00:00. The electricity price varies within each hour, but the price for the next 24 hours is set at 12:00 the day before. As such, one time-steps for the electricity price is actually 1 day (24 hours) not 1 single hour. It is essential that the model learns the patterns leading up to when Nord pool sets the system price before the market closes and the hourly prices for the next 24 hours are settled. If the model had been trained on intervals between two market days, it would not be synchronized with the power market and our task of forecasts the next day.
@@ -237,6 +247,15 @@ This will help us in visualizing three different components from the time series
 A trend is a general direction in which something is changing \cite{Auffarth2021}. This trend is, of course, highly dependent on the scope of the time period in question, and the direction of change can differ for different parts of the time series \cite{Vishwas2020}  
 Another component that can be highly descriptive for visualizing the time series is the seasonal component. These are patterns in the data with a repeating cyclic variation. After the removal of these components, we are left with the residuals. This is the irregular variation, not explained by the above components\cite{Vishwas2020}.
 
+% decomposed_characteristics
+\begin{figure*}
+  \includegraphics[width=2.1\columnwidth]{figures/decomposed_characteristics.pdf}
+  \caption{\label{fig:decomposed_characteristics} Decomposed characteristics of day ahead price NO2}
+  \includegraphics[width=2.1\columnwidth]{figures/NVE_decomposed_characteristics.pdf}
+  \caption{\label{fig:NVE_decomposed_characteristics} Decomposed characteristics of NVE "fyllingsgrad"}
+\end{figure*}
+
+
 
 \subsection{The Auto-Regressive Model}
 
@@ -245,6 +264,15 @@ With the different characteristics of the time series decomposed, we move forwar
 
 In the case of the latter, a typical method for further preprocessing is the use of differencing. Using this method creates a new time series, consisting of the differences between each value and the following \cite{Korstanje2021}. This new data series is then used to compute a new statistical feature, namely autocorrelation. As forecasting with a univariate time series naturally only includes the variable itself, finding patterns on how the past influences the future is crucial. Plotting the autocorrelation gives us a clear visual representation of how the variable is correlated with itself at different time lags. This proves, in other words, a valuable method for determining the linear relationship between time step $t$ and $t-1$ \cite{Vishwas2020}. For the scope of this project, this will give us a measure of how much the price of electricity at a given hour is correlated with the hours ahead. As with regular correlation, the autocorrelation can be both positive and negative \cite{Korstanje2021}. However, the use of \emph{lags} is a concept in autocorrelation that differs from the regular. This notion deals with the number of time steps in which the correlation between each point should be calculated. 
 Another vital metric closely connected with autocorrelation is partial autocorrelation. This statistical interpretation of the time series also deals with the correlation between lags, the difference being the latter having removed the effect of in-between time lags\cite{Vishwas2020}. They both are plotted against the specific time lag with a confidence interval, yielding a tool for visually inspecting significant time lags. 
+
+% ACF and PACF
+\begin{figure}
+  \includegraphics[width=\columnwidth]{figures/AR_acf.pdf}
+  \caption{\label{fig:AR_acf} Auto correlation}
+  \includegraphics[width=\columnwidth]{figures/AR_pacf.pdf}
+  \caption{\label{fig:AR_pacf} Partial auto correlation}
+\end{figure}
+
 
 \subsubsection{Model Definition}
 
@@ -327,6 +355,24 @@ As stated previously, the hyperbolic tangent function is sufficient as activatio
 
 \section{Results}
 We note that all results have been created with the Source Code found in the Appendix. The results are reproducible, for further explanation for how to run the code and reproduce the results, refer to the README in the GitHub. All color maps used have been developed to fairly represent all data, with an emphasis of being readable for those with visual deficiency \cite{Crameri2021}. 
+
+\subsection{Auto Regressive Model}
+% grid search AR
+\begin{figure}
+  \includegraphics[width=\columnwidth]{figures/AR_gridsearch.pdf} 
+  \caption{\label{fig:AR_gridsearch} AR grid search on order $p$}
+\end{figure}
+
+% AR-model on order 24
+\begin{figure*}
+  \includegraphics[width= 2.1\columnwidth]{figures/AR(24)_daily predictions.pdf} 
+  \caption{\label{fig:AR(24)_daily predictions} AR-model(24), 24 hour forecast)}
+  
+\end{figure*}
+
+
+
+
 
 \subsection{Recurrent Neural Networks}
 

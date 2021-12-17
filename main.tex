@@ -467,6 +467,21 @@ Figures (\ref{fig:univariate_train_evaluation_RNN} - \ref{fig:multivariate_train
   \caption{\label{fig:iterative_LSTM}Iterative Own developed Neural Net from project 2 - forecasting the next 24 hours reusing previous forcasted values}
 \end{figure}
 
+\begin{table}[]
+  \caption{\label{tab:iterativ_LSTM} Performance metrics Iterative LSTM - one single sample forecast}
+  \begin{tabular}{l|l|}
+       & Score   \\
+  MSE  & 0.002 
+  \end{tabular}
+\end{table}
+\begin{table}[]
+  \caption{\label{tab:iterativ_own_NN} Performance metrics Iterative Own Neural Net project2 - one single sample forecast}
+  \begin{tabular}{l|l|}
+       & Score   \\
+  MSE  & 0.00829 
+  \end{tabular}
+\end{table}
+
 \section{Discussion}
 The day ahead pricing is much based on other forecasting models. When the power-producing operators contribute to the bidding process, they want to sell their power and buy from other participants. Therefore, buyers and sellers heavily rely on different market estimates to play in their respective bidding zone. Therefore, we expected the forecasted features for load and generation to contribute significantly when forecasting the pricing. However, the load and generation forecast did not show a high level of correlation in figure \ref{fig:feature_correlation} with respect to price. Additionally, load and generation forecast did neither contribute significantly to the performance of our Recurrent Neural Networks.
 

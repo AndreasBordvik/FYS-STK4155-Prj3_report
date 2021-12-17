@@ -177,7 +177,7 @@ As previously mentioned, the different power markets are being tighter connected
 
 
 \subsection{Feature investigation}
-Figure \ref{fig:feature_correlation} shows the data and features we focused on and downloaded through the entsoe and NVE API. This include the actual day ahead price, actual and forecasted data of electricity load (demand) and electricity  generation, and the aggrigated "fyllingsgrad" from the dams in zone NO2. "fyllingsgrad" represents electricity that potentially can be produced relative the the amount of water residing within the dam. The delta features were created extra as we wanted to see if forcasted minus actual value would be beneficial. None of the features indicate a significant correlation with respect to the NO2 day ahead price.
+Figure \ref{fig:feature_correlation} shows the data and features we focused on and downloaded through the entsoe and NVE API. This include the actual day ahead price, actual and forecasted data of electricity load (demand) and electricity  generation, and the aggregated "fyllingsgrad" from the dams in zone NO2. "fyllingsgrad" represents electricity from hydro power that potentially can be produced relative the the amount of water residing within the dam. The delta features were created extra as we wanted to see if forcasted minus actual value would be beneficial. None of the features indicate a significant correlation with respect to the NO2 day ahead price.
 \begin{figure}[t]
   \centering
   \includegraphics[width=90mm,scale=1.0]{figures/feature_corr_analysis.pdf}

@@ -43,30 +43,6 @@ def load_model(path_filename: str) -> Callable:
     return model
 
 
-def seperate_column_to_days(col: np.ndarray) -> np.ndarray:
-    """Method for structuring data
-
-    Args:
-        col (np.ndarray): Columns
-
-    Returns:
-        np.ndarray: arrays with days
-    """
-    days = []
-    #col = col.to_numpy()
-    for i in range(0, len(col), 24):
-        days.append(col[i:i+24])
-
-    # The list goes 12 hours further in time than what it should
-    # Thus removes the last 13 hours from
-    # 2021-11-24 12:00:00+01:00 - 2021-11-25 00:00:00+01:00
-    # days.pop()
-
-    # The list includes data split into entire days
-    # from 2016-01-03 12:00:00+01:00 - 2021-11-24 11:00:00+01:00
-    return np.array(days)
-
-
 def last_time_step_mse(Y_true: np.ndarray, Y_pred: np.ndarray) -> float:
     """Method from Gerome(Hands on machine-learning)
 

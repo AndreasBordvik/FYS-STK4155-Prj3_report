@@ -254,9 +254,27 @@ The before mentioned autocorrelation is the basis for the model we then implemen
 X_t = \sum_{i=1}^{p} \phi_i X_{t-i} + \epsilon_{t}
 \]
 
-Where $X_t$ is the current time step, $\phi$ is a coefficient for a specific lag, and $\epsilon$ is estimated random noise, for all $p$ time lags \cite{Korstanje2021}. Our implementation of this algorithm can be found in the GitHub repository\todo{CITE/LINK}. As previously stated, in this project, our goal is to predict prices for electricity 24 hours ahead. After conducting a grid search, we found that the optimal order of our AR model for solving this problem is 24. This comes as no surprise, as electric pricing has a 24 hours cyclic variation. In this case, where our objective is to forecast multiple time steps, we implemented an iterative approach. As demonstrated by the above equation, the number of previous time steps included in the prediction is dictated by order of the AR model. Our first prediction is, therefore a result of our $\phi$ coefficients being multiplied and summed with actual observed data from the original time series. For a 1 hour prediction, the expected prediction should as a result of this, be fairly accurate. However, when moving further along with the next predicitions, a increasingly larger part of the values from the previous time steps will be predicted values, rather than actual observed. This creates a situation where one runs the risk of aggregating errors throughout the predictions, which is a known weak spot for iterative algorithms of this manner. 
+Where $X_t$ is the current time step, $\phi$ is a coefficient for a specific lag, and $\epsilon$ is estimated random noise, for all $p$ time lags \cite{Korstanje2021}. Our implementation of this algorithm can be found in the GitHub repository linked in the Appendix. To estimate the coefficient related to the lag for each time step, we use the Yule-Walker method which consists of the set equations
+\begin{equation}
+  \label{eq_yw}
+  \gamma_m = \sum_{k-1}^p\phi_k\gamma_{m-k} + \sigma_\epsilon^2\delta_{m,0}
+\end{equation}
+where $\gamma_m$ is the autocovariance function of $X_t$, m is the number of lags from 0 to $p$, $\sigma_\epsilon^2$ is the standard deviation of the Errors and $\delta_{m,0}$ is the Kronecker delta function \cite{Korstanje2021}. Furthermore, we can rewrite this equation as
+\begin{equation}
+  \nonumber
+  \gamma = \Gamma^{-1}\Phi
+\end{equation}
+where $\gamma \in \mathbb{R}^p$, $\Gamma \in \mathbb{R}^{pxp}$ and $\Phi \in \mathbb{R}^p$. 
+which we can solve by applying the Ordinary Least Squares method. By optimizing the equation for $\Phi$ using Ordinary Least Squares, we obtain the expression
+\begin{equation}
+  \nonumber
+  \hat{\Phi} = \left(\Gamma^T\Gamma\right)^{-1}\Gamma^T\gamma
+\end{equation}
+Where we can use the obtained estimates for our $\phi$'s to find the optimal solution for the $\sigma_\epsilon^2$ in Equation (\ref{eq_yw}), which enables us to fit the AR model.
 
-As above equation demonstrates, the AR model of order $p$ needs a total number of $p$ specific $\phi$ coefficients. The optimal value for these coefficients is calculated by fitting the model to the data. To achieve this, we have implemented another function from the Statsmodel module \cite{seabold2010statsmodels}. This method is partly based on a central algorithm from project 1, namely Ordinary Least Squares\cite{Korstanje2021}.
+As previously stated, in this project, our goal is to predict prices for electricity 24 hours ahead. After conducting a grid search, we found that the optimal order of our AR model for solving this problem is 24. This comes as no surprise, as electric pricing has a 24 hours cyclic variation. In this case, where our objective is to forecast multiple time steps, we implemented an iterative approach. As demonstrated by the above equation, the number of previous time steps included in the prediction is dictated by order of the AR model. Our first prediction is, therefore a result of our $\phi$ coefficients being multiplied and summed with actual observed data from the original time series. For a 1 hour prediction, the expected prediction should as a result of this, be fairly accurate. However, when moving further along with the next predicitions, a increasingly larger part of the values from the previous time steps will be predicted values, rather than actual observed. This creates a situation where one runs the risk of aggregating errors throughout the predictions, which is a known weak spot for iterative algorithms of this manner. 
+
+As above equation demonstrates, the AR model of order $p$ needs a total number of $p$ specific $\phi$ coefficients. The optimal value for these coefficients is calculated by fitting the model to the data. To achieve this, we have implemented another function from the Statsmodel module \cite{seabold2010statsmodels}.
 
 \section{Recurrent Neural Networks theory and Methods}
 

@@ -125,19 +125,7 @@ bookmarksdepth=3   % Uncomment (and tweak) for PDF bookmarks with more levels th
 \date{\today}
 
 \begin{abstract}
-  \begin{description}
-  \item[Background] This part would describe the
-  context needed to understand what the paper
-  is about.
-  \item[Purpose] This part would state the purpose
-  of the present paper.
-  \item[Method] This part describe the methods
-  used in the paper.
-  \item[Results] This part would summarize the
-  results.
-  \item[Conclusions] This part would state the
-  conclusions of the paper.
-  \end{description}
+  In this project, we have studied data collected from the Entsoe transparency platform as well as the Norwegian Water Resoruces and Ernegy Directorate in an attempt to accurately forecast the day-ahead electricity price using both classical statistical approaches as well as using Machine Learning for the souther part of Norway. As the data we are inspecting is structured as time-series, we have developed both an Autoregressive model, as well as a Recurrent Neural Network using the popular machine learning library TensorFlow. We experimented by applying different preprocessing and data generalization techniques to tune the Recurrent Neural Network, and we achieved the best MSE score by combining a 1-dimensional preprocessing layer with a deep Gated Recurrent Unit network. We have also studied the difference between a univariate RNN, with price being the only feature, as well as a multivariate RNN where load and generation from the Entsoe dataset has been included. We find no significant improvement in including additional features, though this may be a case of the limited number of features we have available. For the Recurrent Neural Network, we have mainly been studying a Sequence to Sequence approach. Finally, we have shown that the best MSE obtained was from the Autoregressive model, with an MSE = 0.00052. We conclude that though the Recurrent Neural Network show promise in forecasting day-ahead electricity price, our model does not contain enough relevant features to be able to accurately predict temporal price evolution. Thus, propose the Autoregressive model as a sufficient forecasting model when forecasting short term temporal evolution of day-ahead price given a limited to univariate dataset.
 \end{abstract}
 
 \maketitle
@@ -280,14 +268,14 @@ Another vital metric closely connected with autocorrelation is partial autocorre
 
 The before mentioned autocorrelation is the basis for the model we then implement for univariate forecasting. At the base of this model is its nature of predicting future variables as a function of the lagged values. This model is formulated as:
 
-\[
+\begin{equation}
+  \label{eq_ar}
 X_t = \sum_{i=1}^{p} \phi_i X_{t-i} + \epsilon_{t}
-\]
+\end{equation}
 
-<<<<<<< HEAD
-Where $X_t$ is the current time step, $\phi$ is a coefficient for a specific lag, and $\epsilon$ is estimated random noise, for all $p$ time lags \cite{Korstanje2021}. Our implementation of this algorithm can be found in the GitHub repository under code/AR\_model.ipynb. As previously stated, in this project, our goal is to predict prices for electricity 24 hours ahead. After conducting a grid search, we found that the optimal order of our AR model for solving this problem is 24. This comes as no surprise, as electric pricing has a 24 hours cyclic variation. In this case, where our objective is to forecast multiple time steps, we implemented an iterative approach. As demonstrated by the above equation, the number of previous time steps included in the prediction is dictated by order of the AR model. Our first prediction is, therefore a result of our $\phi$ coefficients being multiplied and summed with actual observed data from the original time series. For a 1 hour prediction, the expected prediction should as a result of this, be fairly accurate. However, when moving further along with the next predicitions, a increasingly larger part of the values from the previous time steps will be predicted values, rather than actual observed. This creates a situation where one runs the risk of aggregating errors throughout the predictions, which is a known weak spot for iterative algorithms of this manner. 
-=======
-Where $X_t$ is the current time step, $\phi$ is a coefficient for a specific lag, and $\epsilon$ is estimated random noise, for all $p$ time lags \cite{Korstanje2021}. Our implementation of this algorithm can be found in the GitHub repository linked in the Appendix. To estimate the coefficient related to the lag for each time step, we use the Yule-Walker method which consists of the set equations
+Where $X_t$ is the current time step, $\phi$ is a coefficient for a specific lag, and $\epsilon$ is estimated random noise, for all $p$ time lags \cite{Korstanje2021}. Our implementation of this algorithm can be found in the GitHub repository linked in the Appendix. 
+
+To estimate the coefficient related to the lag for each time step, we use the Yule-Walker method which consists of the set of equations
 \begin{equation}
   \label{eq_yw}
   \gamma_m = \sum_{k-1}^p\phi_k\gamma_{m-k} + \sigma_\epsilon^2\delta_{m,0}
@@ -303,12 +291,12 @@ which we can solve by applying the Ordinary Least Squares method. By optimizing 
   \nonumber
   \hat{\Phi} = \left(\Gamma^T\Gamma\right)^{-1}\Gamma^T\gamma
 \end{equation}
-Where we can use the obtained estimates for our $\phi$'s to find the optimal solution for the $\sigma_\epsilon^2$ in Equation (\ref{eq_yw}), which enables us to fit the AR model.
->>>>>>> 9e8fce4b691f33b7d2400eb076928cca6fc66b85
+
+Where we can use the obtained estimates for our $\phi$'s to find the optimal solution for the $\sigma_\epsilon^2$ in Equation (\ref{eq_yw}), which enables us to fit the AR model. Our implementation of this algorithm can be found in the GitHub repository under code/AR\_model.ipynb. 
 
 As previously stated, in this project, our goal is to predict prices for electricity 24 hours ahead. After conducting a grid search, we found that the optimal order of our AR model for solving this problem is 24. This comes as no surprise, as electric pricing has a 24 hours cyclic variation. In this case, where our objective is to forecast multiple time steps, we implemented an iterative approach. As demonstrated by the above equation, the number of previous time steps included in the prediction is dictated by order of the AR model. Our first prediction is, therefore a result of our $\phi$ coefficients being multiplied and summed with actual observed data from the original time series. For a 1 hour prediction, the expected prediction should as a result of this, be fairly accurate. However, when moving further along with the next predicitions, a increasingly larger part of the values from the previous time steps will be predicted values, rather than actual observed. This creates a situation where one runs the risk of aggregating errors throughout the predictions, which is a known weak spot for iterative algorithms of this manner. 
 
-As above equation demonstrates, the AR model of order $p$ needs a total number of $p$ specific $\phi$ coefficients. The optimal value for these coefficients is calculated by fitting the model to the data. To achieve this, we have implemented another function from the Statsmodel module \cite{seabold2010statsmodels}.
+As Equation (\ref{eq_ar}) demonstrates, the AR model of order $p$ needs a total number of $p$ specific $\phi$ coefficients. The optimal value for these coefficients is calculated by fitting the model to the data. To achieve this, we have implemented the Yule-Walker algorithm as described above from the Statsmodel module \cite{seabold2010statsmodels}.
 
 \section{Recurrent Neural Networks theory and Methods}
 

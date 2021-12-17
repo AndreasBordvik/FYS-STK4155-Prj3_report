@@ -125,25 +125,22 @@ bookmarksdepth=3   % Uncomment (and tweak) for PDF bookmarks with more levels th
 \date{\today}
 
 \begin{abstract}
-  In this project, we have studied data collected from the Entsoe transparency platform as well as the Norwegian Water Resoruces and Ernegy Directorate in an attempt to accurately forecast the day-ahead electricity price using both classical statistical approaches as well as using Machine Learning for the souther part of Norway. As the data we are inspecting is structured as time-series, we have developed both an Autoregressive model, as well as a Recurrent Neural Network using the popular machine learning library TensorFlow. We experimented by applying different preprocessing and data generalization techniques to tune the Recurrent Neural Network, and we achieved the best MSE score by combining a 1-dimensional preprocessing layer with a deep Gated Recurrent Unit network. We have also studied the difference between a univariate RNN, with price being the only feature, as well as a multivariate RNN where load and generation from the Entsoe dataset has been included. We find no significant improvement in including additional features, though this may be a case of the limited number of features we have available. For the Recurrent Neural Network, we have mainly been studying a Sequence to Sequence approach. Finally, we have shown that the best MSE obtained was from the Autoregressive model, with an MSE = 0.00052. We conclude that though the Recurrent Neural Network show promise in forecasting day-ahead electricity price, our model does not contain enough relevant features to be able to accurately predict temporal price evolution. Thus, propose the Autoregressive model as a sufficient forecasting model when forecasting short term temporal evolution of day-ahead price given a limited to univariate dataset.
+  In this project, we have studied data collected from the Entsoe transparency platform as well as the Norwegian Water Resoruces and Energy Directorate in an attempt to accurately forecast the day-ahead electricity price using both classical statistical approaches as well as using Machine Learning for the southern part of Norway. We have studied the power market, and the driver behind day ahead price. As the data we are inspecting is structured as a time-series, we have developed both an Autoregressive model, as well as a Recurrent Neural Network using the popular machine learning library TensorFlow. We experimented by applying different preprocessing and data generalization techniques to tune the Recurrent Neural Network, and we achieved the best MSE score by combining a 1-dimensional preprocessing layer with a deep Gated Recurrent Unit network. We have also studied the difference between a univariate RNN, with price being the only feature, as well as a multivariate RNN where load and generation from the Entsoe dataset has been included. We find no significant improvement in including additional features, though this may be a case of the limited number of features we have available. For the Recurrent Neural Network, we have mainly been studying a Sequence to Sequence approach. Finally, we have shown that the best MSE obtained was from the Autoregressive model, with an MSE = 0.00052. We conclude that though the Recurrent Neural Network show promise in forecasting day-ahead electricity price, our model does not contain enough relevant features to be able to accurately predict temporal price evolution beyond a simple mean value. Thus, we propose the Autoregressive model as a sufficient forecasting model when forecasting short term temporal evolution of day-ahead price given a feature limited or univariate dataset.
 \end{abstract}
 
 \maketitle
 
 \section{Introduction}
-The Norwegian and European power markets are changing. Several trends and demands in todays society result in increased electricity usage and power consumption. Additionally, a higher integrated fraction of renewable energy production coupled with tighter integration of power transmission infrastructure between countries affects several aspects within the power market, such as; electricity price, electricity production, electricity transmission, and electricity demand. A tighter connection of power infrastructure between countries also connects the power markets between countries to a greater extend, giving room for a growing number of market participants and competition. In the light of increased market coupling, a higher fraction of renewable energy production, and increasingly competitive power markets, the need for forecasting the electricity price has become a fundamental process for energy companies. The ability to make qualitative decisions through forecasting the electricity price has never been more relevant. \cite{nowotarski_recent_2018}. Considering the aforementioned, studying what drives the power markets and the electricity price in the light of the current extreme prices motivates to this project. The extreme electricity price does not just affect the consumers of household electricity, it affects the society as a whole. To study the complex problem of electricity price forecasing, it was required for this project to tackle many different aspects such as: Studying of mechanisms of the power market, data collection trough API, data-preprocessing, time-series problem analysis, advanced time-series forecasting using both classical and neural network. For the forecasting part of this project, we settled on forecasting the electricity price for the next day at an hourly resolution (24 hours). The forecasting time-span is based on how the power markets in Norway are operating. Gaining domain knowledge on real complex problems is often imperative to success using a Machine Learning approach. However, achieving domain knowledge is no easy task, and this project also requires looking at the problem and the data from a non-statistical point of view.
+The Norwegian and European power markets are changing. Several trends and demands in todays society result in increased electricity usage and power consumption. Additionally, a higher integrated fraction of renewable energy production coupled with tighter integration of power transmission infrastructure between countries affects several aspects within the power market, such as; electricity price, electricity production, electricity transmission, and electricity demand. A tighter connection of power infrastructure between countries also connects the power markets between countries to a greater extend, giving room for a growing number of market participants and competition. In the light of increased market coupling, a higher fraction of renewable energy production, and increasingly competitive power markets, the need for forecasting the electricity price has become a fundamental process for energy companies. The ability to make qualitative decisions through forecasting the electricity price has never been more relevant. \cite{nowotarski_recent_2018}. Considering the aforementioned, studying what drives the power markets and the electricity price in the light of the current extreme prices motivates to this project. The extreme electricity price does not just affect the consumers of household electricity, it affects the society as a whole. To study the complex problem of electricity price forecasting, it was required for this project to tackle many different aspects such as: Studying of mechanisms of the power market, data collection trough API, data-preprocessing, time-series problem analysis, advanced time-series forecasting using both classical and neural network. For the forecasting part of this project, we settled on forecasting the electricity price for the next day at an hourly resolution (24 hours). The forecasting time-span is based on how the power markets in Norway are operating. Gaining domain knowledge on real complex problems is often imperative to success using a Machine Learning approach. However, achieving domain knowledge is no easy task, and this project also requires looking at the problem and the data from a non-statistical point of view.
 
 In the two previous projects, we studied how spatial and time-independent data could be used to fit an arbitrary function with a given error following the Universal Approximation Theorem \cite{Nielsen2015} using a fully connected Neural Network. However, in Project 3, our data is sequential and time dependant. As such, a fully connected Neural Network is not designed to remember and make use of historical content while feeding forward its current inputs. Therefore, this project will study Recurrent Neural Network and state-of-the-art methods for time-series data.
 
-In the coming sections, we will start off by briefly introduce the power market domain. Furtherone, we define and structuring our dataset in the data section, set by the constraints imposed by the different models. Moreover, we briefly cover time-series data and point out the main differences between our data and the Terrain dataset used in Projects 1 and 2. Furthermore, we will develop the framework for both classical statistical models, as well as a sliding window algorithm that can structure our data to be used by both the Feed Forward Neural Network we developed in Project 2 as well as the Recurrent Neural Networks we will study in this Project. After developing our Theory and presenting our Models, we will study their behavior in light of our dataset. Our discussion will cover topics such as central problems regarding RNN performance, such as the unstable gradients and its short term memory as well as comparing the different models with each other. Moreover, we will try to optimize our developed models such that we are able to accurately forecast the electricity price for the next 24 hours. Finally, we will give our final thoughts as we summarize our findings.
-
-
+In the coming sections, we will start off by briefly introduce the power market domain. Furthermore, we define and structuring our dataset in the data section, set by the constraints imposed by the different models. Moreover, we briefly cover time-series data and point out the main differences between our data and the Terrain dataset used in Projects 1 and 2. Furthermore, we will develop the framework for both classical statistical models, as well as a sliding window algorithm that can structure our data to be used by both the Feed Forward Neural Network we developed in Project 2 as well as the Recurrent Neural Networks we will study in this Project. After developing our Theory and presenting our Models, we will study their behavior in light of our dataset. Our discussion will cover topics such as central problems regarding RNN performance, such as the unstable gradients and its short term memory as well as comparing the different models with each other. Moreover, we will try to optimize our developed models such that we are able to accurately forecast the electricity price for the next 24 hours. Finally, we will give our final thoughts as we summarize our findings.
 
 \section{The Power market domain and characteristics}
 There are five power regions in Norway named NO1, NO2, NO3, NO4, and NO5. Each region is a power producing region of its own, and each zone is considered its own power market where its local electricity price is set. The regions can also be referred to as a bidding zone Figure (\ref{fig:biddin_zones}). The dotted lines in the bidding zone figure represents the Norwegian export and import transmission cables to neighboring countries. The transmission cables between the Norwegian zones are not drawn in the figure. The bidding name reflects the trading part, where participants buy and sell electricity. Each bidding zone has a day-ahead auction where electricity is traded for delivery the next day. In the day ahead market (the spot market), Nordpool finds the equilibrium between expected power demand and power production between aggregated quantities among all traders for each zone. Nord pool then sets the reference (system) price based on the equilibrium, sales, and purchase orders for each zone. The hourly electricity prices are then finalized for the next day, named day-ahead price or spot price. Nord pool closes the day-ahead market at 12:00 each day, and the hourly prices for the next day are published thereafter \cite{nordpool}. Even though the different zones are individual markets, they are still related to each other in many ways. 
 
-All zones are interconnected via transmission cables, thus enabling power trading across bidding zones. All power markets and systems must be in balance at all times to ensure a stable and reliable power source. Therefore, market coupling and power transmission is a major player affecting the core of each power market. Another driver affecting the price is within the markets is the cost of producing electricity. An increasingly integrating power production from renewable sources gives rise to new challenges since some renewable power sources are volatile in nature, e.g., wind power and solar. Having volatile power-producing contributors gives rise to added uncertainties to the electricity price. Therefore, highly accurate forecasting of the electricity price is regarded as very challenging considering the characteristics of the electricity price and the power markets \cite{li_day-ahead_2021, nogales_forecasting_2002,bunn_forecasting_2000}. Due to time constraints, this project only focuses on forecasting the electricity price for the southern part of Norway (bidding zone NO2). 
-\todo[inline]{highlight more areas that we do not focus on due to time constratints... Are, Gard og Andreas må skrive litt sammen her.. hva utelukker vi å se på}
+All zones are interconnected via transmission cables, thus enabling power trading across bidding zones. All power markets and systems must be in balance at all times to ensure a stable and reliable power source. Therefore, market coupling and power transmission is a major player affecting the core of each power market. Another driver affecting the price is within the markets is the cost of producing electricity. An increasingly integrating power production from renewable sources gives rise to new challenges since some renewable power sources are volatile in nature, e.g., wind power and solar. Having volatile power-producing contributors gives rise to added uncertainties to the electricity price. Therefore, highly accurate forecasting of the electricity price is regarded as very challenging considering the characteristics of the electricity price and the power markets \cite{li_day-ahead_2021, nogales_forecasting_2002,bunn_forecasting_2000}. 
 
 
 \begin{figure}[t]
@@ -156,10 +153,9 @@ All zones are interconnected via transmission cables, thus enabling power tradin
 
 \begin{figure*}%[t]
 \includegraphics[width=2.0\columnwidth]{figures/price_2016_2021.pdf}
-\caption{\label{fig:NO2_price} Electricity price in bidding zone NO2 between 2016 and 2021}
+\caption{\label{fig:NO2_price} Electricity price in bidding zone NO2 between 2016 and 2021. Dates are given in YYYY-MM-DD}
 \end{figure*}
 \subsection{Market coupling}
-\todo[inline]{Bør denne ligge i et annet chp?}
 As previously mentioned, the different power markets are being tighter connected thorug interconnecting cables which enables flow of energy between bidding zones and countries. The dotten lines in Figure \ref{fig:biddin_zones} indicates transmission infrastructure representing the Norwegian export and import of power. Transmission cables between the Norwegian zones are not shown in the figure. Reasontly there have been commisioned new interconnecting transmission cabels between Norway and Germany (NordLink), and Norway and England (North Sea Link). The NordLink was in trail operation from 2020-12-09 and have been a major player affecting the pricing within the NO2 market since. The North Sea Link was in operation 2021-10-01. Figure \ref{fig:NO2_price} is a plot of the NO price from 2016-2021. In this plot we have highlighted when the two moste recent transmission cabels come into operation.  
 
 \section{Data}
@@ -178,7 +174,7 @@ Figure \ref{fig:feature_correlation} shows the data and features we focused on a
 \subsection{Pre-processing}
 The dataset has been preprocessed such that it does not contain any NaN values, and the missing values are filled with the previous hours. The data from NVE, "fyllingsrad" initially has weekly time-steps, while the entsoe data has an hourly frequency. Since the nature of the data from NVE, "fyllingsgrad", turned out the be very low-frequency data, we interpolated hourly between weeks to match the hourly time-steps in the entsoe data. Lastly, we shifted the entire dataset to match the closing and opening of the bidding process for the day-ahead market. Thus, our first record starts at 12:00, not 00:00. The electricity price varies within each hour, but the price for the next 24 hours is set at 12:00 the day before. As such, one time-steps for the electricity price is actually 1 day (24 hours) not 1 single hour. It is essential that the model learns the patterns leading up to when Nord pool sets the system price before the market closes and the hourly prices for the next 24 hours are settled. If the model had been trained on intervals between two market days, it would not be synchronized with the power market and our task of forecasts the next day.
 \\\\
-When feeding data into the RNN, which will be described in greater detail in the coming sections, the data has to be formatted to take the form of the 3D array $\left(\text{Batch Size}, \text{Time Steps}, \text{dimensionality}\right)$. Specifically, Batch Size refers to the number of samples, Time Steps reflect the historical sequence. Finally, dimensionality refers to the number of time series used, such that dimensionality $= 1$ would refer to a univariate time series. Some literature refers to the last dimension as the number of features. We also normalized the data using a minmax scaling, where the data is transformed to fit the range between $0$ and $1$.
+When feeding data into the RNN, which will be described in greater detail in the coming sections, the data has to be formatted to take the form of the 3D array $\left(\text{Batch Size}, \text{Time Steps}, \text{dimensionality}\right)$. Specifically, Batch Size refers to the number of samples, Time Steps reflect the historical sequence. Finally, dimensionality refers to the number of time series used as features. Where a value of 1 would refer to a univariate dataset. This is in line with some literature, which refers to the last dimension as the number of features. We also normalized the data using a minmax scaling, where the data is transformed to fit the range between $0$ and $1$.
 
 \section{Theory and Methods}
 
@@ -224,13 +220,12 @@ As already mentioned, in contrast to projects 1 and 2, this project deals with d
   x: T \rightarrow {\rm I\!R}^k 
 \end{equation}
 
-where T $\subseteq {\rm I\!R}$ and k $\in \mathbb{N}$ \cite{Auffarth2021}
+where T $\subseteq {\rm I\!R}$ and k $\in \mathbb{N}$ \cite{Auffarth2021}.
 
-In the scope of this project, our time series consist of discrete values that describes how several variabels changes over time. These variables are: actual power generation, generation forecast, actual load(demand), load forecast, the delta between forecast and actual and "fyllingsgrad". Dealing with data in such a format might yield additional complexity when trying to analyze the raw data at hand. A widely used yet simple approach for analyzing and forecasting time series includes only the variable destined for forecasting. When analyzing time series on this form, we do not attempt to explain the observed data by the relationship with other possible variables. The only relevant data used for analyzing and forecasting is the past of the variable itself. Data in this format is called a univariate time series, as a contrast to a multivariate time series, which includes several variables connected through a shared period of time. Methods for forecasting the latter will be discussed thoroughly in later sections, but the following section will focus on univariate time series leading up to the Auto-Regressive model, as this works as the most fundamental building block for time series forecasting \cite{Korstanje2021} 
+In the scope of this project, our time series consist of discrete values that describes how several variables changes over time. These variables are: actual power generation, generation forecast, actual load(demand), load forecast, the delta between forecast and actual and "fyllingsgrad". Dealing with data in such a format might yield additional complexity when trying to analyze the raw data at hand. A widely used yet simple approach for analyzing and forecasting time series includes only the variable destined for forecasting. When analyzing time series on this form, we do not attempt to explain the observed data by the relationship with other possible variables. The only relevant data used for analyzing and forecasting is the past of the variable itself. Data in this format is called a univariate time series, as a contrast to a multivariate time series, which includes several variables connected through a shared period of time. Methods for forecasting the latter will be discussed thoroughly in later sections, but the following section will focus on univariate time series leading up to the Auto-Regressive model, as this works as the most fundamental building block for time series forecasting \cite{Korstanje2021} 
 
 \subsubsection{Decomposing the Characteristics}
-As previously mentioned, time series consist of data that describes how different variables change through time. As a result of this aggregation of data, specific characteristics of interest can be decomposed from the original time series. These characteristics can highlight certain aspects of the data in question and help in better the understanding and analysis of the data. To be able to decompose these characteristics, we have made use of the methods implemented in the python module Statsmodels \cite{seabold2010statsmodels}. 
-
+As previously mentioned, time series consist of data that describes how different variables change through time. As a result of this aggregation of data, specific characteristics of interest can be decomposed from the original time series. These characteristics can highlight certain aspects of the data in question and help in better the understanding and analyzing the data. To be able to decompose these characteristics, we have made use of the methods implemented in the python module Statsmodels \cite{seabold2010statsmodels}. 
 
 This will help us in visualizing three different components from the time series, in addition to the original data. The first component produced from this method is the trend. This is produced by implementing the method seasonal\_decompose from the Statsmodels module. This method estimates the trend by applying a convolutional filter \cite{seabold2010statsmodels}. 
 
@@ -245,7 +240,9 @@ Another component that can be highly descriptive for visualizing the time series
   \caption{\label{fig:NVE_decomposed_characteristics} Decomposed characteristics of NVE "fyllingsgrad"}
 \end{figure*}
 
+Figures (\ref{fig:decomposed_characteristics}) and (\ref{fig:NVE_decomposed_characteristics}) display the decomposed characteristics for both the Day Ahead price from the Entsoe dataset as well as the "fyllingsgrad" from the NVE dataset. From the decomposed day ahead price plot in Figure (\ref{fig:decomposed_characteristics}), the trend clearly correlates with the currently experienced increase in electricity prices, much more so than previous years. When looking at the increase in the residual graph, there is also a clear increase in values as well as in its volatile behavior. The residual is what noise is left after the rest of the data is decomposed, which shows the complexity of the data being modeled, especially for the last year. 
 
+In comparison, the "fyllingsgrad" plot shows a clear periodicity in all the decomposed characteristics except the residuals, which follows the physical constraints of the data. Moreover, the residuals differ about 0, such that their contribution is dominated by the clear seasonal component and trend. Also expected due to the mechanics of hydroelectric power production. However, comparing both the decomposed Figures, the increased trend in Figure (\ref{fig:decomposed_characteristics}) follows from the decreasing trend in Figure (\ref{fig:NVE_decomposed_characteristics}). 
 
 \subsection{The Auto-Regressive Model}
 
@@ -258,11 +255,12 @@ Another vital metric closely connected with autocorrelation is partial autocorre
 % ACF and PACF
 \begin{figure}
   \includegraphics[width=\columnwidth]{figures/AR_acf.pdf}
-  \caption{\label{fig:AR_acf} Auto correlation}
+  \caption{\label{fig:AR_acf} Auto correlation of day ahead price}
   \includegraphics[width=\columnwidth]{figures/AR_pacf.pdf}
-  \caption{\label{fig:AR_pacf} Partial auto correlation}
+  \caption{\label{fig:AR_pacf} Partial auto correlation of day ahead price}
 \end{figure}
 
+Figure (\ref{fig:AR_acf}) shows that the close neighboring hours are highly auto correlated, i.e. a given hour could be replaced by its closest residing observation. Thus, we may assume that the day-ahead price observations are influenced by neighboring hours, which is a condition in which a Autoregressive model may benefit from. However, the auto correlation decreasingly persists up until the 12th, where there seem to be little to no significant correlation. Albeit the closest hours do influence each other, the day-ahead price 12 hours later is not significantly correlated. Moreover, regardless of hour chosen, the day-ahead price 24 hours later can be assumed correlated. In practice, this relates to how the day-ahead price tend to somewhat repeat itself each day. The same observations can be made by studying Figure (\ref{fig:AR_pacf}).
 
 \subsubsection{Model Definition}
 
@@ -349,6 +347,9 @@ As stated previously, the hyperbolic tangent function is sufficient as activatio
 We note that all results have been created with the Source Code found in the Appendix. The results are reproducible, for further explanation for how to run the code and reproduce the results, refer to the README in the GitHub. All color maps used have been developed to fairly represent all data, with an emphasis of being readable for those with visual deficiency \cite{Crameri2021}. 
 
 \subsection{Auto Regressive Model}
+Figure (\ref{fig:AR_gridsearch}) show a Grid Search where the MSE is shown as a function of model order. 
+Moreover, Figure (\ref{fig:AR(24)_daily predictions}) displays the actual observed day ahead price with the forecasted values made individually for all 24 hour intervals from the Autoregressive model plotted above. Also included in Figure (\ref{fig:AR(24)_daily predictions}) are visualization of the establishment of two interconnecting cables to the European power market.
+
 % grid search AR
 \begin{figure}
   \includegraphics[width=\columnwidth]{figures/AR_gridsearch.pdf} 
@@ -359,73 +360,24 @@ We note that all results have been created with the Source Code found in the App
 \begin{figure*}
   \includegraphics[width= 2.1\columnwidth]{figures/AR(24)_daily predictions.pdf} 
   \caption{\label{fig:AR(24)_daily predictions} AR-model(24), 24 hour forecast)}
-  
 \end{figure*}
 
+\begin{table}[]
+  \caption{\label{tab_ar} Performance metrics computed for a 24th order AR model}
+  \begin{tabular}{l|l|}
+       & Score   \\
+  R2   & 0.95913 \\
+  MSE  & 0.00052 \\
+  RMSE & 0.02284
+  \end{tabular}
+\end{table}
 
-
-
+Table (\ref{tab_ar}) presents the R2, MSE and RMSE score metrics for a Autoregressive model of order 24. 
 
 \subsection{Recurrent Neural Networks}
 
 \subsubsection{Behaviour of uni -and multivariate models}
-These results are part of a preliminary study to determine how the different Recurrent Neural Network Cells respond to a change in number of neurons. For all results, each model is created equal according to the choice of parameters, except for the Cell structure. In the univariate case, only price is used. Moreover, in the multivariate case, forecasted values and actual values are assigned to specific models. For clarity, no results show the inclusion of the NVE \"fyllingsgrad\" data. All results for the current subsection are made using a Sequence to Sequence model.
-
-% Training evaluation
-\begin{figure}
-  \includegraphics[width=\columnwidth]{figures/univariate_train_evaluation_RNN.pdf}
-  \caption{\label{fig:univariate_train_evaluation_RNN} Univariate train evaluation RNN}
-  \includegraphics[width=\columnwidth]{figures/univariate_train_evaluation_convGRU.pdf}
-  \caption{\label{fig:univariate_train_evaluation_ConvGRU} Univariate train evaluation conv GRU}
-  \includegraphics[width=\columnwidth]{figures/univariate_train_evaluation_LSTM.pdf}
-  \caption{\label{fig:univariate_train_evaluation_LSTM} Univariate train evaluation LSTM}
-\end{figure}
-
-\begin{figure}
-  \includegraphics[width=\columnwidth]{figures/multivariate_train_evaluation_RNN.pdf}
-  \caption{\label{fig:multivariate_train_evaluation_RNN} multivariate train evaluation RNN}
-  \includegraphics[width=\columnwidth]{figures/multivariate_train_evaluation_RNN.pdf}
-  \caption{\label{fig:multivariate_train_evaluation_ConvGRU} multivariate train evaluation conv GRU}
-  \includegraphics[width=\columnwidth]{figures/multivariate_train_evaluation_RNN.pdf}
-  \caption{\label{fig:multivariate_train_evaluation_LSTM} multivariate train evaluation LSTM}
-\end{figure}
-
-% Hourly statistics
-\begin{figure}
-  \includegraphics[width=\columnwidth]{figures/univariate_hourly_stats_RNN.pdf}
-  \caption{\label{fig:univariate_hourly_stats_RNN} Univariate Simple RNN performance - Blue color indicate MSE for spesific hours. Black indicate mean and variance of target, and red indicate mean and variance of all predictions relative to its hour}
-  \includegraphics[width=\columnwidth]{figures/univariate_hourly_stats_convGRU.pdf}
-  \caption{\label{fig:univariate_hourly_stats_convGRU} Univariate ConvGRU performance - Blue color indicate MSE for spesific hours. Black indicate mean and variance of target, and red indicate mean and variance of all predictions relative to its hour}
-  \includegraphics[width=\columnwidth]{figures/univariate_hourly_stats_LSTM.pdf}
-  \caption{\label{fig:univariate_hourly_stats_LSTM} Univariate LSTM performance - Blue color indicate MSE for spesific hours. Black indicate mean and variance of target, and red indicate mean and variance of all predictions relative to its hour}
-\end{figure}
-
-\begin{figure}
-  \includegraphics[width=\columnwidth]{figures/multivariate_hourly_stats_RNN.pdf}
-  \caption{\label{fig:multivariate_hourly_stats_RNN} Multivariate Simple RNN performance - Blue color indicate MSE for spesific hours. Black indicate mean and variance of target, and red indicate mean and variance of all predictions relative to its hour}
-  \includegraphics[width=\columnwidth]{figures/multivariate_hourly_stats_convGRU.pdf}
-  \caption{\label{fig:multivariate_hourly_stats_convGRU} Multivariate ConvGRU performance - Blue color indicate MSE for spesific hours. Black indicate mean and variance of target, and red indicate mean and variance of all predictions relative to its hour}
-  \includegraphics[width=\columnwidth]{figures/multivariate_hourly_stats_LSTM.pdf}
-  \caption{\label{fig:multivariate_hourly_stats_LSTM} Multivariate LSTM performance - Blue color indicate MSE for spesific hours. Black indicate mean and variance of target, and red indicate mean and variance of all predictions relative to its hour}
-\end{figure}
-
-
-% Best univariate predictions
-\begin{figure}
-  \includegraphics[width=\columnwidth]{figures/univariate_predictions_convGRU_testsample11.pdf}
-  \includegraphics[width=\columnwidth]{figures/univariate_predictions_convGRU_testsample24.pdf}
-  \includegraphics[width=\columnwidth]{figures/univariate_predictions_convGRU_testsample98.pdf}  
-  \caption{\label{fig:univariate_best_predictions} Three sample predictions from the best univariate model GRU with 1d convolution}
-\end{figure}
-
-% Best multivariate predictions
-\begin{figure}
-  \includegraphics[width=\columnwidth]{figures/multivariate_predictions_convGRU_testsample11.pdf}
-  \includegraphics[width=\columnwidth]{figures/multivariate_predictions_convGRU_testsample24.pdf}
-  \includegraphics[width=\columnwidth]{figures/multivariate_predictions_convGRU_testsample98.pdf}  
-  \caption{\label{fig:multivariate_best_predictions} Three sample predictions from the best multivariate model GRU with 1d convolution}
-\end{figure}
-
+These results are part of a study to determine how the different Recurrent Neural Network Cells respond to a change in number of neurons. For all results, each model is created equal according to the choice of parameters, except for the Cell structure. In the univariate case, only price is used. Moreover, in the multivariate case, forecasted values and actual values are assigned to specific models. For clarity, no results show the inclusion of the NVE fyllingsgrad data. All results for the current subsection are made using a Sequence to Sequence model.
 
 \begin{figure}
   \includegraphics[width=\columnwidth]{figures/small_architecture_grid_search.pdf}
@@ -433,7 +385,7 @@ These results are part of a preliminary study to determine how the different Rec
   \caption{\label{fig_smallgs}Mean Squared Error as function of number of neurons for a single layer model. The uppermost figure shows a univariate case, while the plot at the bottom shows for a multivariate case}
 \end{figure}
 
-Figure (\ref{fig_smallgs}) shows the Mean Squared Error as a function of number of Neurons for a single layered, univariate model. Whereas Figure (\ref{fig_smallmultigs}) shows the Mean Squared error for the same models, but this time using a multivariate input of price, forecast load and forecast generation.
+Figure (\ref{fig_smallgs}) shows the Mean Squared Error as a function of number of Neurons for a single layered, univariate model. Whereas the lowermost plot in Figure (\ref{fig_smallgs}) shows the Mean Squared error for the same models, but this time using a multivariate input of price, forecast load and forecast generation.
 
 \begin{figure}
   \includegraphics[width=\columnwidth]{figures/Large_forecast_gridsearch_rnn.pdf}
@@ -441,7 +393,7 @@ Figure (\ref{fig_smallgs}) shows the Mean Squared Error as a function of number 
   \caption{\label{fig_largegs}Grid Search over different combination of layer size for a multilayered multivariate SimpleRNN and GRU network using the forecasted data}
 \end{figure}
 
-Figures (\ref{fig_largegsr}) display a Grid Search approach where Mean Squared Error is dependant on the number of neurons in each layer of a two layered Deep Recurrent Neural Network. The uppermost Figure is for the SimpleRNN cell whereas the lowermost Figure is for the GRU cell. 
+Figures (\ref{fig_largegs}) display a Grid Search approach where Mean Squared Error is dependant on the number of neurons in each layer of a two layered Deep Recurrent Neural Network. The uppermost Figure is for the SimpleRNN cell whereas the lowermost Figure is for the GRU cell. 
 
 \subsubsection{Data alteration for long sequences}
 In the context of our data, we refer to a long sequence as a input width of 168 hours, i.e. one week of data. We set up an RNN with with two GRU cells each with 128 neurons, as an immediate response to the MSE values obtained in previous results. We then performed different experiments by tweaking individual aspects of the RNN while keeping the other constant. All results for this subsection are also made using a Sequence to Sequence model, as for the results in the subsection above.
@@ -467,12 +419,53 @@ Figure (\ref{fig_gsconv}) shows a Grid Search performed over different output sp
 
 Finally, Figure (\ref{fig_gsdrop}) presents a Grid Search performed over different combinations of dropout and recurrent dropout. 
 
+\subsubsection{Optimizing the models}
+Figures (\ref{fig:univariate_train_evaluation_RNN} - \ref{fig:multivariate_train_evaluation_LSTM}) and (\ref{fig:univariate_hourly_stats_RNN} - \ref{fig:multivariate_hourly_stats_LSTM}) shows the result of a Grid Search over each of the different Recurrent Neural Network cells, for both a univariate and multivariate case with using architecture following the remarks made in the coming discussion. Figures (\ref{fig:univariate_train_evaluation_RNN} - \ref{fig:multivariate_train_evaluation_LSTM}) display the training and validation loss as function of epochs. While Figures (\ref{fig:univariate_hourly_stats_RNN} - \ref{fig:multivariate_hourly_stats_LSTM}) show hourly averaged values covering the difference between the true target and predicted value, mean MSE and variance. 
+
+\begin{figure}
+  \includegraphics[width=\columnwidth]{figures/univariate_train_evaluation_RNN.pdf}
+  \caption{\label{fig:univariate_train_evaluation_RNN} Univariate train evaluation RNN}
+  \includegraphics[width=\columnwidth]{figures/univariate_train_evaluation_convGRU.pdf}
+  \caption{\label{fig:univariate_train_evaluation_ConvGRU} Univariate train evaluation conv GRU}
+  \includegraphics[width=\columnwidth]{figures/univariate_train_evaluation_LSTM.pdf}
+  \caption{\label{fig:univariate_train_evaluation_LSTM} Univariate train evaluation LSTM}
+\end{figure}
+
+\begin{figure}
+  \includegraphics[width=\columnwidth]{figures/multivariate_train_evaluation_RNN.pdf}
+  \caption{\label{fig:multivariate_train_evaluation_RNN} multivariate train evaluation RNN}
+  \includegraphics[width=\columnwidth]{figures/multivariate_train_evaluation_RNN.pdf}
+  \caption{\label{fig:multivariate_train_evaluation_ConvGRU} multivariate train evaluation conv GRU}
+  \includegraphics[width=\columnwidth]{figures/multivariate_train_evaluation_RNN.pdf}
+  \caption{\label{fig:multivariate_train_evaluation_LSTM} multivariate train evaluation LSTM}
+\end{figure}
+
+% Hourly statistics
+\begin{figure}
+  \includegraphics[width=\columnwidth]{figures/univariate_hourly_stats_RNN.pdf}
+  \caption{\label{fig:univariate_hourly_stats_RNN} Univariate Simple RNN performance - Blue color indicate difference in MSE between target and predicted for specific hours. Black indicate mean and variance of target, and red indicate mean and variance of all predictions relative to its hour}
+  \includegraphics[width=\columnwidth]{figures/univariate_hourly_stats_convGRU.pdf}
+  \caption{\label{fig:univariate_hourly_stats_convGRU} Univariate ConvGRU performance - Blue color indicate difference in MSE between target and predicted for specific hours. Black indicate mean and variance of target, and red indicate mean and variance of all predictions relative to its hour}
+  \includegraphics[width=\columnwidth]{figures/univariate_hourly_stats_LSTM.pdf}
+  \caption{\label{fig:univariate_hourly_stats_LSTM} Univariate LSTM performance - Blue color indicate difference in MSE between target and predicted for specific hours. Black indicate mean and variance of target, and red indicate mean and variance of all predictions relative to its hour}
+\end{figure}
+
+\begin{figure}
+  \includegraphics[width=\columnwidth]{figures/multivariate_hourly_stats_RNN.pdf}
+  \caption{\label{fig:multivariate_hourly_stats_RNN} Multivariate Simple RNN performance - Blue color indicate difference in MSE between target and predicted for specific hours. Black indicate mean and variance of target, and red indicate mean and variance of all predictions relative to its hour}
+  \includegraphics[width=\columnwidth]{figures/multivariate_hourly_stats_convGRU.pdf}
+  \caption{\label{fig:multivariate_hourly_stats_convGRU} Multivariate ConvGRU performance - Blue color indicate difference in MSE between target and predicted for specific hours. Black indicate mean and variance of target, and red indicate mean and variance of all predictions relative to its hour}
+  \includegraphics[width=\columnwidth]{figures/multivariate_hourly_stats_LSTM.pdf}
+  \caption{\label{fig:multivariate_hourly_stats_LSTM} Multivariate LSTM performance - Blue color indicate difference in MSE between target and predicted for specific hours. Black indicate mean and variance of target, and red indicate mean and variance of all predictions relative to its hour}
+\end{figure}
 
 \section{Discussion}
 The day ahead pricing is much based on other forecasting models. When the power-producing operators contribute to the bidding process, they want to sell their power and buy from other participants. Therefore, buyers and sellers heavily rely on different market estimates to play in their respective bidding zone. Therefore, we expected the forecasted features for load and generation to contribute significantly when forecasting the pricing. However, the load and generation forecast did not show a high level of correlation in figure \ref{fig:feature_correlation} with respect to price. Additionally, load and generation forecast did neither contribute significantly to the performance of our Recurrent Neural Networks.
 
-\subsection{Recurrent Neural Networks}
+\subsection{The Autoregressive model}
 
+
+\subsection{Recurrent Neural Networks}
 
 \subsubsection{Response to architectural changes}
 As stated in the Introduction, we have developed a Recurrent Neural Network to study time-series data. For this, we have utilized the frontend Keras in conjunction with the Machine Learning library TensorFlow. In this section, we will limit ourselves to the study of our Sequence to Sequence model approach, which predicts 24 hours into the future at every time step instead of at just the final time step. This increases the number of error gradients propagated backwards through our model \cite{Geron2019}. Furthermore, for the multivariate case, we will only study the model behavior with the forecasted values in the dataset. 
@@ -495,6 +488,11 @@ Finally, the effect of Dropout and Recurrent Dropout can be seen in Figure (\ref
 \subsection{Recurrent Neural Network}
 
 \section{Conclusions}
+
+While exploring our data, we noted that there is an apparent relationship between the trends of the day-ahead price and the NVE data. Thus, part of the increased electricity price currently experienced in Norway, may be due to the shallow levels of water currently in the reservoirs. Additionally, though our data did not include specific information on inter-market trade and electricity export, it is of our belief that some of the missing explainability on the increased day ahead price can be found by studying the European power import/export market. Which Norway newly have established interconnecting cables to.
+
+Due to time constraints, this project only focuses on forecasting the electricity price for the southern part of Norway (bidding zone NO2). 
+\todo[inline]{highlight more areas that we do not focus on due to time constratints... Are, Gard og Andreas må skrive litt sammen her.. hva utelukker vi å se på}
 
 \appendix
 

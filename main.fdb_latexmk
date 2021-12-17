@@ -1,18 +1,18 @@
 # Fdb version 3
-["bibtex main"] 1639759745 "main.aux" "main.bbl" "main" 1639759749
+["bibtex main"] 1639761893 "main.aux" "main.bbl" "main" 1639761898
   "C:/Users/andre/AppData/Local/Programs/MiKTeX/bibtex/bst/bibtex/plain.bst" 1291864736 20613 bd3fbfa9f64872b81ac57a0dd2ed855f ""
   "biblio.bib" 1639676787 24381 e4ad0bc621b9c8c8b0acdae1550f2fb6 ""
-  "main.aux" 1639759749 17897 b070a564c644de8e4707ce174a069751 "pdflatex"
-  "mainNotes.bib" 1639759749 86 f4846bb1c8a38396624ed3b19a4ac864 "pdflatex"
+  "main.aux" 1639761896 17898 2c8683d69003dbcf3858074e71eaa54f "pdflatex"
+  "mainNotes.bib" 1639761896 86 f4846bb1c8a38396624ed3b19a4ac864 "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
-["makeindex main.idx"] 1639754586 "main.idx" "main.ind" "main" 1639759749
-  "main.idx" 1639759747 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+["makeindex main.idx"] 1639754586 "main.idx" "main.ind" "main" 1639761898
+  "main.idx" 1639761895 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
   (generated)
-  "main.ind"
   "main.ilg"
-["pdflatex"] 1639759746 "c:/Users/andre/Dropbox/FYS-STK4155_projects/FYS-STK4155 - Project3/FYS-STK4155-Prj3_report/main.tex" "main.pdf" "main" 1639759749
+  "main.ind"
+["pdflatex"] 1639761893 "c:/Users/andre/Dropbox/FYS-STK4155_projects/FYS-STK4155 - Project3/FYS-STK4155-Prj3_report/main.tex" "main.pdf" "main" 1639761898
   "C:/Users/andre/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1633121266 9715384 ab11fa3a7c67255819b548dcc7cc2452 ""
   "C:/Users/andre/AppData/Local/MiKTeX/pdftex/config/pdftex.map" 1637967114 279811 21458d7cb40c17308453d8eee000b2b5 ""
   "C:/Users/andre/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc" 1254935040 2375 baa924870cfb487815765f9094cf3728 ""
@@ -298,7 +298,7 @@
   "C:/Users/andre/AppData/Local/Programs/MiKTeX/tex/latex/url/url.sty" 1388490452 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "C:/Users/andre/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1623002060 55589 34128738f682d033422ca125f82e5d62 ""
   "C:/Users/andre/AppData/Local/Programs/MiKTeX/tex/latex/xkeyval/xkeyval.sty" 1623002090 4902 efb3d66683a2da2a232f71e3a571a899 ""
-  "c:/Users/andre/Dropbox/FYS-STK4155_projects/FYS-STK4155 - Project3/FYS-STK4155-Prj3_report/main.tex" 1639759736 60657 3f6355c6c4b912a76405b6653e351ee9 ""
+  "c:/Users/andre/Dropbox/FYS-STK4155_projects/FYS-STK4155 - Project3/FYS-STK4155-Prj3_report/main.tex" 1639761888 62189 71b698c505e783bcc1fb844c791b1f9b ""
   "figures/AR(24)_daily predictions.pdf" 1639752973 108151 142909485d119ea3f6ed441bd930768e ""
   "figures/AR_acf.pdf" 1639752973 11165 ccbbe58686f3df09cd3a8a24db30f9fd ""
   "figures/AR_gridsearch.pdf" 1639752973 9254 a8e0299fe9579c08043cb0c9e4c91cd5 ""
@@ -331,15 +331,15 @@
   "figures/univariate_train_evaluation_LSTM.pdf" 1639724450 11030 47bfd6e5bb1e518d0b6e4710af7f9d0a ""
   "figures/univariate_train_evaluation_RNN.pdf" 1639724450 11773 c3d5d96ec5feef1ed869b8995aeab7bb ""
   "figures/univariate_train_evaluation_convGRU.pdf" 1639724450 12194 b084c56e4483a40e081f45e64cf101d3 ""
-  "main.aux" 1639759749 17897 b070a564c644de8e4707ce174a069751 "pdflatex"
-  "main.bbl" 1639759745 4141 4bd4d2e7b678b0bfeb55c7a3e1be6397 "bibtex main"
+  "main.aux" 1639761896 17898 2c8683d69003dbcf3858074e71eaa54f "pdflatex"
+  "main.bbl" 1639761893 4141 4bd4d2e7b678b0bfeb55c7a3e1be6397 "bibtex main"
   "main.ind" 1639754587 0 d41d8cd98f00b204e9800998ecf8427e "makeindex main.idx"
-  "main.out" 1639759749 6340 24c4bd8272360c65df16848fed05f378 "pdflatex"
-  "main.tex" 1639759736 60657 3f6355c6c4b912a76405b6653e351ee9 ""
+  "main.out" 1639761896 6340 24c4bd8272360c65df16848fed05f378 "pdflatex"
+  "main.tex" 1639761888 62189 71b698c505e783bcc1fb844c791b1f9b ""
   (generated)
-  "main.pdf"
-  "main.log"
-  "main.idx"
-  "main.aux"
   "main.out"
   "mainNotes.bib"
+  "main.idx"
+  "main.log"
+  "main.aux"
+  "main.pdf"

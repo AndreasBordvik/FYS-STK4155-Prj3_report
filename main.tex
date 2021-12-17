@@ -246,25 +246,6 @@ Where $X_t$ is the current time step, $\phi$ is a coefficient for a specific lag
 
 As above equation demonstrates, the AR model of order $p$ needs a total number of $p$ specific $\phi$ coefficients. The optimal value for these coefficients is calculated by fitting the model to the data. To achieve this, we have implemented another function from the Statsmodel module \cite{seabold2010statsmodels}. This method is partly based on a central algorithm from project 1, namely Ordinary Least Squares\cite{Korstanje2021}.
 
-
-
-\subsection{The Auto-Regressive Model}
-
-\subsubsection{Stationarity}
-With the different characteristics of the time series decomposed, we move forward with implementing a model with the goal to be able to forecast the price of electricity a given amount of steps ahead in time. As already pointed out, this will be done solely based on the history of the price itself. A general challenge with univariate modeling may arise if the above-mentioned trend is present in the data. If this is the case, the data series is \emph{non-stationary}, and might prove difficult to forecast. As almost every time series will have varying data to some degree, we introduce the Augmented Dickey-Fuller(ADF) test as a statistical test for stationary checking. This is done by implementing the "adfuller" method from Statsmodel \cite{seabold2010statsmodels}. We state a $H_0$ that the unit root is present in the time series.The ADF will return a p-value, where a value smaller than 0.05 will result in the null hypothesis being rejected. Failing to reject this hypothesis will imply that the time series has a non-stationary structure \cite{Vishwas2020}, and will need further processing before being used for forecasting.  
-
-In the case of the latter, a common method for further preprocessing is the use of differencing. Using this method creates a new time series, consisting of the differences between each value and the next \cite{Korstanje2021}. This new data series is then used to compute a new statistical feature, namely autocorrelation. As forecasting with a univariate time series naturally only includes the variable itself, finding patterns on how the past influences the future is crucial. Plotting the autocorrelation gives us a clear visual representation of how the variable is correlated with itself at different time lags. This proves, in other words, a valuable method for determining the linear relationship between time step $t$ and $t-1$ \cite{Vishwas2020}. For the scope of this project, this will give us a measure of how much the price of electricity at a given hour is correlated with the hours ahead. As with regular correlation, the autocorrelation can be both positive and negative \cite{Korstanje2021}. However, the use of \emph{lags} is a concept in autocorrelation that differs from the regular. This notion deals with the number of time steps in which the correlation between each point should be calculated. 
-
-\subsubsection{Model Definition}
-
-The before mentioned autocorrelation is the basis for the model we then implement for univariate forecasting. At the base of this model is its nature of predicting future variables as a function of the lagged values. This model is formulated as:
-
-\[
-X_t = \sum_{i=1}^{p} \phi_i X_{t-i} + \epsilon_{t}
-\]
-
-Where $X_t$ is the current time step, $\phi$ is a coefficient for a specific lag, and $\epsilon$ is estimated random noise, for all $p$ time lags \cite{Korstanje2021}. As equationXXX shows, the AR model of order $p$ needs a total number of $p$ specific $\phi$ coefficients. The optimal value for these coefficients is calculated by fitting the model to the data. To achieve this, we have implemented another function from the Statsmodel module \cite{seabold2010statsmodels}. This method is partly based on a central algorithm from project 1, namely Ordinary Least Squares. 
-
 \section{Recurrent Neural Networks theory and Methods}
 
 \subsection{Sequence processing using Recurrent Neural Networks}
@@ -380,27 +361,19 @@ These results are part of a preliminary study to determine how the different Rec
 
 \begin{figure}
   \includegraphics[width=\columnwidth]{figures/small_architecture_grid_search.pdf}
-  \caption{\label{fig_smallgs}Mean Squared Error as function of number of neurons for a single layer, univariate model using price as its feature}
-\end{figure}
-
-\begin{figure}
   \includegraphics[width=\columnwidth]{figures/multivariate_forecast_small_architecture_grid_search.pdf}
-  \caption{\label{fig_smallmultigs}Mean Squared Error as a function of number of neurons for a single layer, multivariate model using forecast values including price as its features}
+  \caption{\label{fig_smallgs}Mean Squared Error as function of number of neurons for a single layer model. The uppermost figure shows a univariate case, while the plot at the bottom shows for a multivariate case}
 \end{figure}
 
 Figure (\ref{fig_smallgs}) shows the Mean Squared Error as a function of number of Neurons for a single layered, univariate model. Whereas Figure (\ref{fig_smallmultigs}) shows the Mean Squared error for the same models, but this time using a multivariate input of price, forecast load and forecast generation.
 
 \begin{figure}
   \includegraphics[width=\columnwidth]{figures/Large_forecast_gridsearch_rnn.pdf}
-  \caption{\label{fig_largegsrnn}Grid Search over different combination of layer size for a multilayered multivariate SimpleRNN network using the forecasted data}
-\end{figure}
-
-\begin{figure}
   \includegraphics[width=\columnwidth]{figures/Large_forecast_gridsearch_gru.pdf}
-  \caption{\label{fig_largegsgru}Grid Search over different combination of layer size for a multilayered multivariate GRU network using the forecasted data}
+  \caption{\label{fig_largegs}Grid Search over different combination of layer size for a multilayered multivariate SimpleRNN and GRU network using the forecasted data}
 \end{figure}
 
-Figures (\ref{fig_largegsrnn}) and (\ref{fig_largegsgru}) display a Grid Search approach where Mean Squared Error is dependant on the number of neurons in each layer of a two layered Deep Recurrent Neural Network. Figure (\ref{fig_largegsrnn}) is for the SimpleRNN cell whereas Figure (\ref{fig_largegsgru}) is for the GRU cell. 
+Figures (\ref{fig_largegsr}) display a Grid Search approach where Mean Squared Error is dependant on the number of neurons in each layer of a two layered Deep Recurrent Neural Network. The uppermost Figure is for the SimpleRNN cell whereas the lowermost Figure is for the GRU cell. 
 
 \subsubsection{Data alteration for long sequences}
 In the context of our data, we refer to a long sequence as a input width of 168 hours, i.e. one week of data. We set up an RNN with with two GRU cells each with 128 neurons, as an immediate response to the MSE values obtained in previous results. We then performed different experiments by tweaking individual aspects of the RNN while keeping the other constant. All results for this subsection are also made using a Sequence to Sequence model, as for the results in the subsection above.
@@ -430,19 +403,23 @@ Finally, Figure (\ref{fig_gsdrop}) presents a Grid Search performed over differe
 \section{Discussion}
 
 \subsection{Recurrent Neural Networks}
+
+
+\subsubsection{Response to architectural changes}
 As stated in the Introduction, we have developed a Recurrent Neural Network to study time-series data. For this, we have utilized the frontend Keras for the Machine Learning library TensorFlow. In this section, we will limit ourselves to the study of our Sequence to Sequence model approach, which predicts 24 hours into the future at every time step instead of at just the final time step. This increases the number of error gradients propagated backwards through our model \cite{Geron2019}. 
 
 By inspecting Figure (\ref{fig_smallgs}), it can be seen how the MSE varies as a function of number of neurons for a single layered, univariate model with price as its only feature. By following the curve, as the number of neurons in the layer increases, the lower the MSE becomes. As the MSE is a negatively oriented score, this is a favorable response. Moreover, though all three cells performs somewhat equal, the SimpleRNN cell attains the lowest MSE score with the highest number of neurons, i.e. 128. This may be a reasonable as this is for a univariate model, where the amount of data is sufficient for an SimpleRNN cell to fit the data appropriately. 
 
-Furthermore, by moving over to Figure (\ref{fig_smallmultigs}), some similarities may be drawn as the SimpleRNN is having a harder time fitting to the data than the LSTM and GRU cell models. As such, by introducing to more features to be used when predicting the price, the SimpleRNN may be overloaded with data such that it is having a harder time extracting the relevant structures for further predictions. However, this may not be the case for the LSTM and GRU cell networks, where it seems that their internal gates are able to extract and remember the relevant structures even with a lower neuron count. Interestingly, the LSTM network performs better with the multivariate data than the univariate data for both 16 and 32 neurons. Thus, Figures (\ref{fig_smallgs}) and (\ref{fig_smallmultigs}) may indicate that the SimpleRNN is sufficient for univariate data, while for the multivariate case it is more suitable to use an LSTM or GRU. This may be a consequence of the short-term memory problem of SimpleRNN cells, as the multivariate feature space is three times as large as the univariate feature space. Thus, having a long-term memory component as found in the LSTM and GRU cell is necessary to not discard relevant information during training.
+Furthermore, by moving downwards in Figure (\ref{fig_smallgs}), some similarities may be drawn as the SimpleRNN is having a harder time fitting to the data than the LSTM and GRU cell models. As such, by introducing to more features to be used when predicting the price, the SimpleRNN may be overloaded with data such that it is having a harder time extracting the relevant structures for further predictions. However, this may not be the case for the LSTM and GRU cell networks, where it seems that their internal gates are able to extract and remember the relevant structures even with a lower neuron count. Interestingly, the LSTM network performs better with the multivariate data than the univariate data for both 16 and 32 neurons. Thus, the two plots in Figure (\ref{fig_smallgs}) may indicate that the SimpleRNN is sufficient for univariate data, while for the multivariate case it is more suitable to use an LSTM or GRU. This may be a consequence of the short-term memory problem of SimpleRNN cells, as the multivariate feature space is three times as large as the univariate feature space. Thus, having a long-term memory component as found in the LSTM and GRU cell is necessary to not discard relevant information during training.
 
-Figures (\ref{fig_largegsrnn}) and (\ref{fig_largegsgru}) are Grid Search approaches to determine how the Mean Squared Error responds to a change in architecture for a two layered dense multivariate model. Inspecting Figure (\ref{fig_largegsrnn}), it can be seen that the MSE responds somewhat similarly to the multilayered model as for the single layered SimpleRNN model. Namely that the MSE attains lower values as the complexity of both layers are increased. This trend is similar for Figure (\ref{fig_largegsgru}), which displays the same Grid Search but for a GRU model instead. It can easily be seen that the lowest MSE is attained with the most complex model.
-
-\subsubsection{Response to architectural changes}
-
+Figure (\ref{fig_largegs}) are Grid Search approaches to determine how the Mean Squared Error responds to a change in architecture for a two layered dense multivariate model. Inspecting the uppermost Figure in (\ref{fig_largegs}), it can be seen that the MSE responds somewhat similarly to the multilayered model as for the single layered SimpleRNN model. Namely that the MSE attains lower values as the complexity of both layers are increased. This trend is similar for the lowermost Figure in (\ref{fig_largegs}), which displays the same Grid Search but for a GRU model instead. It can easily be seen that the lowest MSE is attained with the most complex model. Though we note that the results are not entirely consistent between model compilations (not shown), the relationship between the MSE and model complexity as shown in Figures (\ref{fig_smallgs}) and (\ref{fig_largegs}) is consistent between model runs. 
 
 \subsubsection{Effect of data alteration for long sequences}
+It has been noted in a previous section that there are two central drawbacks for Recurrent Neural Networks, namely the gradient problem and the short-term memory problem, especially for long sequences of data \cite{Geron2019}. As a measure to decrease the effects of these limitations, we have tried several preprocessing layers as well as studied the effect of Dropout. For preprocessing layers, we have studied the effect of preprocessing the data using one or two Dense FeedForward layers before the Recurrent Network layers, with the intent that the FeedForward layers may project our data into a more suitable feature space before being fed to the Recurrent Neural Network. The result of preprocessing the data with one or two FeedForward Dense layers can be seen in Figure (\ref{fig_gsff}). For clarity, all results in this section has been produced using a Sequence-to-Sequence multivariate GRU following the optimal architecture as seen in the bottommost Figure (\ref{fig_largegs}), i.e. two Recurrent layers both with 128 neurons each.
 
+By inspecting Figure (\ref{fig_gsff}), there seem to be no clear pattern in how the MSE is affected by different FeedForward architectures. Though some architectural combinations do achieve a lower MSE than no preprocessing layer at all, the results are not notably better than skipping out on FeedForward preprocessing entirely.
+
+Figure (\ref{fig_gsconv}) shows a Grid Search approach to implementing a 1-dimensional convolutional layers which precedes the two Recurrent layers. The 1-dimensional layer downsamples the input sequence, as well as preserving the notable structures in the data through convolution \cite{Geron2019}. This process helps the coming Recurrent layers to detect larger patterns in the data, by making the sequences to detect shorter. As can be seen in Figure (\ref{fig_gsconv}), the effect of the 1-dimensional convolutional layer seem to be tied with the convolutional kernel size, more so than the number of output features of the layer. With a kernel size of three, the model attains lower MSE values than what was reported in figure (\ref{fig_largegs}). As such, a 168-hour input width may prove longer than what the short-term memory of a Recurrent Neural Network is able to retain, as the MSE attains a better score with downsampled data. 
 
 \subsection{Recurrent Neural Network}
 

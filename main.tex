@@ -351,7 +351,7 @@ However, as iterative forecasting depend on an ever increasing amount of forecas
 Moreover, as the iterative approach only requires one target value to make an prediction, it is possible to implement a sliding window algorithm which structures the data such that it can be fed through the Feed Forward Neural Network which we developed for Project 2.
 
 \section{Results}
-We note that all results have been created with the Source Code found in the Appendix. The results are reproducible, for further explanation for how to run the code and reproduce the results, refer to the README in the GitHub. All color maps used have been developed to fairly represent all data, with an emphasis of being readable for those with visual deficiency \cite{Crameri2021}. 
+We note that all results have been created with the Source Code found in the Appendix. The results are reproducible, for further explanation for how to run the code and reproduce the results, refer to the README in the GitHub. All color maps used have been developed to fairly represent all data, with an emphasis of being readable for those with visual deficiency \cite{Crameri2021}. Moreover, some results have been moved by latex to the bottom of the paper.
 
 \subsection{Auto Regressive Model}
 Figure (\ref{fig:AR_gridsearch}) show a Grid Search where the MSE is shown as a function of model order. 
@@ -476,6 +476,8 @@ The following Figures (\ref{fig:iterative_LSTM}) and (\ref{fig:iterative_NN}) pr
   \caption{\label{fig:iterative_NN}Iterative Own developed Neural Net from project 2 - forecasting the next 24 hours reusing previous forcasted values}
 \end{figure}
 
+Tables (\ref{tab:iterativ_LSTM}) and (\ref{tab:iterativ_own_NN}) show the attained MSE value following the predictions made in Figures (\ref{fig:iterative_LSTM}) and (\ref{fig:iterative_NN}).
+
 \begin{table}[]
   \caption{\label{tab:iterativ_LSTM} Performance metrics Iterative LSTM - one single sample forecast}
   \begin{tabular}{l|l|}
@@ -530,14 +532,23 @@ Figures (\ref{fig:iterative_LSTM}) and (\ref{fig:iterative_NN}) show how an LSTM
 
 Moreover, though our Neural Network seem to be able to predict that the price will rise two times as seen in the target observation, it is not able to accurately predict the initial dip in value. Moreover, the prediction seem to stay high towards the end of forecast where sum of errors by previous forecasts may further increase the predicted values. This also is a result of the positive bias of the outputs from our Neural Network prediction. 
 
-In comparison, the LSTM network is 
+In comparison, the LSTM network predicts the observations to a higher approximation. This can be seen by comparing the MSE values in Table (\ref{tab:iterativ_LSTM}) and (\ref{tab:iterativ_own_NN}). Interestingly, the MSE obtained by both the Neural Network as well as the LSTM network is lower than the MSE values obtained while studying the Sequence to Sequence Recurrent Neural Network, though we note that the just presented MSE values are computed from a single sample, not the entire test data. 
 
 \section{Conclusions}
 
+Throughout this project we have studied different approaches to accurately forecast day-ahead electricity price based primarily on features from the Entsoe dataset. We did this by implementing a Autoregressive model which is based on a Ordinary Least Squares approach, a Sequence to Sequence Recurrent Neural Network as well as structuring the data such that our Feed Forward Neural Network developed in Project 2 could attempt at an iterative prediction scheme. For the development of the Recurrent Neural Network, we utilized the Machine Learning library TensorFlow.
+
 While exploring our data, we noted that there is an apparent relationship between the trends of the day-ahead price and the NVE data. Thus, part of the increased electricity price currently experienced in Norway, may be due to the shallow levels of water currently in the reservoirs. Additionally, though our data did not include specific information on inter-market trade and electricity export, it is of our belief that some of the missing explainability on the increased day ahead price can be found by studying the European power import/export market. Which Norway newly have established interconnecting cables to.
 
-Due to time constraints, this project only focuses on forecasting the electricity price for the southern part of Norway (bidding zone NO2). 
-\todo[inline]{highlight more areas that we do not focus on due to time constratints... Are, Gard og Andreas må skrive litt sammen her.. hva utelukker vi å se på}
+When Studying the Recurrent Neural Network, we highlighted some of its inherent problems, namely the gradient problem and the short-term memory problem. We started off by opting to utilize a Sequence to Sequence network, such that we could maximize the gradient flow through the network. To further study how the Recurrent Neural Network behaved, grid searches over different architectural pattern as well as different preprocessing and data generalizations techniques were performed. It was seen that the Recurrent Neural Network responded favorably to an increased architectural complexity, though the different pre processing schemes tended to significantly increase or add noise to the MSE. However, we noticed that some combinations of output dimensionality and kernel size decreased the MSE for a network with the GRU cell.
+
+However, the Sequence to Sequence Recurrent neural network tended to just predict a mean value for all time steps, as discussed previously when inspecting Figure (\ref{fig:univariate_hourly_stats_convGRU}). Though this resulted in the lowest MSE value, forecasting a daily average would not prove sufficient for an end user. We suspect that the predictions made would better predict the target data if more features where included. For example, a similar approach conducted by Wei Li et.al \cite{li_day-ahead_2021} included $+tilde50$ features, which is far more compared to the three features we included.
+
+In comparison, the Autoregressive model, which is based on the Ordinary Least Squares algorithm, tended to accurately predict the day-ahead price. Attaining a far lower MSE value than the Recurrent Neural Networks. This may be due to the day-ahead price being a auto correlated sequence, which the Autoregressive model benefits from. As such, we report that given a feature sparse situation, day-ahead price itself as a univariate time series is not enough to accurately predict using a Recurrent Neural Network. The RNN is itself too complex a model, such that the information residing in the day-ahead time series is better extracted with a more classical statistical model such as the Autoregressive model.
+
+We also briefly studied iterative predicting, where we structured our data in such a way that we could feed it to our Feed Forward Neural Network. Though our Neural Network itself is not an appropriate model to study time series, the prediction reached a reasonable MSE when comparing to the benchmark LSTM predictions. Though we for this project mostly studied Sequence to Sequence RNNs, the iterative approach seemed to give reasonable results, with the potential to outperform the Sequence to Sequence model. Sadly, due to time constraints, we were not able to further investigate iterative prediction.
+
+In conclusion, the Autoregressive model seemed to outperform our Recurrent Neural Network when predicting day-ahead price given our limited dataset. However, due to time constraints, we were only able to properly study Sequence to Sequence RNN. As we see promise in other RNN schemes such as the iterative prediction scheme, we recommend future work to study how different RNN schemes such as Sequence to Vector or Encoder Decoder networks would perform. 
 
 \appendix
 
